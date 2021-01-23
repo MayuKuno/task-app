@@ -16,6 +16,56 @@ Task-app
  
 
 
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|username|string|null: false|
+|email|string|null: false, unique: true|
+|image|string|null: false|
+|password|string|null: false|
+
+### Association
+- has_many :tasks
+
+
+
+## tasksテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|taskname|string|null: false| 
+|description|text|null: false| 
+|priority(enum)|integer|null: false|
+|status(enum)|integer|null: false|
+|deadline|date|null: false|
+
+
+### Association
+- belongs_to :user
+- has_many :task_labels
+- has_many  :labels,  through:  :task_labels
+
+
+
+## labelsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|color|string|null: false, foreign_key: true|<!-- データ型チェック 色はtextでOK？ -->
+
+### Association
+- has_many :task_labels
+- has_many  :tasks,  through:  :task_labels
+
+
+## task_labelsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|task_id|integer|null: false, foreign_key: true|
+|label_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :tasks
+- belongs_to :labels
 
 
  
