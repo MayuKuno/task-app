@@ -10,9 +10,8 @@ Task-app
 ## Motivation
 
 ## Paper Prototyping
-|  Top page  |  
-| ---- | 
-|<img width="1440" src="https://i.gyazo.com/a98b1e795b2d00968f6a8e0a26d5b84e.png">|
+
+<img width="1440" src="https://i.gyazo.com/a98b1e795b2d00968f6a8e0a26d5b84e.png">
  
 
  
