@@ -1,24 +1,26 @@
-# README
+# Project Title
+Task-app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Project Overview
 
-Things you may want to cover:
 
-* Ruby version
+## Production environment
 
-* System dependencies
 
-* Configuration
+## Motivation
 
-* Database creation
+## Paper Prototyping
+|  Top page  |  
+| ---- | 
+|<img width="1440" src="https://i.gyazo.com/a98b1e795b2d00968f6a8e0a26d5b84e.png">|
+ 
 
-* Database initialization
+ 
 
-* How to run the test suite
+## Authors
+**Mayu Kuno** 
+　- [Github](https://github.com/MayuKuno)
+　- [Portfolio](https://ninefsblog.herokuapp.com/)
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...
+## Function/features to improve
