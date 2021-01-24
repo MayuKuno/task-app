@@ -1,2 +1,33 @@
-<h1>Tasks#index</h1>
-<p>Find me in app/views/tasks/index.html.erb</p>
+<div class="container">
+
+  <div class="temp">
+    <p>
+      TOP
+    </p>
+    <% if user_signed_in? %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Login", new_user_session_path, method: :get %>
+      <%= link_to "Signup", new_user_registration_path, method: :get %>
+    <% end %>
+  </div>
+  <% if user_signed_in? %>
+    <div class="new">
+      <%= link_to new_task_path do %>
+        <%= image_tag 'plus.png' %>
+      <% end %>
+
+    </div>
+
+    <ul class="tasks">
+      <% @tasks.each do |task| %>
+      <li class="task">
+        <%= task.taskname%>
+        <%= link_to 'Edit', "/tasks/#{task.id}/edit", method: :get %>
+        <%= link_to 'Detail', task_path(task.id) %>
+        <%= link_to 'Delete', task_path(task.id), method: :delete %>
+      </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
