@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="temp">
+    <p>
+      Task Edit
+    </p>
+    <%= link_to 'Back to TOP', tasks_path %>
+  </div>
+
+    <%= render partial: 'form', locals: { task: @task } %>
+
+</div>

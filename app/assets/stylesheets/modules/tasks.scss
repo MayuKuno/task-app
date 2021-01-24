@@ -1,0 +1,83 @@
+.container{
+  background-color:$pp-background;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  padding: 20px;
+  .form{
+    padding: 20px;
+    background-color: $card-background;
+    width: 60%;
+    // height: 80%;
+    margin: 0 auto;
+    p{
+      font-size: 20px;
+      font-weight: bold;
+    }
+    input, 
+    textarea, 
+    select{
+      height: 50px;
+      line-height: 50px;
+      padding:0px 10px;
+      width: 100%;
+      border: none;
+      margin-bottom: 20px;
+      border-bottom: 2px solid $purple;
+      background: transparent;
+      cursor: pointer;
+    }
+    input:focus, 
+    textarea:focus, 
+    select:focus {
+      border-bottom: 2px solid $highlight;
+      outline: none;
+    }
+    .save{
+      width: 10%;
+      margin: 0 auto;
+
+    }
+    .deadline{
+      display: flex;
+      width: 100%;
+      line-height: 50px;
+    }
+  }
+}
+.temp{
+  text-align: center;
+  margin-bottom: 40px;
+  p{
+    font-size: 30px;
+    font-weight: bold;
+  }
+}
+
+
+.new{
+  font-size: 60px;
+  position: absolute;
+  top: 50px;
+  right: 80px;
+  a{
+    text-decoration: none;
+    img{
+      width: 50px;
+      height: 50px;
+    }
+  }
+}
+.tasks{
+  width: 60%;
+  margin: 40px auto;
+  padding: 0;
+  .task{
+    height: 70px;
+    line-height: 70px;
+    // background-color:$card-background;
+    list-style: none;
+    display: block;
+    border-bottom: dotted 1px #67568c;
+  }
+}

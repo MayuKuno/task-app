@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="temp">
+    <p>
+      Detail
+    </p>
+    <%= link_to 'Back to TOP', tasks_path %>
+  </div>
+
+  <div class="form">
+    <p>Task Name</p><%= @task.taskname %>
+    <p>Description</p><%= @task.description %>
+    <p>Priority</p><%= @task.priority %>
+    <p>Status</p><%= @task.status %>
+    <p>Deadline</p><%= @task.deadline %>
+  </div>
+
+</div>
+
