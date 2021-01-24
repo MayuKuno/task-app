@@ -32,12 +32,12 @@ Task-app
 ## tasksテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
 |taskname|string|null: false| 
-|description|text|null: false| 
-|priority(enum)|integer|null: false|
-|status(enum)|integer|null: false|
-|deadline|date|null: false|
+|description|text| 
+|priority(enum)|integer|
+|status(enum)|integer|
+|deadline|date|
 
 
 ### Association
