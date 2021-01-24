@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :show]
+  before_action :move_to_index, except: [:index]
 
 
   def index
@@ -17,6 +18,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
+
       flash[:notice] = "The task has been saved!"
       redirect_to tasks_path
     else
@@ -56,5 +58,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id]) 
   end
 
-
+  def move_to_index
+    redirect_to action: :index unless user_signed_in?
+  end
 end

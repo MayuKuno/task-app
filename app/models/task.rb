@@ -1,5 +1,6 @@
 class Task < ApplicationRecord
-  validates :taskname, presence: true
+  validates :taskname, :user_id, presence: true
+
   enum priority: {
     low: 0,
     middle: 1,

@@ -11,23 +11,25 @@
       <%= link_to "Signup", new_user_registration_path, method: :get %>
     <% end %>
   </div>
-  <% if user_signed_in? %>
+                        
     <div class="new">
       <%= link_to new_task_path do %>
         <%= image_tag 'plus.png' %>
       <% end %>
-
     </div>
 
     <ul class="tasks">
       <% @tasks.each do |task| %>
+        <% if user_signed_in? && current_user.id == task.user_id %>
+
       <li class="task">
         <%= task.taskname%>
         <%= link_to 'Edit', "/tasks/#{task.id}/edit", method: :get %>
         <%= link_to 'Detail', task_path(task.id) %>
         <%= link_to 'Delete', task_path(task.id), method: :delete %>
       </li>
+        <% end %>
       <% end %>
     </ul>
-  <% end %>
+
 </div>
