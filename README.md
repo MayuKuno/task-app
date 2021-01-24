@@ -16,7 +16,6 @@ Task-app
 <img width="1440" src="https://i.gyazo.com/c4dc17bd69e92d978908069be50408f9.png">
 
 
-
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
