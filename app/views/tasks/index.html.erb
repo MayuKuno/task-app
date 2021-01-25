@@ -26,7 +26,7 @@
         <%= task.taskname%>
         <%= link_to 'Edit', "/tasks/#{task.id}/edit", method: :get %>
         <%= link_to 'Detail', task_path(task.id) %>
-        <%= link_to 'Delete', task_path(task.id), method: :delete %>
+        <%= link_to 'Delete', task_path(task.id), method: :delete, id: :delete %>
       </li>
         <% end %>
       <% end %>
