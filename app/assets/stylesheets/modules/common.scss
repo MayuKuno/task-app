@@ -8,6 +8,8 @@ html{
     height: 30px;
     line-height: 30px;
     text-align: center;
+    position: fixed;
+    z-index:501;
   }
   .alert{
     background-color:$highlight;
@@ -23,11 +25,12 @@ html{
 .header{  
   display: flex;
   position: relative;
+  position: fixed;
+  z-index:500;
   height: 120px;
   line-height: 120px;
   width: 100%;
   background-color:$white-background;
-
   .title{
     width: 100%;
     font-weight:bold;
@@ -48,4 +51,50 @@ html{
       border-radius: 50%;
     }
   }
+}
+
+.footer{
+  position: relative;
+  .center{
+    background-color:$headline ;
+    height: 300px;
+    margin: 0 auto;
+    color:$white-background;
+    .title{
+      font-weight:bold;
+      text-align: center;
+      font-size: 60px;
+      letter-spacing: 0.1em;
+      padding: 50px 0;
+    }
+    .copyright{
+      p{
+        margin-top: 50px;
+        bottom: 0;
+        font-size: 20px;
+      }
+    }
+  }
+
+  .list{
+    position:absolute;
+    right:  0; 
+    top:45%;
+    ul{
+      display: flex;
+      a{
+        text-decoration: none;
+        color:$white-background;
+        list-style: none;
+        margin-right: 30px;
+      }
+      a:last-child{
+        margin-right: 100px;
+      }
+    }
+  }
+
+
+
+  
 }
