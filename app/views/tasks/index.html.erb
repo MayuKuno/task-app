@@ -1,26 +1,18 @@
 <div class="container">
-
   <div class="temp">
-    <p>
-      TOP
-    </p>
     <% if user_signed_in? %>
+      <p>
+        TOP
+      </p>
       <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Login", new_user_session_path, method: :get %>
-      <%= link_to "Signup", new_user_registration_path, method: :get %>
-    <% end %>
-  </div>
-                        
     <div class="new">
       <%= link_to new_task_path do %>
         <%= image_tag 'plus.png' %>
       <% end %>
     </div>
-
     <ul class="tasks">
       <% @tasks.each do |task| %>
-        <% if user_signed_in? && current_user.id == task.user_id %>
+        <% if current_user.id == task.user_id %>
 
       <li class="task">
         <%= task.taskname%>
@@ -31,5 +23,40 @@
         <% end %>
       <% end %>
     </ul>
+    <% else %>
+      <div class="before">
+        <section class="top">
+          <div class="message">Manage your day with <br><span>Task App</span></div>
+          <div class="btns">
+            <%= link_to "Login", new_user_session_path, method: :get, class: :btn %>
+            <%= link_to "Signup", new_user_registration_path, method: :get, class: :btn %>
+         
+          </div>
+        </section>
 
+
+        <section class="middle">
+          <div class="description">
+            <div class="message">
+              With Task App, <br>
+              Priotize your tasks, and<br>
+              Save your time<br>
+            </div>
+          </div>
+          <div class="video">
+            <%= image_tag 'app.png' , class: :app %>
+            <div class="app">
+              <%= image_tag  'video.png', class: :video %>
+            </div>
+          </div>
+         
+        </section>
+
+
+        <section class="bottom">
+        </section>
+        <%= render 'layouts/footer'%>
+      </div>
+    <% end %>
+  </div>
 </div>
