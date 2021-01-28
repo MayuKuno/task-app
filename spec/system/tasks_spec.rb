@@ -6,9 +6,9 @@ RSpec.describe 'Task', type: :system do
   let!(:task_a){ FactoryBot.create(:task, taskname: 'rubyの勉強をする', user: user_a) }
 
   let(:user_c){ FactoryBot.create(:user, username: 'ユーザーC', email: 'c@example.com') }
-  let!(:task_b){ FactoryBot.create(:task, id: 1, taskname: 'hi', created_at: Time.current + 1.days, user: user_c) }
-  let!(:task_c){ FactoryBot.create(:task, id: 2, taskname: 'hiii', created_at: Time.current + 2.days, user: user_c) }
-  let!(:task_d){ FactoryBot.create(:task, id: 3, taskname: 'hiiiii', created_at: Time.current + 3.days, user: user_c) }
+  let!(:task_b){ FactoryBot.create(:task, id: 1, taskname: 'a', created_at: Time.current + 1.days, user: user_c) }
+  let!(:task_c){ FactoryBot.create(:task, id: 2, taskname: 'b', created_at: Time.current + 2.days, user: user_c) }
+  let!(:task_d){ FactoryBot.create(:task, id: 3, taskname: 'c', created_at: Time.current + 3.days, user: user_c) }
 
 
 
@@ -40,8 +40,6 @@ RSpec.describe 'Task', type: :system do
     end
 
 
-
-
     context 'ユーザーCが時差でタスクを複数登録した時' do
       let(:login_user) { user_c }
 
@@ -49,9 +47,27 @@ RSpec.describe 'Task', type: :system do
         visit tasks_path
         task = all('.tasks')
         task_0 = task[0]
-        expect(task_0).to have_content "hiiiii"
+        expect(task_0).to have_content "c"
       end 
     end
+
+
+    # context 'Name of Taskを押した時' do
+    #   let(:login_user) { user_c }
+
+    #   before do
+    #     visit tasks_path
+    #     click_link 'Name of Task'
+    #   end
+
+    #   it "taskname降順で表示される" do
+    #     task = all('.tasks')
+    #     task_0 = task[0]
+    #     expect(task_0).to have_content "a"
+    #   end 
+    # end
+
+
 
   end
 
