@@ -4,10 +4,11 @@
       <p>Description</p><%= f.text_area :description %>
       <p>Priority</p><%= f.select :priority, Task.priorities.keys, :selected=>Task.priorities[@task.priority], prompt: "Select Priority" %>
       <p>Status</p><%= f.select :status, Task.statuses.keys, :selected=>Task.statuses[@task.status], prompt: "Select Status" %>
-      <p>Deadline</p>
-      <div class="deadline">
-      <%= raw sprintf(f.date_select(:deadline, include_blank: true, use_month_numbers: true,start_year: Time.now.year, end_year: (Time.now.year + 1), date_separator: '%s'),'/ ', '/') %>
-      </div>
+      <p>Deadline</p><%= f.date_field :deadline %>
+
+
+
+      
       <div class="save">
         <%= f.submit "Save" %>
       </div>
