@@ -52,20 +52,7 @@ RSpec.describe 'Task', type: :system do
     end
 
 
-    # context 'Name of Taskを押した時' do
-    #   let(:login_user) { user_c }
 
-    #   before do
-    #     visit tasks_path
-    #     click_link 'Name of Task'
-    #   end
-
-    #   it "taskname降順で表示される" do
-    #     task = all('.tasks')
-    #     task_0 = task[0]
-    #     expect(task_0).to have_content "a"
-    #   end 
-    # end
 
 
 
