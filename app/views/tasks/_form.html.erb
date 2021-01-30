@@ -5,6 +5,8 @@
       <p>Priority</p><%= f.select :priority, Task.priorities.keys, :selected=>Task.priorities[@task.priority], prompt: "Select Priority" %>
       <p>Status</p><%= f.select :status, Task.statuses.keys, :selected=>Task.statuses[@task.status], prompt: "Select Status" %>
       <p>Deadline</p><%= f.date_field :deadline %>
+      <p>Labels</p><%= f.collection_check_boxes :label_ids, Label.all, :id, :color %>
+
 
 
 
