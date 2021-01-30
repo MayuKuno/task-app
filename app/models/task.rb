@@ -14,4 +14,13 @@ class Task < ApplicationRecord
     Working: 1,
     Completed: 2,
     }
+
+  def self.search(search)
+    if search
+      Task.where('taskname LIKE(?)', "%#{search}%")
+    else
+      Task.all
+    end
+  end
+
 end

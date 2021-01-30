@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :show]
-  before_action :move_to_index, except: [:index]
+  before_action :move_to_index, except: [:index, :search]
   helper_method :sort_column, :sort_direction
 
   def index
@@ -47,6 +47,14 @@ class TasksController < ApplicationController
       flash[:notice] = "The task has been deleted!"
       redirect_to tasks_path
     end
+  end
+
+  def search
+    @tasks = Task.search(params[:keyword])
+    # respond_to do |format|
+    #   format.html
+    #   format.json
+    # end
   end
 
   private

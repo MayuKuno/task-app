@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_30_051808) do
+ActiveRecord::Schema.define(version: 2021_01_30_060648) do
 
   create_table "labels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "color"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2021_01_30_051808) do
     t.date "deadline"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["taskname"], name: "index_tasks_on_taskname", length: 32
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 

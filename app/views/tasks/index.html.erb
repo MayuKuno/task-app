@@ -11,6 +11,14 @@
       <% end %>
     </div>
 
+    <div class="search">
+    <%= form_with(url: tasks_searches_path, local: true, method: :get, class: "search-form") do |form| %>
+      <%= form.text_field :keyword, placeholder: "タスクを検索する", class: "search-input" %>
+      <%= form.submit "検索", class: "search-btn" %>
+    <% end %>
+    </div>
+
+
     <table class="tasks">
 
       <thead>
