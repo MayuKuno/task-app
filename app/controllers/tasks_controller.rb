@@ -51,10 +51,10 @@ class TasksController < ApplicationController
 
   def search
     @tasks = Task.search(params[:keyword])
-    # respond_to do |format|
-    #   format.html
-    #   format.json
-    # end
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   private

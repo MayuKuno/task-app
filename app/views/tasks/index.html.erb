@@ -12,9 +12,9 @@
     </div>
 
     <div class="search">
-    <%= form_with(url: tasks_searches_path, local: true, method: :get, class: "search-form") do |form| %>
+    <%= form_with(url: search_tasks_path, local: true, method: :get, class: "search-form") do |form| %>
       <%= form.text_field :keyword, placeholder: "タスクを検索する", class: "search-input" %>
-      <%= form.submit "検索", class: "search-btn" %>
+      <%#= form.submit "検索", class: "search-btn" %>
     <% end %>
     </div>
 
@@ -23,7 +23,9 @@
 
       <thead>
         <tr>
+          <th>Label</th>
           <th id="taskname"><%= sortable "taskname", "Name of Task" %></th>
+          <th>Status</th>
           <th><%= sortable "deadline", "Deadline" %></th>
           <th><%= sortable "created_at", "Created_at" %></th>
           <th>Manage</th>
@@ -33,7 +35,13 @@
       <% if current_user.id == task.user_id %>
       <tbody>
         <tr>
+          <td>
+            <% task.labels.each do |label| %>
+              <%= label.color %>
+            <% end %>
+          </td>
           <td><%= task.taskname %></td>
+          <td><%= task.status %></td>
           <td><%= task.deadline %></td>
           <td><%= task.created_at %></td>
           <td>

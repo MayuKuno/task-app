@@ -2,6 +2,7 @@ class Task < ApplicationRecord
   validates :taskname, presence: true
   belongs_to :user, optional: true
   validates :user_id, presence: true
+  
   has_many :task_labels
   has_many :labels, through: :task_labels
   enum priority: {
@@ -17,7 +18,11 @@ class Task < ApplicationRecord
 
   def self.search(search)
     if search
-      Task.where('taskname LIKE(?)', "%#{search}%")
+      # Task.where('taskname LIKE ?', "%#{search}%")
+      Task.where('taskname LIKE ?', "%#{search}%")
+
+
+
     else
       Task.all
     end
