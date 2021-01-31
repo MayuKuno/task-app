@@ -1,5 +1,7 @@
   <div class="form">
     <%= form_for @task do |f| %>
+     <%= render 'layouts/error_messages', model: f.object%>
+
       <p>Task Name</p><%= f.text_field :taskname %>
       <p>Description</p><%= f.text_area :description %>
       <p>Priority</p><%= f.select :priority, Task.priorities.keys, :selected=>Task.priorities[@task.priority], prompt: "Select Priority" %>
@@ -7,10 +9,6 @@
       <p>Deadline</p><%= f.date_field :deadline %>
       <p>Labels</p><%= f.collection_check_boxes :label_ids, Label.all, :id, :color %>
 
-
-
-
-      
       <div class="save">
         <%= f.submit "Save" %>
       </div>

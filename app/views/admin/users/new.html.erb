@@ -1,7 +1,10 @@
   <div class="container">
     <h2>Sign up</h2>
+    <% if current_user && current_user.admin?%>
     <%= link_to '一覧', admin_users_path %>
+    <% end %>
     <%= form_with model: [:admin, @user], local: true do |f| %>
+    <%= render 'layouts/error_messages', model: f.object%>
 
       <div class="field">
         <%= f.label :username, "Username" %> 
@@ -13,10 +16,16 @@
         <%= f.email_field :email %>
       </div>
 
-      <div class="field">
-        <%= f.label :admin, "admin"  %><br />
-        <%= f.check_box :admin %>
-      </div>
+      <% if current_user && current_user.admin?%>
+        
+          <div class="field">
+            <%= f.label :admin, "admin"  %><br />
+            <%= f.check_box :admin %>
+          </div>
+       
+      <% else %>
+      <div>権限付与に関しては、管理者にお問い合わせください</div>
+      <% end %>
 
       <div class="field">
         <%= f.label :password %>

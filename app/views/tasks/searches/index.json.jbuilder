@@ -9,9 +9,4 @@ json.array! @tasks do |task|
   json.labels task.labels
   json.user_sign_in current_user
 
-  # task.labels do |label|
-  #   json.colors task.label.color
-  # end
-
-
 end

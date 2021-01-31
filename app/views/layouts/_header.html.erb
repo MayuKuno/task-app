@@ -4,7 +4,6 @@
   <% end %>
   <div class="picture">
     <% if current_user %>
-        <%#= image_tag 'account.png' %>
       <%= link_to user_path(current_user.id) do %>
       <% if current_user.image.present? %>
             <%= image_tag current_user.image %>
