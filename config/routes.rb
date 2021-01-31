@@ -1,18 +1,17 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root "tasks#index"
+  get '/login', to:'sessions#new'
+  post '/login', to:'sessions#create'
+  delete '/logout', to:'sessions#destroy'
 
-  # namespace :tasks do
-  #   resources :searches, only: :index
-  # end
-
-  resources :tasks do
-    collection do
-      get 'search'
-    end
+  namespace :admin do
+    resources :users
   end
+  root "tasks#index"
+  resources :users, only: [:show]
 
-
-
+  namespace :tasks do
+    resources :searches, only: :index
+  end
+  resources :tasks
 
 end

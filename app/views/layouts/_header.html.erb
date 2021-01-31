@@ -1,13 +1,16 @@
 <div class="header">
-  <div class="title">Task App</div>
+  <%= link_to root_path do %>
+    <div class="title">Task App</div>
+  <% end %>
   <div class="picture">
-    <% if user_signed_in? %>
-        <%= image_tag 'account.png' %>
-      <%# if current_user.image.present? %>
-            <%#= image_tag current_user.image %>
-        <%# else %>
-            <%#= image_tag 'account.png' %>
-        <%# end %>
+    <% if current_user %>
+      <%= link_to user_path(current_user.id) do %>
+      <% if current_user.image.present? %>
+            <%= image_tag current_user.image %>
+        <% else %>
+            <%= image_tag 'account.png' %>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 </div>

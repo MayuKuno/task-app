@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :show]
-  before_action :move_to_index, except: [:index, :search]
+  before_action :login_required, except: [:index, :search]
   helper_method :sort_column, :sort_direction
 
   def index
@@ -49,13 +49,7 @@ class TasksController < ApplicationController
     end
   end
 
-  def search
-    @tasks = Task.search(params[:keyword])
-    respond_to do |format|
-      format.html
-      format.json
-    end
-  end
+
 
   private
   def task_params
@@ -66,8 +60,8 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id]) 
   end
 
-  def move_to_index
-    redirect_to action: :index unless user_signed_in?
+  def login_required
+    redirect_to login_url unless current_user
   end
 
   def sort_column
