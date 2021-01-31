@@ -1,0 +1,21 @@
+<div class="container">
+
+
+         <h1>LOG IN</h1>
+        <%= form_with scope: :session, local: true do |f| %>
+            <%= f.label :email, 'メールアドレス'%>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Email", id:'session_email' %>
+ 
+            <%= f.label :password, 'パスワード '%>
+            <%= f.password_field :password, autofocus: true, autocomplete: "password", placeholder:"password", id:'session_password' %>
+ 
+
+
+            <%= f.submit "Log in"%>
+            <% end %>
+
+
+
+
+  
+</div>

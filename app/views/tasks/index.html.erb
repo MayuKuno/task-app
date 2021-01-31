@@ -1,10 +1,13 @@
 <div class="container">
   <div class="temp">
-    <% if user_signed_in? %>
+    <% if current_user %>
       <p>
         TOP
       </p>
-      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+      <%= link_to "Logout", logout_path, method: :delete %>
+      <% if current_user.admin? %>
+        <%= link_to "ユーザー一覧", admin_users_path %>
+      <% end %>
     <div class="new">
       <%= link_to new_task_path do %>
         <%= image_tag 'plus.png' %>
@@ -20,7 +23,6 @@
 
 
     <table class="tasks">
-
       <thead>
         <tr>
           <th>Label</th>
@@ -60,8 +62,8 @@
         <section class="top">
           <div class="message">Manage your day with <br><span>Task App</span></div>
           <div class="btns">
-            <%= link_to "Login", new_user_session_path, method: :get, class: :btn %>
-            <%= link_to "Signup", new_user_registration_path, method: :get, class: :btn %>
+            <%= link_to "Login", login_path, method: :get, class: :btn %>
+            <%= link_to "Signup", class: :btn %>
           </div>
         </section>
 
@@ -78,7 +80,7 @@
             <%= image_tag 'app.png' , class: :app %>
             <div class="app">
               <%= image_tag  'video.png', class: :video %>
-            </div>
+           </div>
           </div>
          
         </section>

@@ -31,13 +31,18 @@ html{
   line-height: 120px;
   width: 100%;
   background-color:$white-background;
-  .title{
-    width: 100%;
-    font-weight:bold;
-    color:$headline;
-    text-align: center;
-    font-size: 50px;
-    letter-spacing: 0.1em;
+  a {
+    text-decoration: none;
+    display: block;
+    margin: 0 auto;
+    .title{
+      text-align: center;
+      width: 100%;
+      font-weight:bold;
+      color:$headline;
+      font-size: 50px;
+      letter-spacing: 0.1em;
+    }
   }
 
   .picture{

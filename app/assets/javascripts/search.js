@@ -1,6 +1,4 @@
 $(function() {
-
-
   var search_list = $(".tasks");
   function appendRow(){
     var html = `
@@ -19,17 +17,6 @@ $(function() {
 
   }
   function appendTask(task) {
-    // if(task.user_sign_in && tweet.user_sign_in.id == tweet.user_id){
-    //   var current_user = `<li>
-                            // <a href="/tweets/${tweet.id}/edit" data-method="get" >編集</a>
-    //                       </li>
-    //                       <li>
-    //                         <a href="/tweets/${tweet.id}" data-method="delete" >削除</a>
-    //                       </li>`
-    // } else {
-    //   var current_user = ""
-    // }
-
     var html = `
             <tbody>
                 <tr>
@@ -54,21 +41,13 @@ $(function() {
                 `
 
     search_list.append(html);
+   
   }
 
   function appendErrMsgToHTML(msg) {
     var html = `<div class='name'>${ msg }</div>`
     search_list.append(html);
   }
-
-
-
-
-
-
-
-
-
 
   $(".search-input").on("keyup", function(){
     var input = $(".search-input").val();
@@ -83,9 +62,14 @@ $(function() {
       search_list.empty();
 
       if(tasks.length !== 0){
-          appendRow();
+        appendRow();
         tasks.forEach(function(task){
-          appendTask(task);
+          if(task.user_sign_in.id == task.user_id){
+            appendTask(task);
+          }else{
+            appendErrMsgToHTML("一致するタスクがありません");
+
+          }
         });
       }else{
         appendRow();

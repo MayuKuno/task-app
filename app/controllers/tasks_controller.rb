@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :show]
-  before_action :move_to_index, except: [:index, :search]
+  # before_action :move_to_index, except: [:index, :search]
+  before_action :login_required, except: [:index, :search]
   helper_method :sort_column, :sort_direction
 
   def index
@@ -66,8 +67,11 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id]) 
   end
 
-  def move_to_index
-    redirect_to action: :index unless user_signed_in?
+  # def move_to_index
+  #   redirect_to action: :index unless user_signed_in?
+  # end
+  def login_required
+    redirect_to login_url unless current_user
   end
 
   def sort_column

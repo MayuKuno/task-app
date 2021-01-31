@@ -7,7 +7,8 @@ json.array! @tasks do |task|
   json.user_id task.user.id
   json.username task.user.username
   json.labels task.labels
-    
+  json.user_sign_in current_user
+
   # task.labels do |label|
   #   json.colors task.label.color
   # end
