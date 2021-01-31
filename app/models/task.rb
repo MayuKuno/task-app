@@ -18,11 +18,7 @@ class Task < ApplicationRecord
 
   def self.search(search)
     if search
-      # Task.where('taskname LIKE ?', "%#{search}%")
       Task.where('taskname LIKE ?', "%#{search}%")
-
-
-
     else
       Task.all
     end

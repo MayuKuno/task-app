@@ -54,7 +54,7 @@ $(function() {
 
     $.ajax({
       type: 'GET',
-      url: "/tasks/search",
+      url: "/tasks/searches",
       data: {keyword: input},
       dataType: 'json'
     })

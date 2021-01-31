@@ -9,15 +9,9 @@ Rails.application.routes.draw do
   root "tasks#index"
   resources :users, only: [:show]
 
-  resources :tasks do
-    collection do
-      get 'search'
-    end
+  namespace :tasks do
+    resources :searches, only: :index
   end
+  resources :tasks
 
-
-
-  # namespace :tasks do
-  #   resources :searches, only: :index
-  # end
 end
