@@ -4,7 +4,14 @@ RSpec.describe 'Task', type: :system do
   let(:user_a){ FactoryBot.create(:user, username: 'ユーザーA', email: 'a@example.com') }
   let(:user_b){ FactoryBot.create(:user, username: 'ユーザーB', email: 'b@example.com') }
   let!(:task_a){ FactoryBot.create(:task, taskname: 'rubyの勉強をする', user: user_a) }
-   
+
+  let(:user_c){ FactoryBot.create(:user, username: 'ユーザーC', email: 'c@example.com') }
+  let!(:task_b){ FactoryBot.create(:task, id: 1, taskname: 'a', created_at: Time.current + 1.days, user: user_c) }
+  let!(:task_c){ FactoryBot.create(:task, id: 2, taskname: 'b', created_at: Time.current + 2.days, user: user_c) }
+  let!(:task_d){ FactoryBot.create(:task, id: 3, taskname: 'c', created_at: Time.current + 3.days, user: user_c) }
+
+
+
   before do
     FactoryBot.create(:task, user: user_a)
     visit new_user_session_path
@@ -31,6 +38,24 @@ RSpec.describe 'Task', type: :system do
         expect(page).to have_no_content 'rubyの勉強をする'
       end
     end
+
+
+    context 'ユーザーCが時差でタスクを複数登録した時' do
+      let(:login_user) { user_c }
+
+      it "created_at降順で表示される" do
+        visit tasks_path
+        task = all('.tasks')
+        task_0 = task[0]
+        expect(task_0).to have_content "c"
+      end 
+    end
+
+
+
+
+
+
   end
 
 
@@ -118,6 +143,7 @@ RSpec.describe 'Task', type: :system do
       end
     end
   end
+
 
 
 end

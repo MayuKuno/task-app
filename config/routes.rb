@@ -1,6 +1,18 @@
 Rails.application.routes.draw do
   devise_for :users
   root "tasks#index"
-  resources :tasks
+
+  # namespace :tasks do
+  #   resources :searches, only: :index
+  # end
+
+  resources :tasks do
+    collection do
+      get 'search'
+    end
+  end
+
+
+
 
 end

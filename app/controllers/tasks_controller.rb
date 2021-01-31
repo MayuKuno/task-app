@@ -1,10 +1,10 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :show]
-  before_action :move_to_index, except: [:index]
-
+  before_action :move_to_index, except: [:index, :search]
+  helper_method :sort_column, :sort_direction
 
   def index
-    @tasks = Task.all
+    @tasks = Task.includes(:user).order(sort_column + " " + sort_direction).page(params[:page]).per(5)
   end
 
   def show
@@ -49,9 +49,17 @@ class TasksController < ApplicationController
     end
   end
 
+  def search
+    @tasks = Task.search(params[:keyword])
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
   private
   def task_params
-    params.require(:task).permit(:taskname, :description, :priority, :status,:deadline).merge(user_id: current_user.id)
+    params.require(:task).permit(:taskname, :description, :priority, :status,:deadline, label_ids: []).merge(user_id: current_user.id)
   end
 
   def set_task
@@ -61,4 +69,13 @@ class TasksController < ApplicationController
   def move_to_index
     redirect_to action: :index unless user_signed_in?
   end
+
+  def sort_column
+    Task.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
 end
