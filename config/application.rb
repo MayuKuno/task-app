@@ -13,5 +13,9 @@ module TaskApp
     # -- all .rb files in that directory are automatically loaded.
     config.i18n.default_locale = :ja
     config.time_zone = 'Tokyo'
+
+    # メンテナンスバッチ処理
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
+
   end
 end

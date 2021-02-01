@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>We're sorry, but service temporarily unavailable (503)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+  .error-page {
+    background-color: #f4effc;
+    text-align: center;
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+  
+  }
+  .header{  
+    display: flex;
+    position: relative;
+    position: fixed;
+    z-index:500;
+    height: 120px;
+    line-height: 120px;
+    width: 100%;
+    background-color:#FFFFFF;
+  }
+  .title{
+    width: 100%;
+    font-weight:bold;
+    color:#1f1235;
+    text-align: center;
+    font-size: 50px;
+    letter-spacing: 0.1em;
+  }
+  .main{
+    padding-top: 120px;
+    width: 80%;
+    /* height: 100vh; */
+    margin: 0 auto;
+
+  }
+  .message{
+    margin-top: 200px;
+    font-size: 42px;
+    font-weight: bold;
+  }
+  .message > span{
+    font-size: 100px;
+  }
+  .text{
+    margin-top:20px;
+    font-size: 25px;
+  }
+  .link{
+    margin-top: 50px;
+  }
+  .link > a{
+    line-height: 60px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #463366;
+    color:#e2daeb;
+    padding: 20px 50px;
+    margin-bottom: 20px;
+    border-radius: 3px;
+  }
+  .link > a:hover {
+    opacity: .8;
+  }
+  </style>
+</head>
+
+<body class="error-page">
+  <!-- This file lives in public/500.html -->
+  <div class="header">
+    <div class="title">Task App</div>
+  </div>
+  <div class="main">
+    <div class="message">
+      <span>503</span>
+    </div>
+    <div class="text">
+      現在、サーバーのメンテナンス中です。<br>
+      お客様にはご不便をおかけいたしまして、誠に申し訳ございませんが、ご了承くださいますようお願い申し上げます。
+    </div>
+    <div class="link">
+      <a href="/">TOPページはこちら</a>
+    </div>
+  </div>
+</body>
+</html>
+
+
