@@ -1,4 +1,10 @@
 <div class="container">
+  <% if @user.image.present? %>
+  <%= image_tag current_user.image.thumb.url %>
+  <% else %>
+    <%= image_tag asset_path("account.png") %>
+  <% end %>
+
   <%= @user.username %>
   <%= @user.email %>
 </div>

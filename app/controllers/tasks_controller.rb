@@ -18,7 +18,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-
+      
       flash[:notice] = "The task has been saved!"
       redirect_to tasks_path
     else

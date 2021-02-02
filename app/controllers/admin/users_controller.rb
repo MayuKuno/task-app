@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  before_action :require_admin, except: [:new]
+  before_action :require_admin, except: [:new, :create]
 
   def index
     @users = User.all
@@ -17,7 +17,8 @@ class Admin::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to admin_user_url(@user), notice:"ユーザー「#{@user.username}」を登録しました"
+      log_in(@user)
+      redirect_to root_path
     else
       render :new
     end
