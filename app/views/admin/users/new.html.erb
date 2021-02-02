@@ -3,42 +3,7 @@
     <% if current_user && current_user.admin?%>
     <%= link_to '一覧', admin_users_path %>
     <% end %>
-    <%= form_with model: [:admin, @user], local: true do |f| %>
-    <%= render 'layouts/error_messages', model: f.object%>
 
-      <div class="field">
-        <%= f.label :username, "Username" %> 
-        <%= f.text_field :username, autofocus: true %>
-      </div>
+    <%= render partial: 'form', locals: { user: @user } %>
 
-      <div class="field">
-        <%= f.label :email, "Email"  %><br />
-        <%= f.email_field :email %>
-      </div>
-
-      <% if current_user && current_user.admin?%>
-        
-          <div class="field">
-            <%= f.label :admin, "admin"  %><br />
-            <%= f.check_box :admin %>
-          </div>
-       
-      <% else %>
-      <div>権限付与に関しては、管理者にお問い合わせください</div>
-      <% end %>
-
-      <div class="field">
-        <%= f.label :password %>
-        <%= f.password_field :password, autocomplete: "off" %>
-      </div>
-
-      <div class="field">
-        <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, autocomplete: "off" %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "Sign up" %>
-      </div>
-    <% end %>
   </div>

@@ -6,7 +6,7 @@
     <% if current_user %>
       <%= link_to user_path(current_user.id) do %>
       <% if current_user.image.present? %>
-            <%= image_tag current_user.image %>
+            <%= image_tag current_user.image.url %>
         <% else %>
             <%= image_tag 'account.png' %>
         <% end %>
