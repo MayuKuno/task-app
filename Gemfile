@@ -60,6 +60,7 @@ gem 'kaminari'
 gem 'carrierwave', '~> 2.0'
 gem 'rmagick'
 gem 'roo'
+gem 'pry-rails'
 
 group :test do
   gem 'capybara'
