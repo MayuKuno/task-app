@@ -4,6 +4,7 @@ class Task < ApplicationRecord
   belongs_to :user, optional: true
   has_many :task_labels, dependent: :destroy
   has_many :labels, through: :task_labels
+  has_one_attached :image
 
   enum priority: {
     low: 0,

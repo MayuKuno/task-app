@@ -1,16 +1,19 @@
   <div class="form">
-    <%= form_for @task do |f| %>
-     <%= render 'layouts/error_messages', model: f.object%>
+    <%= form_with(model: task, local: true) do |form| %>
 
-      <p>Task Name</p><%= f.text_field :taskname %>
-      <p>Description</p><%= f.text_area :description %>
-      <p>Priority</p><%= f.select :priority, Task.priorities.keys, :selected=>Task.priorities[@task.priority], prompt: "Select Priority" %>
-      <p>Status</p><%= f.select :status, Task.statuses.keys, :selected=>Task.statuses[@task.status], prompt: "Select Status" %>
-      <p>Deadline</p><%= f.date_field :deadline %>
-      <p>Labels</p><%= f.collection_check_boxes :label_ids, Label.all, :id, :color %>
+     <%= render 'layouts/error_messages', model: form.object%>
+
+      <p>Task Name</p><%= form.text_field :taskname %>
+      <p>Description</p><%= form.text_area :description %>
+      <p>Priority</p><%= form.select :priority, Task.priorities.keys, :selected=>Task.priorities[@task.priority], prompt: "Select Priority" %>
+      <p>Status</p><%= form.select :status, Task.statuses.keys, :selected=>Task.statuses[@task.status], prompt: "Select Status" %>
+      <p>Deadline</p><%= form.date_field :deadline %>
+      <p>Labels</p><%= form.collection_check_boxes :label_ids, Label.all, :id, :color %>
+      <p>File</p><%= form.file_field :image %>
+      <%= image_tag @task.image if @task.image.attached? %>
 
       <div class="save">
-        <%= f.submit "Save" %>
+        <%= form.submit "Save" %>
       </div>
     <% end %>
   </div>
