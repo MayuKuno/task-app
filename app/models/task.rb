@@ -21,16 +21,14 @@ class Task < ApplicationRecord
     if search
       Task.where('taskname LIKE ?', "%#{search}%")
     else
-      Task.all
+      Task.include(:user).all
     end
   end
+
 
   def self.csv_attributes
     ["taskname", "description","priority","status","deadline", "created_at", "updated_at"]
   end
-
-
-
 
   def self.generate_csv
     CSV.generate(headers: true) do |csv|
