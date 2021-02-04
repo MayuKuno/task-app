@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   namespace :tasks do
     resources :searches, only: :index
   end
-  resources :tasks
+  resources :tasks do
+    collection { post :import }
+  end
 
 end

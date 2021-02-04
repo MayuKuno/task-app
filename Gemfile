@@ -59,7 +59,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'kaminari'
 gem 'carrierwave', '~> 2.0'
 gem 'rmagick'
-
+gem 'roo'
 
 group :test do
   gem 'capybara'

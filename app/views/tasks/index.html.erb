@@ -55,7 +55,15 @@
       <% end %>
     <% end %>
     </table>
-      <%= paginate(@tasks) %>
+    <%= link_to 'エクスポート', tasks_path(format: :csv) %>
+
+
+    <%= form_tag import_tasks_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag "インポート" %>
+    <% end %>
+
+    <%= paginate(@tasks) %>
     <% else %>
       <div class="before">
         <section class="top">
