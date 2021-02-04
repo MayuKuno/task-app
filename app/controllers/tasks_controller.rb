@@ -5,6 +5,11 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.includes(:user).order(sort_column + " " + sort_direction).page(params[:page]).per(5)
+ 
+    respond_to do |format|
+      format.html
+      format.csv {send_data @tasks.generate_csv, filename: "tasks-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
+    end
   end
 
   def show
@@ -49,11 +54,19 @@ class TasksController < ApplicationController
     end
   end
 
+  def import
+    current_user.tasks.import(params[:file])
+    if params[:file].present?
+      redirect_to tasks_path, notice:"タスクをインポートしました"
+    else
+      redirect_to tasks_path, alert:"ファイルが選択されていません"
+    end
+  end
 
 
   private
   def task_params
-    params.require(:task).permit(:taskname, :description, :priority, :status,:deadline, label_ids: []).merge(user_id: current_user.id)
+    params.require(:task).permit(:taskname, :description, :priority, :status,:image ,:deadline, label_ids: []).merge(user_id: current_user.id)
   end
 
   def set_task

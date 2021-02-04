@@ -12,6 +12,7 @@
     <p>Priority</p><%= @task.priority %>
     <p>Status</p><%= @task.status %>
     <p>Deadline</p><%= @task.deadline %>
+    <p>File</p>  <%= image_tag @task.image if @task.image.attached? %>
   </div>
 
 </div>
