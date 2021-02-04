@@ -19,7 +19,7 @@ class Task < ApplicationRecord
 
   def self.search(search)
     if search
-      Task.where('taskname LIKE ?', "%#{search}%")
+      Task.joins(:labels).where('taskname LIKE ? OR color LIKE ?', "%#{search}%", "%#{search}%").uniq
     else
       Task.include(:user).all
     end
