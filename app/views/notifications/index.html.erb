@@ -1,0 +1,11 @@
+<div class="container">
+  <% if @notifications.where("(action = ?) OR (action = ?)", 1, 2).exists?  %>
+    <p>期限が近づいてるタスクや期限の過ぎたタスクはあります </p>
+    <% @notifications.where("(action = ?) OR (action = ?)", 1, 2).each do |notification| %>
+      <%= notification.task.taskname %>
+    <% end %>
+  <% else %>
+    <p>期限が近づいてるタスクや期限の過ぎたタスクはありません </p>
+  <% end %>
+</div>
+

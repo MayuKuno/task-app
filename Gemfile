@@ -61,6 +61,8 @@ gem 'carrierwave', '~> 2.0'
 gem 'rmagick'
 gem 'roo'
 gem 'pry-rails'
+gem "font-awesome-sass"
+gem 'whenever', require: false
 
 group :test do
   gem 'capybara'
