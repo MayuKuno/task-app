@@ -37,6 +37,7 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
+
     if @task.update(task_params)
       flash[:notice] = "The task has been updated!"
       redirect_to tasks_path
@@ -44,6 +45,11 @@ class TasksController < ApplicationController
       flash[:alert] = "Please try it again"
       render :edit
     end
+
+
+
+
+
   end
 
   def destroy
