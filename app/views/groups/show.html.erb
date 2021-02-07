@@ -1,0 +1,55 @@
+<div class="container">
+  <%= @group.name %>のページ
+  <%= link_to 'グループ編集', edit_group_path(@group) %>
+  <%= link_to 'グループ削除', group_path(@group), method: :delete%>
+
+
+    <div class="new">
+      <%= link_to new_group_task_path(@group) do %>
+        <%= image_tag 'plus.png' %>
+      <% end %>
+    </div>
+
+
+
+
+    <table class="tasks">
+      <thead>
+        <tr>
+          <th>Label</th>
+          <th>taskname</th>
+          <th>Status</th>
+          <th>Deadline</th>
+          <th>Created_at</th>
+          <th>Manage</th>
+          <th>作成者</th>
+        </tr>
+      </thead>
+    <% @tasks.each do |task| %>
+      <tbody>
+        <tr>
+          <td>
+            <% task.labels.each do |label| %>
+              <%= label.color %>
+            <% end %>
+          </td>
+          <td><%= task.taskname %></td>
+          <td><%= task.status %></td>
+          <td><%= task.deadline %></td>
+          <td><%= task.created_at %></td>
+          <td>
+            <%= link_to 'Edit', "/tasks/#{task.id}/edit", method: :get %>
+            <%= link_to 'Detail', task_path(task.id) %>
+            <%= link_to 'Delete', task_path(task.id), method: :delete, id: :delete %>
+          </td>
+          <td><%= task.user.username %></td>
+
+        </tr>
+      </tbody>
+    <% end %>
+    </table>
+ 
+
+
+
+</div>

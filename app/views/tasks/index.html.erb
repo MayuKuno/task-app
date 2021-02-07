@@ -5,6 +5,7 @@
         TOP
       </p>
       <%= link_to "Logout", logout_path, method: :delete %>
+      <%= link_to "グループ一覧", groups_path %>
       <% if current_user.admin? %>
         <%= link_to "ユーザー一覧", admin_users_path %>
       <% end %>
@@ -63,7 +64,7 @@
       <%= submit_tag "インポート" %>
     <% end %>
 
-
+  <%= link_to 'グループ作成', new_group_path %>
 
     <%= paginate(@tasks) %>
     <% else %>

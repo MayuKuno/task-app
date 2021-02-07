@@ -7,16 +7,19 @@
     <% end %>
   </div>
 
-  <%= link_to notifications_path , class: 'notification' do %>
-    <% if unchecked_notifications.any? %>
-    <span class="fa-stack">
-      <i class="fas fa-bell fa-lg fa-stack-2x"> </i>
-      <i class="fas fa-circle n-circle fa-stack-1x"> </i>
-    </span>
-    <% else %>
-      <i class="fas fa-bell fa-lg"> </i>
+  <% if current_user %>
+    <%= link_to notifications_path , class: 'notification' do %>
+      <% if unchecked_notifications.any? %>
+      <span class="fa-stack">
+        <i class="fas fa-bell fa-lg fa-stack-2x"> </i>
+        <i class="fas fa-circle n-circle fa-stack-1x"> </i>
+      </span>
+      <% else %>
+        <i class="fas fa-bell fa-lg"> </i>
+      <%end%>
     <%end%>
   <%end%>
+
 
 
   <div class="picture">
