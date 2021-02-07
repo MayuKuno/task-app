@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   end
 
   resources :groups do
-    resources :tasks, only: [:index, :new, :create]
+    resources :tasks
   end
 
   resources :notifications,only: [:index]

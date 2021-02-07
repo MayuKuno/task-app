@@ -38,9 +38,9 @@
           <td><%= task.deadline %></td>
           <td><%= task.created_at %></td>
           <td>
-            <%= link_to 'Edit', "/tasks/#{task.id}/edit", method: :get %>
-            <%= link_to 'Detail', task_path(task.id) %>
-            <%= link_to 'Delete', task_path(task.id), method: :delete, id: :delete %>
+            <%= link_to 'Edit', edit_group_task_path(@group, task), method: :get %>
+            <%= link_to 'Detail', group_task_path(@group, task) %>
+            <%= link_to 'Delete', group_task_path(@group, task), method: :delete, id: :delete %>
           </td>
           <td><%= task.user.username %></td>
 
