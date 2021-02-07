@@ -1,7 +1,9 @@
   <div class="form">
-    <%= form_with(model: task, local: true) do |form| %>
-
-     <%= render 'layouts/error_messages', model: form.object%>
+    <%= form_for [@group, @task] do |form| %> 
+      <% if @group %>
+        <%= form.hidden_field :group_id, value: @group.id %>
+      <% end %>
+      <%= render 'layouts/error_messages', model: form.object%>
 
       <p>Task Name</p><%= form.text_field :taskname %>
       <p>Description</p><%= form.text_area :description %>
