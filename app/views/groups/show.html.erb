@@ -42,7 +42,13 @@
             <%= link_to 'Detail', group_task_path(@group, task) %>
             <%= link_to 'Delete', group_task_path(@group, task), method: :delete, id: :delete %>
           </td>
-          <td><%= task.user.username %></td>
+          <td>
+            <% if @group.users.include?(task.user) %>
+              <%= task.user.username %>
+            <% else %>
+              退出したユーザー
+            <% end %>
+          </td>
 
         </tr>
       </tbody>
