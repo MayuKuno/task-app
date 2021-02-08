@@ -63,6 +63,8 @@ gem 'roo'
 gem 'pry-rails'
 gem "font-awesome-sass"
 gem 'whenever', require: false
+gem 'gon'
+
 
 group :test do
   gem 'capybara'

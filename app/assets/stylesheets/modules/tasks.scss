@@ -1,7 +1,7 @@
 .container{
   background-color:$pp-background;
   width: 100%;
-  height: 100vh;
+  // height: 100vh;
   position: relative;
   padding-top: 120px;
   .form{
@@ -45,12 +45,7 @@
 
 .temp{
   text-align: center;
-  margin-bottom: 40px;
-  p{
-    margin-top: 50px;
-    font-size: 30px;
-    font-weight: bold;
-  }
+
 }
 
 

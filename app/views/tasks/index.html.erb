@@ -34,7 +34,7 @@
         </tr>
       </thead>
     <% @tasks.each do |task| %>
-      <% if current_user.id == task.user_id %>
+      <%# if current_user.id == task.user_id %>
       <tbody>
         <tr>
           <td>
@@ -53,7 +53,7 @@
           </td>
         </tr>
       </tbody>
-      <% end %>
+      <%# end %>
     <% end %>
     </table>
     <%= link_to 'エクスポート', tasks_path(format: :csv) %>
@@ -65,6 +65,8 @@
     <% end %>
 
   <%= link_to 'グループ作成', new_group_path %>
+
+    <%= render 'layouts/calendar'%>
 
     <%= paginate(@tasks) %>
     <% else %>
