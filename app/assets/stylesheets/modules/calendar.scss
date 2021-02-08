@@ -1,0 +1,57 @@
+.calendar{
+
+  #blue{
+    color: blue;
+  }
+  #red{
+    color: red;
+  }
+
+  tbody td:first-child{
+    color: red;
+  }
+  tbody td:last-child{
+    color: blue;
+  }
+  table{
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin: 0 auto;
+  }
+  td{
+    text-align: center;
+  }
+
+  #prev,
+  #next,
+  #today{
+    user-select: none;
+  }
+
+  thead,
+  tfoot{
+    background-color: blanchedalmond;
+  }
+
+  td.disabled{
+    opacity: 0.3;
+  }
+
+  td.today{
+    font-weight: bold;
+  }
+
+  td{
+    width: 200px;
+    height: 100px;
+    text-align: left;
+    position: relative;
+    border: solid 1px black;
+    padding: 10px 5px;
+    p{
+      position: absolute;
+      top: 0;
+      font-size: 20px;
+    }
+  }
+}
