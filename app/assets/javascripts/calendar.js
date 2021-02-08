@@ -62,6 +62,7 @@
       ...getCalendarBody(),
       ...getCalendarTail(),
     ];
+
     const weeks = [];
     const weeksCount = dates.length / 7;
     
@@ -87,11 +88,10 @@
         
         gon.tasks.forEach(task =>{
           const mon = String(month + 1).padStart(2, '0');
-          if(year == task.deadline.slice(0,4) && mon == task.deadline.substr(5,2)){
-            if(date.date == task.deadline.slice(-2)){
-              span.textContent = task.taskname;
-              td.appendChild(span);
-            }
+          if(year == task.deadline.slice(0,4) && mon == task.deadline.substr(5,2) && date.date == task.deadline.slice(-2) && date.isdisabled == false){
+            
+            span.textContent = task.taskname;
+            td.appendChild(span);
           }
         })
 

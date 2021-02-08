@@ -64,7 +64,8 @@ gem 'pry-rails'
 gem "font-awesome-sass"
 gem 'whenever', require: false
 gem 'gon'
-
+gem 'jquery-ui-rails'
+gem 'ranked-model'
 
 group :test do
   gem 'capybara'
