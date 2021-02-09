@@ -66,6 +66,7 @@ gem 'whenever', require: false
 gem 'gon'
 gem 'jquery-ui-rails'
 gem 'ranked-model'
+gem 'chart-js-rails', '~> 0.1.4' 
 
 group :test do
   gem 'capybara'
