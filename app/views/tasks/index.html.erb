@@ -56,6 +56,8 @@
       </tbody>
     <% end %>
     </table>
+    <%= paginate(@tasks) %>
+
     <%= link_to 'エクスポート', tasks_path(format: :csv) %>
 
 
@@ -67,8 +69,8 @@
   <%= link_to 'グループ作成', new_group_path %>
 
     <%= render 'layouts/calendar'%>
+    <%= render 'layouts/graph'%>
 
-    <%= paginate(@tasks) %>
     <% else %>
       <div class="before">
         <section class="top">

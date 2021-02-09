@@ -9,7 +9,6 @@ class TasksController < ApplicationController
     if logged_in?
       @tasks = Task.includes(:user).order(sort_column + " " + sort_direction).where(group_id: nil).where(user_id: current_user.id).rank(:row_order).page(params[:page]).per(5)
       gon.tasks = @tasks.where(group_id: nil).where(user_id: current_user.id)
-
     else
       @tasks = Task.includes(:user).order(sort_column + " " + sort_direction).where(group_id: nil).rank(:row_order).page(params[:page]).per(5)
     end
@@ -20,6 +19,19 @@ class TasksController < ApplicationController
     end
 
 
+    labels = Label.all
+    gon.data = []
+    labels.each do |label|
+      gon.data << label.color
+    end
+
+    tasks = Task.where(user_id: current_user.id).where(group_id: nil)
+    gon.label  = []
+    tasks.each do |task|
+      task.labels.each do |label_id|
+        gon.label << label_id.color
+      end
+    end
   end
 
   def show
