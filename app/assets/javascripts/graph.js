@@ -24,7 +24,7 @@ var myPieChart = new Chart(ctx, {
   options: {
     title: {
       display: true,
-      text: '血液型 割合'
+      text: 'Labels'
     }
   }
 });
