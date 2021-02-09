@@ -6,14 +6,19 @@ class TasksController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @tasks = Task.includes(:user).order(sort_column + " " + sort_direction).where(group_id: nil).where(user_id: current_user.id).rank(:row_order).page(params[:page]).per(5)
- 
+    if logged_in?
+      @tasks = Task.includes(:user).order(sort_column + " " + sort_direction).where(group_id: nil).where(user_id: current_user.id).rank(:row_order).page(params[:page]).per(5)
+      gon.tasks = @tasks.where(group_id: nil).where(user_id: current_user.id)
+
+    else
+      @tasks = Task.includes(:user).order(sort_column + " " + sort_direction).where(group_id: nil).rank(:row_order).page(params[:page]).per(5)
+    end
+
     respond_to do |format|
       format.html
       format.csv {send_data @tasks.generate_csv, filename: "tasks-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
     end
 
-    gon.tasks = @tasks.where(group_id: nil).where(user_id: current_user.id)
 
   end
 

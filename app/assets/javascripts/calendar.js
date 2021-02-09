@@ -88,8 +88,11 @@
         
         gon.tasks.forEach(task =>{
           const mon = String(month + 1).padStart(2, '0');
+          if (task.deadline == null){
+            return
+          }
+
           if(year == task.deadline.slice(0,4) && mon == task.deadline.substr(5,2) && date.date == task.deadline.slice(-2) && date.isdisabled == false){
-            
             span.textContent = task.taskname;
             td.appendChild(span);
           }
