@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :tasks do
+    put :sort
     collection { post :import }
   end
 

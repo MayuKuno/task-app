@@ -1,4 +1,8 @@
 class Task < ApplicationRecord
+  include RankedModel
+  ranks :row_order
+
+  
   validates :taskname,:user_id, presence: true
   
   belongs_to :user, optional: true
