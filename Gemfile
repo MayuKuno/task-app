@@ -67,6 +67,8 @@ gem 'gon'
 gem 'jquery-ui-rails'
 gem 'ranked-model'
 gem 'chart-js-rails', '~> 0.1.4' 
+gem 'pg', group: :production
+
 
 group :test do
   gem 'capybara'
