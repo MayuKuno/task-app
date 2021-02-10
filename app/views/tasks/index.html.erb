@@ -91,9 +91,13 @@
             </div>
           </div>
           <div class="video">
-            <%= image_tag 'app.png' , class: :app %>
+            <%#= image_tag 'app.png' , class: :app %>
+            <%= image_tag asset_path("app.png"), class: :app %>
+
             <div class="app">
-              <%= image_tag  'video.png', class: :video %>
+              <%#= image_tag  'video.png', class: :video %>
+              <%= image_tag asset_path("video.png"), class: :video %>
+
            </div>
           </div>
          
