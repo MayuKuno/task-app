@@ -82,8 +82,8 @@ html{
 }
 
 .footer{
-  position: relative;
   .center{
+    position: relative;
     background-color:$headline ;
     height: 300px;
     margin: 0 auto;
@@ -106,15 +106,16 @@ html{
 
   .list{
     position:absolute;
-    right:  0; 
-    top:45%;
+    right: 5%; 
+    top:20%;
     ul{
-      display: flex;
+      // display: flex;
       a{
         text-decoration: none;
         color:$white-background;
         list-style: none;
         margin-right: 30px;
+        text-align: left;
       }
       a:last-child{
         margin-right: 100px;

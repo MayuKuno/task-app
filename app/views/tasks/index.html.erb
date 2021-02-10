@@ -14,11 +14,10 @@
         <%= image_tag 'plus.png' %>
       <% end %>
     </div>
-
     <div class="search">
-    <%= form_with(local: true, method: :get, class: "search-form") do |form| %>
-      <%= form.text_field :keyword, placeholder: "タスクを検索する", class: "search-input" %>
-    <% end %>
+      <%= form_with(local: true, method: :get, class: "search-form") do |form| %>
+        <%= form.text_field :keyword, placeholder: "タスクを検索する", class: "search-input" %>
+      <% end %>
     </div>
 
 
@@ -35,7 +34,6 @@
       </thead>
     <% @tasks.each do |task| %>
       <tbody>
-        <%# <tr>       %>
         <%= content_tag "tr", class: "item", data: { model_name: task.class.name.underscore, update_url: task_sort_path(task)} do %>
           <td>
             <% task.labels.each do |label| %>
@@ -51,7 +49,6 @@
             <%= link_to 'Detail', task_path(task.id) %>
             <%= link_to 'Delete', task_path(task.id), method: :delete, id: :delete %>
           </td>
-        <%# </tr> %>
         <% end %>
       </tbody>
     <% end %>
@@ -59,8 +56,6 @@
     <%= paginate(@tasks) %>
 
     <%= link_to 'エクスポート', tasks_path(format: :csv) %>
-
-
     <%= form_tag import_tasks_path, multipart: true do %>
       <%= file_field_tag :file %>
       <%= submit_tag "インポート" %>
@@ -80,31 +75,45 @@
             <%= link_to "Signup", new_admin_user_path, class: :btn %>
           </div>
         </section>
-
-
         <section class="middle">
           <div class="description">
             <div class="message">
-              With Task App, <br>
+              <p class="movetext">With Task App,<br>
               Priotize your tasks, and<br>
-              Save your time<br>
+              Save your time</p><br>
             </div>
           </div>
           <div class="video">
-            <%#= image_tag 'app.png' , class: :app %>
-            <%= image_tag asset_path("app.png"), class: :app %>
-
-            <div class="app">
-              <%#= image_tag  'video.png', class: :video %>
-              <%= image_tag asset_path("video.png"), class: :video %>
-
-           </div>
+            <%= video_tag("/assets/videos/sample.mp4", :controls => true, :loop => true, class: :video ) %>
           </div>
          
         </section>
 
 
         <section class="bottom">
+          <div class="hero">
+            <!-- Slider main container -->
+            <div class="swiper-container">
+              <!-- Additional required wrapper -->
+              <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide">
+                  <div class="hero__title">Manage by Calendar</div>
+                  <%= image_tag asset_path("image-1.png") %>
+                </div>
+                <div class="swiper-slide">
+                  <div class="hero__title">Visualize your Tasks</div>
+                  <%= image_tag asset_path("image-2.png") %>
+                </div>
+                <div class="swiper-slide">
+                  <div class="hero__title">Sharing Tasks with Others</div> 
+                  <%= image_tag asset_path("image-3.png") %>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         </section>
         <%= render 'layouts/footer'%>
       </div>
