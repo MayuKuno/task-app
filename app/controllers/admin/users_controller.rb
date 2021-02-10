@@ -18,6 +18,7 @@ class Admin::UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in(@user)
+      UserNotifierMailer.send_signup_email(@user).deliver
       redirect_to root_path
     else
       render :new
