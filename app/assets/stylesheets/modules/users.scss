@@ -1,3 +1,105 @@
 .file{
     display: none;
 }
+
+.box{
+    margin-top: 60px;
+  .title{
+    background-color: $white-background;
+    width: 70%;
+    height: 70px;
+    border-bottom:1px solid $card-background;
+    margin: 0 auto;
+    line-height: 70px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  
+  .contents{
+    background-color: $white-background;
+    width: 70%;
+    padding: 40px 40px 64px;
+    margin: 0 auto;
+    text-align: center;
+
+
+    div.form-item{
+      margin-right: 0;
+      position: relative; 
+      display: block; 
+      margin-bottom: 30px;
+      span{
+        font-size: 12px;
+      }
+    }
+    
+
+
+    input{
+      transition: all .2s ease;
+    }
+
+     input.form-style{
+        color:#8a8a8a;
+        display: block;
+        width: 80%;
+        height: 44px;
+        padding: 5px 40px;
+        border:1px solid #ccc;
+        border-radius: 27px;
+        margin: 0 auto;
+    }
+    
+    div.form-item .form-style:focus{
+        outline: none; 
+        border:1px solid $purple; 
+        color:$purple; 
+    }
+
+    div.form-item p.formLabel {
+        position: absolute;
+        left:13%;
+        top:12px;
+        transition:all .4s ease;
+        color:#bbb;
+    }
+
+    .formTop{
+        top:-12px !important; 
+        left: 13%; 
+        background-color: #fff; 
+        padding:0 5px; 
+        font-size: 14px; 
+        color:$purple !important;
+    }
+    
+
+
+    input[type="submit"].login{
+        width: 112px;
+        height: 37px;
+        border-radius: 19px;
+        background-clip: padding-box;
+        background-color: $headline;
+        border:1px solid $headline;
+        border:none;
+        color: $pp-background;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+    input[type="submit"].login:hover{
+      background-color: $pp-background; 
+      border:1px solid $headline; 
+      color:$headline; 
+      cursor:pointer;
+    }
+    input[type="submit"].login:focus{
+      outline: none;
+    }
+    
+  }
+
+
+
+}
