@@ -8,7 +8,6 @@ class TasksController < ApplicationController
   def index
     if logged_in?
       @tasks = Task.includes(:user).order(sort_column + " " + sort_direction).where(group_id: nil).where(user_id: current_user.id).rank(:row_order).page(params[:page]).per(5)
-      gon.tasks = @tasks.where(group_id: nil).where(user_id: current_user.id)
       tasks = Task.where(user_id: current_user.id).where(group_id: nil)
 
       gon.label  = []
@@ -101,6 +100,12 @@ class TasksController < ApplicationController
     render body: nil
   end
 
+  def calendar
+    @tasks = Task.includes(:user).where(user_id: current_user.id)
+    gon.groups = Group.all
+    gon.tasks = @tasks
+
+  end
 
   private
   def task_params

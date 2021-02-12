@@ -7,6 +7,7 @@
   line-height: 120px;
   width: 100%;
   background-color:$white-background;
+  align-items: center;
 
     .title{
       text-align: center;
@@ -41,6 +42,8 @@
     position: absolute;
     top: 15px;
     right: 5%;
+    // z-index: 200;
+
     img{
       width: 90px;
       height: 90px;

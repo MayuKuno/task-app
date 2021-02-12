@@ -4,11 +4,7 @@
       <p>
         TOP
       </p>
-      <%= link_to "Logout", logout_path, method: :delete %>
-      <%= link_to "グループ一覧", groups_path %>
-      <% if current_user.admin? %>
-        <%= link_to "ユーザー一覧", admin_users_path %>
-      <% end %>
+
     <div class="new">
       <%= link_to new_task_path do %>
         <%= image_tag 'plus.png' %>
@@ -61,9 +57,7 @@
       <%= submit_tag "インポート" %>
     <% end %>
 
-  <%= link_to 'グループ作成', new_group_path %>
 
-    <%= render 'layouts/calendar'%>
     <%= render 'layouts/graph'%>
 
     <% else %>
