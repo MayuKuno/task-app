@@ -7,127 +7,110 @@ body{
 }
 
 
-  .flash{
-    width: 100%;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    position: fixed;
-    z-index:501;
-  }
-  .alert{
-    background-color:$highlight;
-    color:$headline ;
 
-  }
-  .notice{
-    background-color:$purple;
-    color:$white-background ;
-
-  }
-  .error {
-    color:#262626; 
-    background:#FFEBE8;
-    text-align: center;
-    border:2px solid #990000;
-    padding:12px; font-weight:850;
-  }
-
-.header{  
-  display: flex;
+#container {
   position: relative;
+  height: 100vh;
+  z-index: 0;
+  transition: all 0.5s;
+}
+
+
+.mobile-menu {
   position: fixed;
-  z-index:500;
-  height: 120px;
-  line-height: 120px;
-  width: 100%;
-  background-color:$white-background;
+  right: 0;
+  top: 40px;
+  width: 230px;
 
-    .title{
-      text-align: center;
-      width: 100%;
-      font-weight:bold;
-      font-size: 50px;
-      letter-spacing: 0.1em;
-      a {
-        text-decoration: none;
-        color:$headline;
-        margin: 0 auto;
-      }
-    }
-
-  .notification{
-    position: absolute;
-    right: 15%;
-    cursor: pointer;
-    .fa-bell{
-      font-size: 35px;
-      color:$headline ;
-    }
-    .n-circle {
+  &__btn {
+      background-color: unset;
+      border: none;
+      outline: none !important;
+      cursor: pointer;
+  }
+  &__cover {
       position: absolute;
-      padding-left: 1.5rem;
-      padding-top: 0.2rem;
-      color: $highlight;
-    }
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 1s;
+      cursor: pointer;
   }
-
-  .picture{
-    position: absolute;
-    top: 15px;
-    right: 5%;
-    img{
-      width: 90px;
-      height: 90px;
-      object-fit: cover;
-      border-radius: 50%;
-    }
+  &__main {
+      padding: 0;
+      perspective: 2000px;
+      transform-style: preserve-3d;
+  }
+  &__item {
+      list-style: none;
+      display: block;
+      transform: translate3d(0, 0, -1000px);
+      padding: 0 40px;
+      transition: transform 0.3s, opacity 0.2s;
+      opacity: 0;
+  }
+  &__link {
+      display: block;
+      margin-top: 30px;
+      color: black;
+      text-decoration: none;
   }
 }
 
-.footer{
-  .center{
-    position: relative;
-    background-color:$headline ;
-    height: 300px;
-    margin: 0 auto;
-    color:$white-background;
-    .title{
-      font-weight:bold;
-      text-align: center;
-      font-size: 60px;
-      letter-spacing: 0.1em;
-      padding: 50px 0;
-    }
-    .copyright{
-      p{
-        margin-top: 50px;
-        bottom: 0;
-        font-size: 20px;
-      }
-    }
+.menu-open {
+  & #container {
+      transform: translate(-230px, 0);
+      box-shadow: 0 8px 40px -10px rgba(0, 0, 0, 0.8);
   }
-
-  .list{
-    position:absolute;
-    right: 5%; 
-    top:20%;
-    ul{
-      // display: flex;
-      a{
-        text-decoration: none;
-        color:$white-background;
-        list-style: none;
-        margin-right: 30px;
-        text-align: left;
-      }
-      a:last-child{
-        margin-right: 100px;
-      }
-    }
-  }
-
-
-
   
+  & .mobile-menu {
+      &__cover {
+          opacity: 1;
+          visibility: visible;
+      }
+      &__item {
+          transform: none;
+          opacity: 1;
+          @for $i from 1 through 5 {
+              &:nth-child(#{$i}) {
+                  transition-delay: $i * 0.07s;
+              }
+          }
+      }
+    &__btn {
+      & > span {
+        background-color: black;
+
+        &:nth-child(1) {
+            transition-delay: 70ms;
+            transform: translateY(11px) rotate(135deg);
+        }
+        &:nth-child(2) {
+            transition-delay: 0s;
+            transform:  translateX(-18px) scaleX(0);
+        }
+        &:nth-child(3) {
+            transition-delay: 140ms;
+            transform: translateY(-11px) rotate(-135deg);
+        }
+      }
+    }
+  }
 }
+
+.main-title {
+  font-weight: 600;
+  font-size: 20px;
+}
+.sub-title {
+  display: block;
+  font-size: 10px;
+  color: #535353;
+}
+
+
+

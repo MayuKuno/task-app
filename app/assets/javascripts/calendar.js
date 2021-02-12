@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", function(){
 
   const today = new Date();
   let year = today.getFullYear();
@@ -122,7 +123,6 @@
   
 
 
-document.addEventListener("DOMContentLoaded", function(){
   document.getElementById('prev').addEventListener('click', () => {
     month--;
     if(month < 0){ //もしmonthが1月だったら
@@ -131,9 +131,7 @@ document.addEventListener("DOMContentLoaded", function(){
     }
     createCalender();
   });
-}, false);
 
-document.addEventListener("DOMContentLoaded", function(){
   document.getElementById('next').addEventListener('click', () => {
     month++;
     if(month > 11){ //もしmonthが12月だったら
@@ -142,18 +140,16 @@ document.addEventListener("DOMContentLoaded", function(){
     }
     createCalender();
   });
-}, false);
 
-document.addEventListener("DOMContentLoaded", function(){
   document.getElementById('today').addEventListener('click', () => {
     year = today.getFullYear();
     month = today.getMonth();
     createCalender();
   });
 
-}, false);
   
-document.addEventListener("DOMContentLoaded", function(){
   createCalender();
-}, false);
+
+
+});
 

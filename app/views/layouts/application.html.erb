@@ -17,15 +17,16 @@
     <%# Chart.js %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 
-    <%# swiper %>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   </head>
 
   <body>
-    <%= render 'layouts/flash'%>
-    <%= render 'layouts/header'%>
-
-    <%= yield %>
+    <div id="global-container"> 
+      <div id="container">
+          <%= render 'layouts/flash'%>
+          <%= render 'layouts/header'%>
+          <%= yield %>
+      </div>
+      <%= render 'layouts/side'%>
+    </div>
   </body>
 </html>

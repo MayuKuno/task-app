@@ -1,0 +1,52 @@
+.header{  
+  display: flex;
+  position: relative;
+  position: fixed;
+  z-index:500;
+  height: 120px;
+  line-height: 120px;
+  width: 100%;
+  background-color:$white-background;
+
+    .title{
+      text-align: center;
+      width: 100%;
+      font-weight:bold;
+      font-size: 50px;
+      letter-spacing: 0.1em;
+      a {
+        text-decoration: none;
+        color:$headline;
+        margin: 0 auto;
+      }
+    }
+
+  .notification{
+    position: absolute;
+    right: 15%;
+    cursor: pointer;
+    .fa-bell{
+      font-size: 35px;
+      color:$headline ;
+    }
+    .n-circle {
+      position: absolute;
+      padding-left: 1.5rem;
+      padding-top: 0.2rem;
+      color: $highlight;
+    }
+  }
+
+  .picture{
+    position: absolute;
+    top: 15px;
+    right: 5%;
+    img{
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+
+}

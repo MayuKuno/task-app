@@ -1,0 +1,43 @@
+.footer{
+  .center{
+    position: relative;
+    background-color:$headline ;
+    height: 300px;
+    margin: 0 auto;
+    color:$white-background;
+    .title{
+      font-weight:bold;
+      text-align: center;
+      font-size: 60px;
+      letter-spacing: 0.1em;
+      padding: 50px 0;
+    }
+    .copyright{
+      p{
+        margin-top: 50px;
+        bottom: 0;
+        font-size: 20px;
+      }
+    }
+  }
+
+  .list{
+    position:absolute;
+    right: 5%; 
+    top:20%;
+    ul{
+      // display: flex;
+      a{
+        text-decoration: none;
+        color:$white-background;
+        list-style: none;
+        margin-right: 30px;
+        text-align: left;
+      }
+      a:last-child{
+        margin-right: 100px;
+      }
+    }
+  }
+
+}
