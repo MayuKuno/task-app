@@ -1,21 +1,29 @@
-<div class="container">
-  <div class="temp">
+<div class="container top">
     <% if logged_in? %>
-      <p>
-        TOP
-      </p>
-
+    <div class="container__task common">
     <div class="new">
       <%= link_to new_task_path do %>
-        <%= image_tag 'plus.png' %>
+        <div class="plus">
+          <i class="fas fa-plus"></i>
+        </div>
       <% end %>
     </div>
-    <div class="search">
+    <div class="search form-item">
       <%= form_with(local: true, method: :get, class: "search-form") do |form| %>
-        <%= form.text_field :keyword, placeholder: "タスクを検索する", class: "search-input" %>
+        <p class="formLabel">タスクを検索する</p>
+        <%= form.text_field :keyword, class: "search-input form-style"%>
       <% end %>
     </div>
+      <%= link_to tasks_path(format: :csv), class: "btn btn1" do %>
+        Export CSV
+      <% end %>
 
+      <%= form_tag import_tasks_path, class: "btn btn2", multipart: true do %>
+        <label for="file">
+          Import CSV
+          <%= file_field_tag :file , id: "file" %>
+        </label>
+      <% end %>
 
     <table class="tasks table-sortable">
       <thead>
@@ -49,16 +57,18 @@
       </tbody>
     <% end %>
     </table>
-    <%= paginate(@tasks) %>
 
-    <%= link_to 'エクスポート', tasks_path(format: :csv) %>
-    <%= form_tag import_tasks_path, multipart: true do %>
-      <%= file_field_tag :file %>
-      <%= submit_tag "インポート" %>
-    <% end %>
+    <div class="pagenate">
+        <%= paginate(@tasks)%>
+    </div>
 
 
+    </div>
+
+  <div class="container__graph common">
     <%= render 'layouts/graph'%>
+  </div>
+
 
     <% else %>
       <div class="before">
@@ -112,5 +122,4 @@
         <%= render 'layouts/footer'%>
       </div>
     <% end %>
-  </div>
 </div>

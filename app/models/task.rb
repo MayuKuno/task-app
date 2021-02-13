@@ -6,7 +6,6 @@ class Task < ApplicationRecord
   validates :taskname,:user_id, presence: true
 
   belongs_to :user, optional: true
-  belongs_to :group
   has_one :notification, dependent: :destroy
 
   has_many :task_labels, dependent: :destroy
