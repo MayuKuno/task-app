@@ -1,0 +1,15 @@
+.pagenate{
+  margin: 0 auto;
+  text-align: center;
+  a{
+    color: black;
+  }
+}
+
+
+.pagination{
+    span.current{
+      color: $highlight;
+    
+  }
+}

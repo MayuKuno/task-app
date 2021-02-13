@@ -1,5 +1,4 @@
   <div class="container">
-    <h2>Sign up</h2>
     <% if current_user && current_user.admin?%>
     <%= link_to '一覧', admin_users_path %>
     <% end %>

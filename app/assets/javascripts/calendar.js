@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", function(){
 
   const today = new Date();
   let year = today.getFullYear();
@@ -90,10 +91,20 @@
           if (task.deadline == null){
             return
           }
-
+   
           if(year == task.deadline.slice(0,4) && mon == task.deadline.substr(5,2) && date.date == task.deadline.slice(-2) && date.isdisabled == false){
-            span.textContent = task.taskname;
+            if (task.group_id == null){
+              span.textContent = 'Mytodo: ' +  task.taskname ;
+            }else{
+              gon.groups.forEach(group =>{
+                if (task.group_id == group.id){
+                  span.textContent = group.name + ': ' +  task.taskname ;
+                }
+              })
+            }
             td.appendChild(span);
+
+
           }
         })
 
@@ -122,7 +133,6 @@
   
 
 
-document.addEventListener("DOMContentLoaded", function(){
   document.getElementById('prev').addEventListener('click', () => {
     month--;
     if(month < 0){ //もしmonthが1月だったら
@@ -131,9 +141,7 @@ document.addEventListener("DOMContentLoaded", function(){
     }
     createCalender();
   });
-}, false);
 
-document.addEventListener("DOMContentLoaded", function(){
   document.getElementById('next').addEventListener('click', () => {
     month++;
     if(month > 11){ //もしmonthが12月だったら
@@ -142,18 +150,16 @@ document.addEventListener("DOMContentLoaded", function(){
     }
     createCalender();
   });
-}, false);
 
-document.addEventListener("DOMContentLoaded", function(){
   document.getElementById('today').addEventListener('click', () => {
     year = today.getFullYear();
     month = today.getMonth();
     createCalender();
   });
 
-}, false);
   
-document.addEventListener("DOMContentLoaded", function(){
   createCalender();
-}, false);
+
+
+});
 

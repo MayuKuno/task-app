@@ -1,50 +1,67 @@
+<div class="box">
 <%= form_with model: [:admin, @user], local: true do |f| %>
   <%= render 'layouts/error_messages', model: f.object%>
-  <% if @user.image.present? %>
-    <%= image_tag @user.image.thumb.url, id: :img_prev %>
-  <% else %>
-    <%= image_tag asset_path("account.png"), id: :img_prev  %>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :image do %>
-    <div>
-      Select image
-    </div>
-    <%= f.file_field :image, class: 'file' %>
+   <div class="title">
+    <% if logged_in? %>
+     Edit Account
+    <% else %>
+     Sign up
     <% end %>
-  </div>
+   </div>
   
-  <div class="field">
-    <%= f.label :username, "Username" %> 
-    <%= f.text_field :username %>
-  </div>
 
-  <div class="field">
-    <%= f.label :email, "Email"  %><br />
-    <%= f.email_field :email %>
-  </div>
-
-  <% if current_user && current_user.admin?%>
-    <div class="field">
-      <%= f.label :admin, "admin"  %><br />
-      <%= f.check_box :admin %>
+  <div class="contents">
+  <% if logged_in? %>
+    <% if @user.image.present? %>
+      <%= image_tag @user.image.thumb.url, id: :img_prev %>
+    <% else %>
+      <%= image_tag asset_path("account.png"), id: :img_prev  %>
+    <% end %>
+    <div class="form-item">
+      <%= f.label :image do %>
+      <div>
+        Select image
+      </div>
+      <%= f.file_field :image, class: 'file' %>
+      <% end %>
     </div>
-  <% else %>
-    <div>権限付与に関しては、管理者にお問い合わせください</div>
   <% end %>
-      
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+    <div class="form-item">
+      <p class="formLabel">User Name</p>
+      <%= f.text_field :username, id: "username", class: "form-style", autocomplete:"off"%> 
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+    <div class="form-item">
+      <p class="formLabel">Email</p>
+      <%= f.email_field :email, id: "email", class: "form-style", autocomplete:"off"%> 
+    </div>
+
+
+    <div class="form-item">
+      <p class="formLabel">Password</p>
+      <%= f.password_field :password, id: "password", class: "form-style", autocomplete:"off"%>
+    </div>
+
+    <div class="form-item">
+      <p class="formLabel">Password Confirmation</p>
+      <%= f.password_field :password_confirmation, id: "password_confirmation", class: "form-style", autocomplete:"off"%>
+    </div>  
+
+    <div class="form-item">
+      <%= f.submit "Sign up", class:"login pull-right" %>
+    </div>
+
+    <div class="form-item">
+    <% if current_user && current_user.admin?%>
+      <div class="field">
+        <%= f.label :admin, "admin"  %> <br />
+        <%= f.check_box :admin %>
+      </div>
+    <% else %>
+      <p><label for='checkoff'>権限付与を希望する場合は、管理者にお問い合わせください</label>
+    <% end %>
+    </div>
   </div>
 <% end %>
+</div>

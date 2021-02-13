@@ -1,6 +1,14 @@
   <div class="container">
-   <%= link_to '新規登録', new_admin_user_path %>
+  <div class="form">
+    <div class="admins">
 
+    <div class="new">
+      <%= link_to new_admin_user_path do %>
+        <div class="plus">
+          <i class="fas fa-plus"></i>
+        </div>
+      <% end %>
+    </div>
    <table>
     <thead>
       <tr>
@@ -10,7 +18,7 @@
         <th><%= User.human_attribute_name(:admin) %></th>
         <th><%= User.human_attribute_name(:created_at) %></th>
         <th><%= User.human_attribute_name(:updated_at) %></th>
-        <th>a</th>
+        <th>Manage</th>
       </tr>
     </thead>
     <tbody>
@@ -32,4 +40,6 @@
     <% end %>
     </tbody>
    </table>
+  </div>
+  </div>
   </div>

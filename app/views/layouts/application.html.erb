@@ -20,9 +20,13 @@
   </head>
 
   <body>
-    <%= render 'layouts/flash'%>
-    <%= render 'layouts/header'%>
-
-    <%= yield %>
+    <div id="global-container"> 
+      <div id="container">
+          <%= render 'layouts/flash'%>
+          <%= render 'layouts/header'%>
+          <%= yield %>
+      </div>
+      <%= render 'layouts/side'%>
+    </div>
   </body>
 </html>

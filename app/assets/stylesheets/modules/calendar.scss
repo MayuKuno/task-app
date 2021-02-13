@@ -1,25 +1,34 @@
 .calendar{
-
+  margin-top: 80px;
   #blue{
-    color: blue;
+    color: #33F;
   }
   #red{
-    color: red;
+    color: #F33;
   }
 
   tbody td:first-child{
-    color: red;
+    color: #F33;
   }
   tbody td:last-child{
-    color: blue;
+    color: #33F;
   }
   table{
-    border: 1px solid black;
     border-collapse: collapse;
     margin: 0 auto;
   }
-  td{
+  th, td{
     text-align: center;
+    border-bottom: 1px solid $gray;
+  } 
+  td{
+    width: 100px;
+    height: 100px;
+
+  }
+  
+  span{
+    font-size: 12px;
   }
 
   #prev,
@@ -28,10 +37,7 @@
     user-select: none;
   }
 
-  thead,
-  tfoot{
-    background-color: blanchedalmond;
-  }
+
 
   td.disabled{
     opacity: 0.3;
@@ -39,14 +45,15 @@
 
   td.today{
     font-weight: bold;
+    color: $headline;
   }
 
   td{
-    width: 200px;
+    width: 100px;
     height: 100px;
     text-align: left;
     position: relative;
-    border: solid 1px black;
+    // border: solid 1px black;
     padding: 10px 5px;
     p{
       position: absolute;

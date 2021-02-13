@@ -1,7 +1,12 @@
 <div class="container">
-  <% current_user.groups.each do |group| %>
-    <%= link_to group_path(group) do %>
-      <%= group.name %>
+  <div class="form">
+    <% current_user.groups.each do |group| %>
+      <div class="group">
+        <%= link_to group_path(group) do %>
+          <%= group.name %>
+        <% end %>
+       </div>
     <% end %>
-  <% end %>
+
+  </div>
 </div>
