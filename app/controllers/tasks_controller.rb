@@ -7,7 +7,7 @@ class TasksController < ApplicationController
 
   def index
     if logged_in?
-      @tasks = Task.includes(:user).order(sort_column + " " + sort_direction).where(group_id: nil).where(user_id: current_user.id).rank(:row_order).page(params[:page]).per(5)
+      @tasks = Task.includes(:user).order(sort_column + " " + sort_direction).where(group_id: nil).where(user_id: current_user.id).rank(:row_order).page(params[:page]).per(10)
       tasks = Task.where(user_id: current_user.id).where(group_id: nil)
       gon.label  = []
       tasks.each do |task|
