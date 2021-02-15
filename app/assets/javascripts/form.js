@@ -1,7 +1,11 @@
-$(document).ready(function(){
+$(function() {
+	
 	var formInputs = $('input');
 	formInputs.focus(function() {
-       $(this).parent().children('p.formLabel').addClass('formTop');
+		console.log(this);
+
+			 $(this).parent().children('p.formLabel').addClass('formTop');
+
   });
   
 	formInputs.focusout(function() {

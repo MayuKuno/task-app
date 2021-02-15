@@ -19,7 +19,8 @@ Rails.application.routes.draw do
 
   resources :tasks do
     put :sort
-    collection { post :import }
+    post :import, on: :collection
+    # collection { post :import }
   end
 
   resources :groups do

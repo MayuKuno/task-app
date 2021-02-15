@@ -47,11 +47,11 @@ class Task < ApplicationRecord
 
 
 
-  def self.import(file)
+  def self.import(file) #ファイルという名の引数でアップロードされたファイルの内容にアクセするためのオブジェクトを受け取る
     unless file
       return
     else
-      CSV.foreach(file.path, headers: true) do |row|
+      CSV.foreach(file.path, headers: true) do |row| #CSVの一行ずつ読み込むheaders: trueは一行目を無視する
         task = new
         task.attributes = row.to_hash.slice(*csv_attributes)
         task.save!

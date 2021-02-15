@@ -7,6 +7,23 @@ div.form-item{
   span{
     font-size: 12px;
   }
+  .account{
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+
+  }
+  .label > span{
+    cursor: pointer;
+    border: 1px solid $gray;
+    padding: 5px 10px;
+    border-radius: 40px;
+  }
+
+
 }
 
 

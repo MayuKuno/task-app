@@ -14,15 +14,20 @@
         <%= form.text_field :keyword, class: "search-input form-style"%>
       <% end %>
     </div>
-      <%= link_to tasks_path(format: :csv), class: "btn btn1" do %>
-        Export CSV
-      <% end %>
 
-      <%= form_tag import_tasks_path, class: "btn btn2", multipart: true do %>
-        <label for="file">
-          Import CSV
-          <%= file_field_tag :file , id: "file" %>
-        </label>
+ 
+        <%= link_to tasks_path(format: :csv), class:"icon export" do%>
+        <i i class="fas fa-file-upload"></i>
+        <% end %>
+ 
+
+
+      <%= form_tag import_tasks_path, multipart: true, class:"icon import" do %>
+        <%= button_tag '<i class="fas fa-file-download"></i>'.html_safe %>
+          <label>
+            <p class="select">Select</p>
+            <%= file_field_tag :file, class: 'csv' %>
+          </label>
       <% end %>
 
     <table class="tasks table-sortable">

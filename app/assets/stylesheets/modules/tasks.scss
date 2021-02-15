@@ -56,6 +56,42 @@
     background-color:$white-background;
     min-height: 500px;
     position: relative;
+    .icon{
+      position: absolute;
+      top: 30px;
+    }
+    .export{
+      left: 2%;
+    }
+    .import{
+      left: 6%;
+      button{
+        border: none;
+        background-color: $white-background;
+      }
+
+      p{
+        width: 70px;
+        position: absolute;
+        top: 45px;
+        left: -30%;
+        text-align: center;
+        // padding: 4px 5px;
+        font-size: 12px;
+        cursor: pointer;
+      }
+      input[type=file]{
+        display: none;
+      }
+
+    }
+    i{
+      font-size: 40px;
+      color: $gray;
+      cursor: pointer;
+
+    }
+
 
 
   }
@@ -132,49 +168,7 @@
   }
 }
 
-.btn{
-  height: 40px;
-  line-height: 40px;
-  width: 110px;
-  border: 2px solid $purple;
-  text-align: center;
-  border-radius:40px;
-  background: #fff;
-  color:$purple;
-  letter-spacing:1px;
-  text-shadow:0;
-  // padding: 5px 10px;
-  font-size: 15px;
-  input{
-    display: none;
-  }
-  
-}
-.btn:hover{
-  background-color: $purple;
-  color: #fff;
-}
-a{
-  text-decoration: none;
-}
-.btn1{
-  position: absolute;
-  top: 0;
-  right: 0;
-  top: 30%;
-  right: 3%;
-}
-.btn2{
-  position: absolute;
-  top: 0;
-  right: 0;
-  top: 40%;
-  right: 3%;
-  cursor: pointer;
-  label{
-    cursor: pointer;
-  }
-}
+
 
 
 .tasks{

@@ -1,6 +1,6 @@
 <div class="box">
 <%= form_with model: [:admin, @user], local: true do |f| %>
-  <%= render 'layouts/error_messages', model: f.object%>
+     <%= render 'layouts/error_messages', model: f.object%>
    <div class="title">
     <% if logged_in? %>
      Edit Account
@@ -11,21 +11,22 @@
   
 
   <div class="contents">
-  <% if logged_in? %>
+  <%# if logged_in? %>
+  <div class="form-item">
     <% if @user.image.present? %>
-      <%= image_tag @user.image.thumb.url, id: :img_prev %>
+      <%= image_tag @user.image.thumb.url, id: :img_prev, class: "account" %>
     <% else %>
-      <%= image_tag asset_path("account.png"), id: :img_prev  %>
+      <%= image_tag asset_path("account.png"), id: :img_prev, class: "account"  %>
     <% end %>
-    <div class="form-item">
-      <%= f.label :image do %>
-      <div>
-        Select image
+    <%= f.label :image do %>
+      <div class='label'>
+        <span>Select image</span>
       </div>
       <%= f.file_field :image, class: 'file' %>
-      <% end %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+  <%# end %>
+
     <div class="form-item">
       <p class="formLabel">User Name</p>
       <%= f.text_field :username, id: "username", class: "form-style", autocomplete:"off"%> 
