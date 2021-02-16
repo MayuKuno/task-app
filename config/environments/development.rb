@@ -56,17 +56,15 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  # Action Mailer
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :address => 'smtp.gmail.com',
+  ActionMailer::Base.smtp_settings = {
+    :user_name => ENV['SENDGRID_USERNAME'], # Send Gridから送られてきているユーザ名
+    :password => ENV['SENDGRID_PASSWORD'], # ユーザ名に対応するパスワード
+    :domain => 'gmail.com', # Send Grid登録時に設定した各自のドメイン名
+    :address => 'smtp.sendgrid.net',
     :port => 587,
-    :domain => 'gmail.com',
-    :user_name => "xxxxxxx",
-    :password => "xxxxxxx",
     :authentication => :plain,
     :enable_starttls_auto => true
   }
 end
+
+
