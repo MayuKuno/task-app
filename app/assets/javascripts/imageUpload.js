@@ -13,7 +13,6 @@ $(window).on('load', function(){
         }
     }
     $(".file").change(function(){
-
       readURL(this);
     });
   });

@@ -21,6 +21,7 @@ class Admin::UsersController < ApplicationController
     if @user.save
       log_in(@user)
       UserNotifierMailer.send_signup_email(@user).deliver
+
       redirect_to root_path
     else
       render :new
