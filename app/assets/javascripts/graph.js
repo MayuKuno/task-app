@@ -23,6 +23,9 @@ var chart1 = new Chart(ctx, {
     }]
   },
   options: {
+    legend: {
+      position: "bottom",  
+    }
 
   }
 });
@@ -53,6 +56,13 @@ var chart2 = new Chart(ctx2, {
         ]
     }]
   },
+  options: {
+    legend: {
+      position: "bottom",  
+    }
+
+  }
+
 });
 
 function getStatus(status){

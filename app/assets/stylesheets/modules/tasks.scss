@@ -104,6 +104,9 @@
     &__contents{
       
       display: flex;
+      h1{
+        text-align: center;
+      }
       .chart1{
         width: 50%;
         position: relative;
