@@ -91,7 +91,8 @@ class TasksController < ApplicationController
     task = Task.find(params[:id])
     if task.destroy
       flash[:notice] = "The task has been deleted!"
-      redirect_to tasks_path
+      head :no_content
+      # redirect_to tasks_path
     end
   end
 

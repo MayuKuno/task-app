@@ -17,13 +17,13 @@
 
  
         <%= link_to tasks_path(format: :csv), class:"icon export" do%>
-        <i i class="fas fa-file-upload"></i>
+        <i i class="fas fa-file-download "></i>
         <% end %>
  
 
 
       <%= form_tag import_tasks_path, multipart: true, class:"icon import" do %>
-        <%= button_tag '<i class="fas fa-file-download"></i>'.html_safe %>
+        <%= button_tag '<i class="fas fa-file-upload"></i>'.html_safe %>
           <label>
             <p class="select">Select</p>
             <%= file_field_tag :file, class: 'csv' %>
@@ -56,7 +56,7 @@
           <td>
             <%= link_to 'Edit', "/tasks/#{task.id}/edit", method: :get, class: "btn" %>
             <%= link_to 'Detail', task_path(task.id), class: "btn" %>
-            <%= link_to 'Delete', task_path(task.id), method: :delete, id: :delete, class: "btn accent" %>
+            <%= link_to 'Delete', task_path(task.id), method: :delete, id: :delete, remoto: true, class: "btn accent delete" %>
           </td>
     <% end %>
     <% end %>
