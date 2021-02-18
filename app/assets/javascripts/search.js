@@ -26,9 +26,9 @@ $(function() {
                   <td>${task.deadline}</td>
                   <td>${task.created_at}</td>
                   <td>
-                    <a href="/tasks/${task.id}/edit" data-method="get">Edit</a>
-                    <a href="/tasks/${task.id}" data-method="delete">Delete</a>
-                    <a href="/tasks/${task.id}" data-method="get">Detail</a>
+                    <a href="/tasks/${task.id}/edit" data-method="get", class="btn">Edit</a>
+                    <a href="/tasks/${task.id}" data-method="get", class="btn">Detail</a>
+                    <a href="/tasks/${task.id}" data-method="delete", class="btn accent">Delete</a>
                   </td>
               </tr>
 

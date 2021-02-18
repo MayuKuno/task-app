@@ -10,7 +10,7 @@
   color:$purple;
   letter-spacing:1px;
   text-shadow:0;
-  // padding: 5px 10px;
+  padding: 5px 10px;
   font-size: 15px;
   input{
     display: none;
@@ -19,6 +19,16 @@
 }
 .btn:hover{
   background-color: $purple;
+  color: #fff;
+}
+.accent{
+  border: 2px solid $highlight;
+
+  background-color: #fff;
+  color: $highlight;
+}
+.accent:hover{
+  background-color: $highlight;
   color: #fff;
 }
 a{

@@ -22,7 +22,7 @@ $(function(){
       let cells, tableWidth, widthForEachCell;
       tableWidth = $(this).width();
       cells = ui.item.children('td');
-      widthForEachCell = tableWidth / cells.length + 'px';
+      // widthForEachCell = tableWidth / cells.length + 'px';
       return cells.css('width', widthForEachCell);
     },
 
