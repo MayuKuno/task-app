@@ -41,8 +41,8 @@
           <th>Manage</th>
         </tr>
       </thead>
+    <tbody>
     <% @tasks.each do |task| %>
-      <tbody>
         <%= content_tag "tr", class: "item", data: { model_name: task.class.name.underscore, update_url: task_sort_path(task)} do %>
           <td>
             <% task.labels.each do |label| %>
@@ -58,9 +58,9 @@
             <%= link_to 'Detail', task_path(task.id) %>
             <%= link_to 'Delete', task_path(task.id), method: :delete, id: :delete %>
           </td>
-        <% end %>
-      </tbody>
     <% end %>
+    <% end %>
+    </tbody>
     </table>
 
     <div class="pagenate">

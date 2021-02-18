@@ -2,7 +2,6 @@ $(function() {
 	
 	var formInputs = $('input');
 	formInputs.focus(function() {
-		console.log(this);
 
 			 $(this).parent().children('p.formLabel').addClass('formTop');
 

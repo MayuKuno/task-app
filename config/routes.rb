@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
 
   namespace :tasks do
-    resources :searches, only: :index
+    resources :searches, only: :index, defaults: { format: :json }
   end
 
   resources :tasks do

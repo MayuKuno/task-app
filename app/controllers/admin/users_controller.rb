@@ -20,7 +20,8 @@ class Admin::UsersController < ApplicationController
 
     if @user.save
       log_in(@user)
-      UserNotifierMailer.send_signup_email(@user).deliver
+      # メールを送りたい時だけ
+      # UserNotifierMailer.send_signup_email(@user).deliver
 
       redirect_to root_path
     else
