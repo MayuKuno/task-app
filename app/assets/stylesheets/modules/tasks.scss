@@ -56,6 +56,9 @@
     background-color:$white-background;
     min-height: 500px;
     position: relative;
+    button{
+      outline: none;
+    }
     .noresult{
       text-align: center;
     }
@@ -120,6 +123,8 @@
           text-align: center;
           margin-top: 60px;
         }
+
+
       }
 
 
@@ -231,6 +236,37 @@
   }
 }
 
+
+.bluecolor{
+  // width: 20px;
+  // height: 20px;
+  border-radius: 50%;
+  background-color: blue;
+}
+.redcolor{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: red;
+}
+.yellowcolor{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: yellow;
+}
+.orangecolor{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: orange;
+}
+.greencolor{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: green;
+}
 
 .search{
   input{
