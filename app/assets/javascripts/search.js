@@ -1,6 +1,16 @@
 $(function() {
   var search_list = $(".tasks tbody");
   function appendTask(task) {
+    if(task.status){
+      var status  = `<td>${task.status}</td>`
+    }else{
+      var status  = `<td></td>`
+    }
+    if(task.deadline){
+      var deadline  = `<td>${task.deadline}</td>`
+    }else{
+      var deadline  = `<td></td>`
+    }
     if(task.labels){
       var label  = `
                     <td>
@@ -22,8 +32,8 @@ $(function() {
                 <tr>
                   ${label}
                   <td>${task.taskname}</td>
-                  <td>${task.status}</td>
-                  <td>${task.deadline}</td>
+                  ${status}
+                  ${deadline}
                   <td>${task.created_at}</td>
                   <td>
                     <a href="/tasks/${task.id}/edit" data-method="get", class="btn">Edit</a>

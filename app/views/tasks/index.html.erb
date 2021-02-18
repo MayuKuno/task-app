@@ -10,7 +10,7 @@
     </div>
     <div class="search form-item">
       <%= form_with(local: true, method: :get, class: "search-form") do |form| %>
-        <p class="formLabel">タスクを検索する</p>
+        <p class="formLabel">Search Tasks by name/label</p>
         <%= form.text_field :keyword, class: "search-input form-style"%>
       <% end %>
     </div>
