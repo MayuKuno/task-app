@@ -17,7 +17,7 @@ class TasksController < ApplicationController
         end
       end
 
-      alltasks = Task.where(user_id: current_user.id)
+      alltasks = Task.where(user_id: current_user.id).where(group_id: nil)
       gon.statu = []
       alltasks.each do |task|
         gon.statu << task.status
@@ -91,8 +91,7 @@ class TasksController < ApplicationController
     task = Task.find(params[:id])
     if task.destroy
       flash[:notice] = "The task has been deleted!"
-      head :no_content
-      # redirect_to tasks_path
+      redirect_to tasks_path
     end
   end
 
