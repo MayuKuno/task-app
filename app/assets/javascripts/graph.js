@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(){
 var ctx = document.getElementById("chart1");
-
 var chart1 = new Chart(ctx, {
   type: 'doughnut',
   data: {
@@ -31,6 +30,7 @@ var chart1 = new Chart(ctx, {
 });
 
 function getNumber(num){
+  console.log(gon.label)
     var count = gon.label.filter(function(x){return x === num}).length;
     return count;
 }

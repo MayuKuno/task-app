@@ -22,11 +22,12 @@ Rails.application.routes.draw do
   resources :tasks do
     put :sort
     post :import, on: :collection
-    # collection { post :import }
   end
 
   resources :groups do
     resources :tasks
+    post :import, on: :collection
+
   end
 
   resources :notifications,only: [:index]

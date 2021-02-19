@@ -1,60 +1,101 @@
-<div class="container">
-  <%= @group.name %>のページ
-  <%= link_to 'グループ編集', edit_group_path(@group) %>
-  <%= link_to 'グループ削除', group_path(@group), method: :delete%>
+<div class="container top">
+    <div class="container__info common">
+      <div class="name"><%= @group.name %>のページ</div>
+      <ul>
+        <li>
+          <%= link_to 'グループ編集', edit_group_path(@group), class:"btn" %>
+        </li>
+        <li>
+          <%= link_to 'グループ削除', group_path(@group), method: :delete, class:"btn accent"%>
+        </li>
+      </ul>
+    </div>
 
-
+    <div class="container__task common">
     <div class="new">
-      <%= link_to new_group_task_path(@group) do %>
-        <%= image_tag 'plus.png' %>
+      <%= link_to new_group_task_path(@group)  do %>
+        <div class="plus">
+          <i class="fas fa-plus"></i>
+        </div>
+      <% end %>
+    </div>
+    <div class="search form-item">
+      <%= form_with(local: true, method: :get, class: "search-form") do |form| %>
+        <p class="formLabel">Search Tasks by name/label</p>
+        <%= form.text_field :keyword, class: "search-input form-style"%>
       <% end %>
     </div>
 
+ 
+        <%= link_to group_path(format: :csv), class:"icon export" do%>
+        <i i class="fas fa-file-download "></i>
+        <% end %>
+ 
 
 
+      <%= form_tag import_groups_path, multipart: true, class:"icon import" do %>
+        <%= button_tag '<i class="fas fa-file-upload"></i>'.html_safe %>
+          <label>
+            <p class="select">Select</p>
+            <%= file_field_tag :file, class: 'csv' %>
+          </label>
+      <% end %>
 
-    <table class="tasks">
+    <table class="tasks table-sortable">
       <thead>
-        <tr>
+        
+       <tr>
           <th>Label</th>
-          <th>taskname</th>
-          <th>Status</th>
-          <th>Deadline</th>
-          <th>Created_at</th>
+          <th id="taskname"><%= "taskname" %></th>
+          <th><%= "status" %></th>
+          <th><%= "deadline" %></th>
+          <th><%= "created_at"  %></th>
           <th>Manage</th>
           <th>作成者</th>
+
         </tr>
+        
       </thead>
+    <tbody>
     <% @tasks.each do |task| %>
-      <tbody>
-        <tr>
-          <td>
+        <%= content_tag "tr", class: "item", data: { model_name: task.class.name.underscore, update_url: task_sort_path(task)} do %>
+          <td class="labels">
             <% task.labels.each do |label| %>
-              <%= label.color %>
+              <span><%= label.color %></span>
             <% end %>
           </td>
-          <td><%= task.taskname %></td>
-          <td><%= task.status %></td>
-          <td><%= task.deadline %></td>
-          <td><%= task.created_at %></td>
-          <td>
-            <%= link_to 'Edit', edit_group_task_path(@group, task), method: :get %>
-            <%= link_to 'Detail', group_task_path(@group, task) %>
-            <%= link_to 'Delete', group_task_path(@group, task), method: :delete, id: :delete %>
+          <td class="taskname"><%= task.taskname %></td>
+          <td class="status"><%= task.status %></td>
+          <td class="deadline"><%= task.deadline %></td>
+          <td class="created_at"><%= task.created_at.strftime('%Y/%m/%d') %></td>
+          <td class="manages">
+            <%= link_to 'Edit', edit_group_task_path(@group, task), method: :get, class: "btn" %>
+            <%= link_to 'Detail', group_task_path(@group, task), class: "btn" %>
+            <%= link_to 'Delete', group_task_path(@group, task), method: :delete, id: :delete, class: "btn accent delete" %>
           </td>
-          <td>
+          <td class="creator">
             <% if @group.users.include?(task.user) %>
               <%= task.user.username %>
             <% else %>
               退出したユーザー
             <% end %>
           </td>
-
-        </tr>
-      </tbody>
     <% end %>
+    <% end %>
+    </tbody>
     </table>
- 
+
+    <div class="pagenate">
+        <%= paginate(@tasks)%>
+        <%= @tasks.offset_value %>〜<%= @tasks.offset_value + @tasks.length %> / <%= @tasks.total_count %>
+    </div>
+
+
+    </div>
+
+  <div class="container__graph common">
+    <%= render 'layouts/graph'%>
+  </div>
 
 
 

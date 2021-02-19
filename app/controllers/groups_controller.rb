@@ -35,7 +35,34 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @tasks = Task.where(group_id: @group)
+    @tasks = Task.where(group_id: @group).page(params[:page]).per(10)
+
+
+    #For graph
+    labels = Label.all
+    gon.data = []
+    labels.each do |label|
+      gon.data << label.color
+    end
+
+    gon.label  = []
+    @tasks.each do |task|
+      task.labels.each do |label_id|
+        gon.label << label_id.color
+      end
+    end
+
+    gon.statu = []
+    @tasks.each do |task|
+      gon.statu << task.status
+    end
+    
+    #For CSV
+    respond_to do |format|
+      format.html
+      format.csv {send_data @tasks.generate_csv, filename: "tasks-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
+    end
+
   end
 
   def destroy
@@ -44,6 +71,16 @@ class GroupsController < ApplicationController
     redirect_to groups_path, notice: 'グループを削除しました'
   end
 
+  def import
+    if params[:file].present?
+      current_user.tasks.import(params[:file])
+      flash[:notice] = 'タスクをインポートしました'
+      redirect_back(fallback_location: groups_path)
+    else
+      flash[:alert] = 'ファイルが選択されていません'
+      redirect_back(fallback_location: groups_path)
+    end
+  end
   
   private
   def group_params
