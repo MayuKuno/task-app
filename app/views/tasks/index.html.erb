@@ -46,7 +46,7 @@
         <%= content_tag "tr", class: "item", data: { model_name: task.class.name.underscore, update_url: task_sort_path(task)} do %>
           <td class="labels">
             <% task.labels.each do |label| %>
-              <%= label.color %>
+              <p><%= label.color %></p>
             <% end %>
           </td>
           <td><%= task.taskname %></td>

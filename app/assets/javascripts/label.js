@@ -1,24 +1,30 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-const tds = document.querySelectorAll('.tasks .labels');
+const ps = document.querySelectorAll('.labels p');
 
-tds.forEach(td =>{
-  const content = td.textContent.trim();
+ps.forEach(p =>{
+  const content = p.textContent.trim();
+  console.log(content)
   if (content.includes('Blue')){
-    td.classList.add('bluecolor');
+    p.classList.add('bluecolor');
+    p.textContent = " ";
   }else if(content.includes('Red')){
-    td.classList.add('redcolor');
+    p.classList.add('redcolor');
+    p.textContent = " ";
   
   }else if(content.includes('Yellow')){
-    td.classList.add('yellowcolor');
+    p.classList.add('yellowcolor');
+    p.textContent = " ";
 
   
   }else if(content.includes('Orange')){
-    td.classList.add('orangecolor');
+    p.classList.add('orangecolor');
+    p.textContent = " ";
 
   
   }else if(content.includes('Green')){
-    td.classList.add('greencolor');
+    p.classList.add('greencolor');
+    p.textContent = " ";
 
   
   }

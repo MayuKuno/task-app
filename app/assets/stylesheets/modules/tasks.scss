@@ -235,37 +235,42 @@
     cursor: row-resize;
   }
 }
+.labels{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 
+}
 
 .bluecolor{
-  // width: 20px;
-  // height: 20px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  background-color: blue;
+  background-color: #4897D8;
 }
 .redcolor{
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: red;
+  background-color: #CB0000;
 }
 .yellowcolor{
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: yellow;
+  background-color: #FFBB00;
 }
 .orangecolor{
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: orange;
+  background-color: #DE7A22;
 }
 .greencolor{
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: green;
+  background-color: #4B7447;
 }
 
 .search{
