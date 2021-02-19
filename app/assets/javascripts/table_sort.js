@@ -17,14 +17,6 @@ $(function(){
       });
     },
 
-    // ドラッグ幅をテーブルに合わせる
-    start(e, ui) {
-      let cells, tableWidth, widthForEachCell;
-      tableWidth = $(this).width();
-      cells = ui.item.children('td');
-      // widthForEachCell = tableWidth / cells.length + 'px';
-      return cells.css('width', widthForEachCell);
-    },
 
     // エフェクトを付与
     stop(e, ui) {

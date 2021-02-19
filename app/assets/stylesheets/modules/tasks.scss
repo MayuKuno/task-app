@@ -236,10 +236,25 @@
   }
 }
 .labels{
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-
+  span{
+    display: inline-block;
+  }
+  width: 77px;
+}
+.taskname{
+  width: 142px;
+}
+.status{
+  width: 90px;
+}
+.deadline{
+  width: 92px;
+}
+.created_at{
+  width: 119px;
+}
+.manages{
+  width: 230px;
 }
 
 .bluecolor{

@@ -1,33 +1,32 @@
-document.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('load', function() { //①
 
-const ps = document.querySelectorAll('.labels p');
+  const spans = document.querySelectorAll('.labels span');
 
-ps.forEach(p =>{
-  const content = p.textContent.trim();
-  console.log(content)
-  if (content.includes('Blue')){
-    p.classList.add('bluecolor');
-    p.textContent = " ";
-  }else if(content.includes('Red')){
-    p.classList.add('redcolor');
-    p.textContent = " ";
-  
-  }else if(content.includes('Yellow')){
-    p.classList.add('yellowcolor');
-    p.textContent = " ";
+  spans.forEach(span =>{
+    const content = span.textContent.trim();
+    if (content.includes('Blue')){
+      span.classList.add('bluecolor');
+      span.textContent = " ";
+    }else if(content.includes('Red')){
+      span.classList.add('redcolor');
+      span.textContent = " ";
+    
+    }else if(content.includes('Yellow')){
+      span.classList.add('yellowcolor');
+      span.textContent = " ";
 
-  
-  }else if(content.includes('Orange')){
-    p.classList.add('orangecolor');
-    p.textContent = " ";
+    
+    }else if(content.includes('Orange')){
+      span.classList.add('orangecolor');
+      span.textContent = " ";
 
-  
-  }else if(content.includes('Green')){
-    p.classList.add('greencolor');
-    p.textContent = " ";
+    
+    }else if(content.includes('Green')){
+      span.classList.add('greencolor');
+      span.textContent = " ";
 
-  
-  }
-  
-})
+    
+    }
+    
+  })
 });
