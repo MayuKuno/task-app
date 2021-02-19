@@ -7,8 +7,9 @@ class TasksController < ApplicationController
 
   def index
     if logged_in?
-      @tasks = Task.includes(:user).order(sort_column + " " + sort_direction).where(group_id: nil).where(user_id: current_user.id).rank(:row_order).page(params[:page]).per(10)
+      @tasks = Task.includes(:user).where(group_id: nil).where(user_id: current_user.id).order(sort_column + " " + sort_direction).page(params[:page]).per(10)
       tasks = Task.where(user_id: current_user.id).where(group_id: nil)
+      
       gon.label  = []
       tasks.each do |task|
         task.labels.each do |label_id|
@@ -16,7 +17,7 @@ class TasksController < ApplicationController
         end
       end
 
-      alltasks = Task.where(user_id: current_user.id)
+      alltasks = Task.where(user_id: current_user.id).where(group_id: nil)
       gon.statu = []
       alltasks.each do |task|
         gon.statu << task.status
@@ -137,9 +138,9 @@ class TasksController < ApplicationController
   end
 
   def sort_column
-    Task.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
+    Task.column_names.include?(params[:sort]) ? params[:sort] : "taskname"
   end
-
+  
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end

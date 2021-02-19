@@ -56,6 +56,12 @@
     background-color:$white-background;
     min-height: 500px;
     position: relative;
+    button{
+      outline: none;
+    }
+    .noresult{
+      text-align: center;
+    }
     .icon{
       position: absolute;
       top: 30px;
@@ -101,6 +107,9 @@
     &__contents{
       
       display: flex;
+      h1{
+        text-align: center;
+      }
       .chart1{
         width: 50%;
         position: relative;
@@ -114,6 +123,8 @@
           text-align: center;
           margin-top: 60px;
         }
+
+
       }
 
 
@@ -172,7 +183,7 @@
 
 
 .tasks{
-  width: 60%;
+  width: 70%;
   margin: 40px auto;
   padding: 0;
   border-collapse: collapse;
@@ -180,7 +191,6 @@
     // padding: 10px;
     border-bottom: solid 1px $gray;
     height: 50px;
-    width: 100px;
     text-align: center;
 
     a{
@@ -188,10 +198,10 @@
     }
     td{
       height: 50px;
-      width: 100px;
 
     }
   }
+
 
 
 
@@ -225,7 +235,58 @@
     cursor: row-resize;
   }
 }
+.labels{
+  span{
+    display: inline-block;
+  }
+  width: 77px;
+}
+.taskname{
+  width: 142px;
+}
+.status{
+  width: 90px;
+}
+.deadline{
+  width: 92px;
+}
+.created_at{
+  width: 119px;
+}
+.manages{
+  width: 230px;
+}
 
+.bluecolor{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #4897D8;
+}
+.redcolor{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #CB0000;
+}
+.yellowcolor{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #FFBB00;
+}
+.orangecolor{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #DE7A22;
+}
+.greencolor{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #4B7447;
+}
 
 .search{
   input{

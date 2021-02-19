@@ -10,20 +10,20 @@
     </div>
     <div class="search form-item">
       <%= form_with(local: true, method: :get, class: "search-form") do |form| %>
-        <p class="formLabel">タスクを検索する</p>
+        <p class="formLabel">Search Tasks by name/label</p>
         <%= form.text_field :keyword, class: "search-input form-style"%>
       <% end %>
     </div>
 
  
         <%= link_to tasks_path(format: :csv), class:"icon export" do%>
-        <i i class="fas fa-file-upload"></i>
+        <i i class="fas fa-file-download "></i>
         <% end %>
  
 
 
       <%= form_tag import_tasks_path, multipart: true, class:"icon import" do %>
-        <%= button_tag '<i class="fas fa-file-download"></i>'.html_safe %>
+        <%= button_tag '<i class="fas fa-file-upload"></i>'.html_safe %>
           <label>
             <p class="select">Select</p>
             <%= file_field_tag :file, class: 'csv' %>
@@ -32,39 +32,43 @@
 
     <table class="tasks table-sortable">
       <thead>
-        <tr>
+        
+       <tr>
           <th>Label</th>
           <th id="taskname"><%= sortable "taskname", "Name of Task" %></th>
-          <th>Status</th>
-          <th><%= sortable "deadline", "Deadline" %></th>
-          <th><%= sortable "created_at", "Created_at" %></th>
+          <th><%= sortable "status" %></th>
+          <th><%= sortable "deadline" %></th>
+          <th><%= sortable "created_at", "Created"  %></th>
           <th>Manage</th>
+
         </tr>
+        
       </thead>
+    <tbody>
     <% @tasks.each do |task| %>
-      <tbody>
         <%= content_tag "tr", class: "item", data: { model_name: task.class.name.underscore, update_url: task_sort_path(task)} do %>
-          <td>
+          <td class="labels">
             <% task.labels.each do |label| %>
-              <%= label.color %>
+              <span><%= label.color %></span>
             <% end %>
           </td>
-          <td><%= task.taskname %></td>
-          <td><%= task.status %></td>
-          <td><%= task.deadline %></td>
-          <td><%= task.created_at %></td>
-          <td>
-            <%= link_to 'Edit', "/tasks/#{task.id}/edit", method: :get %>
-            <%= link_to 'Detail', task_path(task.id) %>
-            <%= link_to 'Delete', task_path(task.id), method: :delete, id: :delete %>
+          <td class="taskname"><%= task.taskname %></td>
+          <td class="status"><%= task.status %></td>
+          <td class="deadline"><%= task.deadline %></td>
+          <td class="created_at"><%= task.created_at.strftime('%Y/%m/%d') %></td>
+          <td class="manages">
+            <%= link_to 'Edit', "/tasks/#{task.id}/edit", method: :get, class: "btn" %>
+            <%= link_to 'Detail', task_path(task.id), class: "btn" %>
+            <%= link_to 'Delete', task_path(task.id), method: :delete, id: :delete, class: "btn accent delete" %>
           </td>
-        <% end %>
-      </tbody>
     <% end %>
+    <% end %>
+    </tbody>
     </table>
 
     <div class="pagenate">
         <%= paginate(@tasks)%>
+        <%= @tasks.offset_value %>〜<%= @tasks.offset_value + @tasks.length %> / <%= @tasks.total_count %>
     </div>
 
 

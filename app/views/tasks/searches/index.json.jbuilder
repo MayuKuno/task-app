@@ -8,5 +8,6 @@ json.array! @tasks do |task|
   json.username task.user.username
   json.labels task.labels
   json.user_sign_in current_user
+  json.group_id task.group_id
 
 end

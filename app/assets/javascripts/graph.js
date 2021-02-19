@@ -23,6 +23,9 @@ var chart1 = new Chart(ctx, {
     }]
   },
   options: {
+    legend: {
+      position: "bottom",  
+    }
 
   }
 });
@@ -53,6 +56,13 @@ var chart2 = new Chart(ctx2, {
         ]
     }]
   },
+  options: {
+    legend: {
+      position: "bottom",  
+    }
+
+  }
+
 });
 
 function getStatus(status){
@@ -64,9 +74,18 @@ function getStatus(status){
 
 let result = chart1.data.datasets[0].data;
 let total = result.reduce((sum, element) => sum + element, 0);
+var chart1 = document.getElementById("chart1");
+var inside1 = document.getElementById("inside1");
+var chart2 = document.getElementById("chart2");
+var inside2 = document.getElementById("inside2");
+
 if (total == 0){
-  var inside1 = document.getElementById("inside1");
   inside1.textContent = "No Data Found";
+  inside1.style.zIndex = 1000;
+  chart1.style.zIndex = -1000;
+}else{
+  inside1.style.zIndex = -1000;
+  chart1.style.zIndex = 1000;
 }
 
 
@@ -74,7 +93,13 @@ if (total == 0){
 if(gon.statu.length === 0){
   var inside2 = document.getElementById("inside2");
   inside2.textContent = "No Data Found";
+  inside2.style.zIndex = 1000;
+  chart2.style.zIndex = -1000;
+}else{
+  inside2.style.zIndex = -1000;
+  chart2.style.zIndex = 1000;
 }
+
 
 
 }, false);
