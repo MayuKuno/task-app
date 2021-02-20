@@ -1,4 +1,17 @@
 <div class="container">
-  <%= render partial: 'form', locals: { task: @task } %>
+  <div class="box">
+
+
+    <div class="title">
+      <% if @group %>
+      <div class="groupname">
+          <p><%= @group.name%></p>
+      </div>
+      <% end %>
+      Create task 
+    </div>
+    <%= render partial: 'form', locals: { task: @task } %>
+  
+  </div>
 </div>
 
