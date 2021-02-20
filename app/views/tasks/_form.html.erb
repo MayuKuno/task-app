@@ -1,23 +1,64 @@
-  <div class="form">
-    <%= form_for [@group, @task] do |form| %> 
-      <% if @group %>
-        <%= form.hidden_field :group_id, value: @group.id %>
-      <% end %>
-      <%= render 'layouts/error_messages', model: form.object%>
 
-      <p>Task Name</p><%= form.text_field :taskname %>
-      <p>Description</p><%= form.text_area :description %>
-      <p>Priority</p><%= form.select :priority, Task.priorities.keys, :selected=>Task.priorities[@task.priority], prompt: "Select Priority" %>
-      <p>Status</p><%= form.select :status, Task.statuses.keys, :selected=>Task.statuses[@task.status], prompt: "Select Status" %>
-      <p>Deadline</p><%= form.date_field :deadline %>
-      <p>Labels</p><%= form.collection_check_boxes :label_ids, Label.all, :id, :color %>
-      <p>File</p><%= form.file_field :image %>
-      <%= image_tag @task.image if @task.image.attached? %>
+<%= form_for [@group, @task] do |form| %> 
+  <% if @group %>
+    <%= form.hidden_field :group_id, value: @group.id %>
+  <% end %>
+  <%= render 'layouts/error_messages', model: form.object%>
 
-      <div class="save">
-        <%= form.submit "Save" %>
+  <div class="taskform">
+    <div class="left content">
+      <div class="form-item select">
+        <p>Task Name</p>
+        <%= form.text_field :taskname, id: "taskname", class: "form-style" %>
       </div>
-    <% end %>
+
+      <div class="form-item select">
+        <p>Description</p>
+        <%= form.text_area :description, id: "description", class: "form-style"  %>
+      </div>
+
+      <div class="form-item select">
+        <p>Priority</p>
+        <%= form.select :priority, Task.priorities.keys, prompt: "Select Priority" %>
+      </div>
+
+      <div class="form-item select">
+        <p>Status</p>
+        <%= form.select :status, Task.statuses.keys, prompt: "Select Status" %>
+
+      </div>
+    </div>
+
+    <div class="right content">
+      <div class="form-item select">
+          <p>Deadline</p>
+          <%= form.date_field :deadline %>
+      </div>
+
+      <div class="form-item select">
+          <p>Labels</p>
+          <div class="checkbox">
+            <%= form.collection_check_boxes :label_ids, Label.all, :id, :color %>
+          </div>
+      </div>
+
+      <div class="form-item select">
+          <p>File</p>
+          <label>
+            <div class="border">Select File</div>
+            <%= form.file_field :image, class: "file"%>
+          </label>
+
+
+            <%= image_tag @task.image if @task.image.attached? %>
+          
+      </div>
+
+        <%= form.submit "Save", class:"login save" %>
+    </div>
+
+
   </div>
+<% end %>
 
 

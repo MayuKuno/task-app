@@ -1,3 +1,26 @@
+.box{
+  margin-top: 60px;
+.title{
+  background-color: $white-background;
+  width: 70%;
+  height: 70px;
+  border-bottom:1px solid $card-background;
+  margin: 0 auto;
+  line-height: 70px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.contents{
+  background-color: $white-background;
+  width: 70%;
+  padding: 40px 40px 64px;
+  margin: 0 auto;
+  text-align: center;
+}
+}
+
 
 div.form-item{
   margin-right: 0;
@@ -28,11 +51,13 @@ div.form-item{
 
 
 
-input{
+input,textarea{
   transition: all .2s ease;
 }
 
- input.form-style{
+ input.form-style,
+ textarea.form-style
+ {
     color:#8a8a8a;
     display: block;
     width: 80%;
@@ -88,4 +113,104 @@ input[type="submit"].login:hover{
 }
 input[type="submit"].login:focus{
   outline: none;
+}
+
+
+//task form
+.taskform{
+  background-color: $white-background;
+  width: 70%;
+  padding: 40px 40px 64px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+
+  .content{
+    width: 50%;
+    
+    textarea.form-style {
+     min-height: 100px;
+     width: 100%;
+    }
+    .select{
+      width: 80%;
+      margin: 0 auto;
+      margin-bottom: 30px;
+      p{
+        text-align: left;
+        color: $purple;
+      }
+      select,
+      input:not([type="checkbox"]){
+        width: 100%;
+        color:#8a8a8a;
+        height: 44px;
+        padding: 5px 40px;
+        border:1px solid #ccc;
+        border-radius: 27px;
+        outline: none;
+        appearance: none;
+      }
+      select:focus,
+      textarea:focus,
+      input:not([type="checkbox"]):focus{
+        outline: none; 
+        border:1px solid $purple; 
+        color:$purple; 
+    }
+    .checkbox{
+      display: flex;
+      width: 100%;
+      margin: 30px auto;
+      input{
+        margin-left: 5%;
+        margin-right: 2%;
+      }
+      label{
+        div{
+          width: 30px;
+          height: 30px; 
+        }
+
+      }
+
+    }
+    .border{
+      width: 100%;
+      color: #8a8a8a;
+      height: 44px;
+      line-height: 44px;
+      border: 1px solid #ccc;
+      border-radius: 27px;
+      outline: none;
+      appearance: none;
+      .file{
+        display: none;
+      }
+
+    }
+    .border:hover{
+      outline: none; 
+      border:1px solid $purple; 
+      color:$purple; 
+    }
+
+
+
+
+    }
+
+
+  }
+  .right{
+    position: relative;
+    .save{
+      position: absolute;
+      bottom: 0;
+      right: 5%;
+      display: block;
+      margin-bottom: 30px;
+    }
+  }
+
 }
