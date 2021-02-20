@@ -27,6 +27,10 @@ class TasksController < ApplicationController
       labels.each do |label|
         gon.data << label.color
       end
+
+      #For calendar
+      gon.groups = Group.all
+      gon.tasks = @tasks
       
     else
       @tasks = Task.includes(:user).order(sort_column + " " + sort_direction).where(group_id: nil).rank(:row_order).page(params[:page]).per(5)

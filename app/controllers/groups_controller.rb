@@ -65,6 +65,10 @@ class GroupsController < ApplicationController
       format.csv {send_data @tasks.generate_csv, filename: "tasks-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
     end
 
+    #For calendar
+    gon.groups = Group.all
+    gon.tasks = @tasks
+
   end
 
   def destroy

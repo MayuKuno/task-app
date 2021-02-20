@@ -103,7 +103,7 @@
   }
   &__graph{
     background-color:$white-background;
-    
+
     &__contents{
       
       display: flex;
@@ -144,6 +144,12 @@
 
 
     }
+
+  }
+
+  &__calendar{
+    background-color:$white-background;
+    min-height: 500px;
 
   }
 }
