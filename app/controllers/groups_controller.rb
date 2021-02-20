@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  helper_method :sort_column, :sort_direction
+
   def index
     @groups = Group.all
   end
@@ -35,7 +37,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @tasks = Task.where(group_id: @group).page(params[:page]).per(10)
+    @tasks = Task.where(group_id: @group).where(user_id: current_user.id).order(sort_column + " " + sort_direction).page(params[:page]).per(10)
 
 
     #For graph
@@ -81,10 +83,25 @@ class GroupsController < ApplicationController
       redirect_back(fallback_location: groups_path)
     end
   end
+
+  def sort
+    task = Task.find(params[:task_id])
+    task.update(task_params)
+    render body: nil
+  end
+
   
   private
   def group_params
     params.require(:group).permit(:name, user_ids: [])
+  end
+
+  def sort_column
+    Task.column_names.include?(params[:sort]) ? params[:sort] : "taskname"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 
 end
