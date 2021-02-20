@@ -5,7 +5,11 @@
   <% end %>
   <%= render 'layouts/error_messages', model: form.object%>
 
+
+
   <div class="taskform">
+
+
     <div class="left content">
       <div class="form-item select">
         <p>Task Name</p>
@@ -48,10 +52,17 @@
             <div class="border">Select File</div>
             <%= form.file_field :image, class: "file"%>
           </label>
+      </div>
+      
+      <div class="form-item select">
+        <% if @task.image.attached? %>
+          <%= image_tag @task.image, class: 'image', id: :img_prev %>
+        <% else %>
+          <%= image_tag asset_path("notselected.png"), class: 'image', id: :img_prev %>
 
 
-            <%= image_tag @task.image if @task.image.attached? %>
-          
+
+        <% end %>
       </div>
 
         <%= form.submit "Save", class:"login save" %>
