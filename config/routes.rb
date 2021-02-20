@@ -27,7 +27,9 @@ Rails.application.routes.draw do
   resources :groups do
     resources :tasks
     post :import, on: :collection
-
+    member do
+       get 'search'
+    end
   end
 
   resources :notifications,only: [:index]

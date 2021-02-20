@@ -340,7 +340,7 @@
       margin: 0 auto;
       display: flex;
       justify-content: center;
-      .btn{
+      .topbtn{
         color:$card-background;
         line-height: 60px;
         text-decoration: none;
@@ -353,10 +353,10 @@
         margin-bottom: 20px;
         border-radius: 3px;
       }
-      .btn:hover {
+      .topbtn:hover {
         opacity: .8;
       }
-     .btn:first-child{
+     .topbtn:first-child{
        margin-right: 60px;
      }
     }

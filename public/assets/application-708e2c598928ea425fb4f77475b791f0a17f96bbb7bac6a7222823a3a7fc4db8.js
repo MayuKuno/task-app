@@ -16698,7 +16698,6 @@ $(function() {
 	
 	var formInputs = $('input');
 	formInputs.focus(function() {
-		console.log(this);
 
 			 $(this).parent().children('p.formLabel').addClass('formTop');
 
@@ -16830,7 +16829,6 @@ $(window).on('load', function(){
         if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
-          console.log('ss')
 
           $('#img_prev').attr('src', e.target.result);
         }

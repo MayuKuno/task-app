@@ -37,8 +37,8 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @tasks = Task.where(group_id: @group).where(user_id: current_user.id).order(sort_column + " " + sort_direction).page(params[:page]).per(10)
-
+    @tasks = Task.where(group_id: @group).order(sort_column + " " + sort_direction).page(params[:page]).per(10)
+    gon.group  = @group
 
     #For graph
     labels = Label.all
@@ -88,6 +88,15 @@ class GroupsController < ApplicationController
     task = Task.find(params[:task_id])
     task.update(task_params)
     render body: nil
+  end
+
+  def search
+    @group = Group.find(params[:id])
+    @tasks = Task.where(group_id: @group).search(params[:keyword])
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   

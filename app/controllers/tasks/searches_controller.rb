@@ -1,10 +1,7 @@
 class Tasks::SearchesController < ApplicationController
   def index
     @tasks = Task.rank(:row_order).search(params[:keyword])
-  
-    # @tasks = Task.where('taskname LIKE(?)', "%#{params[:keyword]}%")
-
-    respond_to do |format|
+      respond_to do |format|
       format.html
       format.json
     end

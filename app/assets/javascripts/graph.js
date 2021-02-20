@@ -30,7 +30,6 @@ var chart1 = new Chart(ctx, {
 });
 
 function getNumber(num){
-  console.log(gon.label)
     var count = gon.label.filter(function(x){return x === num}).length;
     return count;
 }

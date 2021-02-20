@@ -20,9 +20,9 @@
       <% end %>
     </div>
     <div class="search form-item">
-      <%= form_with(local: true, method: :get, class: "search-form") do |form| %>
+      <%= form_with(url: search_group_path(@group), local: true, method: :get, class: "search-form") do |form| %>
         <p class="formLabel">Search Tasks by name/label</p>
-        <%= form.text_field :keyword, class: "search-input form-style"%>
+        <%= form.text_field :keyword, class: "search-inputs form-style"%>
       <% end %>
     </div>
 
