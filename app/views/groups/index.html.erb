@@ -1,12 +1,40 @@
 <div class="container">
-  <div class="form">
-    <% current_user.groups.each do |group| %>
-      <div class="group">
-        <%= link_to group_path(group) do %>
-          <%= group.name %>
-        <% end %>
-       </div>
-    <% end %>
+  <div class="container__index common">
+    <h1>Group List</h1>
+    <div class="groups">
+      <% current_user.groups.each do |group| %>
+        <div class="group">
+          <div class="info">
+              <%= link_to group_path(group), class:"name" do %>
+                <%= group.name %>
+              <% end %>
+            <table>
+              <tr>
+                <th>Num of Tasks</th>
+                <td><%= group.tasks.count %></td>
+              </tr>
+              <tr>
+                <th>Participants</th>
+                  <td class="user">
+                    <% group.users.each do |user| %>
+                      <%= user.username %>
+                    <% end %>
+                  </td>
+               
+              </tr>
+            </table>
+          </div>
+          <div class="manage">
+            <div>
+              <%= link_to 'Edit', edit_group_path(group), class:"btn managebtn" %>
+            </div>
+            <div>
+              <%= link_to 'Delete', group_path(group), method: :delete, class:"btn accent managebtn"%>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
 
   </div>
 </div>

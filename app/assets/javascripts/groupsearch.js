@@ -68,26 +68,26 @@ $(function() {
 
 
 
-  $(".search-input").on("keyup", function(){
-    var input = $(".search-input").val();
+  $(".search-inputs").on("keyup", function(){
+    var input = $(".search-inputs").val();
+    var param2 = gon.group;
+
+    var url = "/groups/" + param2.id + "/search"
 
     $.ajax({
       type: 'GET',
-      url: "/tasks/searches",
+      url: url,
       data: {keyword: input},
       dataType: 'json'
     })
 
-    .done(function(tasks){
 
+    .done(function(tasks){
       search_list.empty();
       if(tasks.length !== 0){ //検索結果があったら
         tasks.forEach(function(task){
-
-          if(task.user_sign_in.id == task.user_id && task.group_id == null){
-            appendTask(task);
-          }
-
+          
+          appendTask(task);
 
         });
         //labels
@@ -126,3 +126,4 @@ $(function() {
 
   });
 });
+

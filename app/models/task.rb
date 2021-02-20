@@ -33,7 +33,7 @@ class Task < ApplicationRecord
 
 
   def self.csv_attributes
-    ["taskname", "description","priority","status","deadline", "created_at", "updated_at"]
+    ["taskname", "description","priority","status","deadline", "created_at", "updated_at", "group_id"]
   end
 
   def self.generate_csv
@@ -58,4 +58,8 @@ class Task < ApplicationRecord
       end
     end
   end
+
+
+
+
 end

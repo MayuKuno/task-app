@@ -1,7 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :show]
   before_action :set_group, only: [:new, :create, :edit, :update]
-  
   before_action :login_required, except: [:index, :search]
   helper_method :sort_column, :sort_direction
 
@@ -10,6 +9,7 @@ class TasksController < ApplicationController
       @tasks = Task.includes(:user).where(group_id: nil).where(user_id: current_user.id).order(sort_column + " " + sort_direction).page(params[:page]).per(10)
       tasks = Task.where(user_id: current_user.id).where(group_id: nil)
       
+      #For graph
       gon.label  = []
       tasks.each do |task|
         task.labels.each do |label_id|
@@ -17,11 +17,20 @@ class TasksController < ApplicationController
         end
       end
 
-      alltasks = Task.where(user_id: current_user.id).where(group_id: nil)
       gon.statu = []
-      alltasks.each do |task|
+      tasks.each do |task|
         gon.statu << task.status
       end
+
+      labels = Label.all
+      gon.data = []
+      labels.each do |label|
+        gon.data << label.color
+      end
+
+      #For calendar
+      gon.groups = Group.all
+      gon.tasks = @tasks
       
     else
       @tasks = Task.includes(:user).order(sort_column + " " + sort_direction).where(group_id: nil).rank(:row_order).page(params[:page]).per(5)
@@ -31,17 +40,6 @@ class TasksController < ApplicationController
       format.html
       format.csv {send_data @tasks.generate_csv, filename: "tasks-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
     end
-
-
-    labels = Label.all
-    gon.data = []
-    labels.each do |label|
-      gon.data << label.color
-    end
-
-
-
-
 
   end
 
@@ -91,7 +89,11 @@ class TasksController < ApplicationController
     task = Task.find(params[:id])
     if task.destroy
       flash[:notice] = "The task has been deleted!"
-      redirect_to tasks_path
+      if task.group_id
+        redirect_to group_path(task.group_id)
+      else
+        redirect_to tasks_path
+      end
     end
   end
 

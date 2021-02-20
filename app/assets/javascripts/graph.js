@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(){
 var ctx = document.getElementById("chart1");
-
 var chart1 = new Chart(ctx, {
   type: 'doughnut',
   data: {

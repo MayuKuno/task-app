@@ -103,7 +103,7 @@
   }
   &__graph{
     background-color:$white-background;
-    
+
     &__contents{
       
       display: flex;
@@ -144,6 +144,12 @@
 
 
     }
+
+  }
+
+  &__calendar{
+    background-color:$white-background;
+    min-height: 500px;
 
   }
 }
@@ -244,7 +250,7 @@
 .taskname{
   width: 142px;
 }
-.status{
+.status, .creator{
   width: 90px;
 }
 .deadline{
@@ -256,6 +262,9 @@
 .manages{
   width: 230px;
 }
+
+
+
 
 .bluecolor{
   width: 20px;
@@ -337,7 +346,7 @@
       margin: 0 auto;
       display: flex;
       justify-content: center;
-      .btn{
+      .topbtn{
         color:$card-background;
         line-height: 60px;
         text-decoration: none;
@@ -350,10 +359,10 @@
         margin-bottom: 20px;
         border-radius: 3px;
       }
-      .btn:hover {
+      .topbtn:hover {
         opacity: .8;
       }
-     .btn:first-child{
+     .topbtn:first-child{
        margin-right: 60px;
      }
     }
