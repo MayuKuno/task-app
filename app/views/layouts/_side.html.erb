@@ -38,15 +38,10 @@
             <% end %>
             <% end %>
         </li>
-        <li class="mobile-menu__item">
-            <%= link_to new_task_path, class: "mobile-menu__link" do %>
-                <span class="main-title">New Task</span>
-                <span class="sub-title">タスクを作成する</span>
-            <% end %>
-        </li>
+
         <li class="mobile-menu__item">
             <%= link_to tasks_calendar_path, class: "mobile-menu__link" do %>
-                <span class="main-title">My Calender</span>
+                <span class="main-title">My calendar</span>
                 <span class="sub-title">カレンダーをみる</span>
             <% end %>
         </li>
@@ -66,7 +61,7 @@
         <% if logged_in? && current_user.admin? %>
         <li class="mobile-menu__item">
             <%= link_to admin_users_path, class: "mobile-menu__link" do %>
-                <span class="main-title">Admin</span>
+                <span class="main-title">Admin <span>*Only for admin</span></span>
                 <span class="sub-title">管理者一覧</span>
             <% end %>
         </li>
