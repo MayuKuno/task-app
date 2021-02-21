@@ -93,37 +93,85 @@ document.addEventListener("DOMContentLoaded", function(){
           }
    
           if(year == task.deadline.slice(0,4) && mon == task.deadline.substr(5,2) && date.date == task.deadline.slice(-2) && date.isdisabled == false){
-            if (task.group_id == null){
-              const span = document.createElement('span');
-              span.textContent = task.taskname;
-
-              td.appendChild(span);
-
-            }else{
+            if (gon.calender){ //全体
+              if (task.group_id == null){
+                const span = document.createElement('span');
+                span.textContent = 'Mytask: ' + task.taskname;
+                td.appendChild(span);
+              }else{
+                gon.groups.forEach(group =>{
+                  if (task.group_id == group.id){
+                    const span = document.createElement('span');
+                    span.textContent = group.name + ': ' +  task.taskname;
+                    td.appendChild(span);
+                  }
+                })
+              }
+            }else if(gon.group){
               gon.groups.forEach(group =>{
                 if (task.group_id == group.id){
                   const span = document.createElement('span');
-
-                  span.textContent = group.name + ': ' +  task.taskname ;
+                  span.textContent = task.taskname ;
                   td.appendChild(span);
-
                 }
-
               })
+              
+            }else{
+               //自分のみのタスク
+               const span = document.createElement('span');
+               span.textContent = task.taskname;
+               td.appendChild(span);
             }
-
 
           }
         })
+        // --
+        // gon.tasks.forEach(task =>{
+        //   const mon = String(month + 1).padStart(2, '0');
+        //   if (task.deadline == null){
+        //     return
+        //   }
 
-
+        //   if(year == task.deadline.slice(0,4) && mon == task.deadline.substr(5,2) && date.date == task.deadline.slice(-2) && date.isdisabled == false){
+        //     if (gon.calender){ //全体
+        //       console.log('aa')
+        //       if (task.group_id == null){
+        //         const span = document.createElement('span');
+        //         span.textContent = task.taskname;
+        //         td.appendChild(span);
+        //       }else{
+        //         gon.groups.forEach(group =>{
+        //           if (task.group_id == group.id){
+        //             const span = document.createElement('span');
+        //             span.textContent = group.name + ': ' +  task.taskname ;
+        //             td.appendChild(span);
+        //           }
+        //         })
+        //       }
+        //     }else{
+        //       if (task.group_id == null){ //自分のみのタスク
+        //         console.log('bb')
+        //         const span = document.createElement('span');
+        //         span.textContent = task.taskname;
+        //         td.appendChild(span);
+        //       }else{//グループのみのタスク
+        //         console.log('cc')
+        //         gon.groups.forEach(group =>{
+        //           if (task.group_id == group.id){
+        //             const span = document.createElement('span');
+        //             span.textContent = task.taskname ;
+        //             td.appendChild(span);
+        //           }
+        //         })
+        //       }
+        //     }
+        //   }
+        // })
+        // --
         
       })
       document.getElementById('calendar').appendChild(tr);
-
     });
-
-
   }
 
   function clearCalendar(){

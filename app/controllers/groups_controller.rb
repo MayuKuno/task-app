@@ -3,6 +3,8 @@ class GroupsController < ApplicationController
 
   def index
     @groups = Group.all
+
+
   end
 
   def new
@@ -68,6 +70,7 @@ class GroupsController < ApplicationController
     #For calendar
     gon.groups = Group.all
     gon.tasks = @tasks
+    
 
   end
 
