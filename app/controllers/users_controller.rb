@@ -1,6 +1,16 @@
 class UsersController < ApplicationController
   helper_method :sort_column, :sort_direction
 
+  def index
+    return nil if params[:keyword] == ""
+    @users = User.where(['username LIKE ?', "%#{params[:keyword]}%"] ).where.not(id: current_user.id).limit(10)
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+  
+
   def new
     @user = User.new
   end

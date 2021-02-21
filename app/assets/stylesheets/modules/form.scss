@@ -141,7 +141,7 @@ input[type="submit"].login:focus{
   text-align: center;
   display: flex;
   position: relative;
-  height: 700px;
+  min-height: 700px;
 
 
   .content{
@@ -252,3 +252,47 @@ input[type="submit"].login:focus{
 
 }
 
+//group form
+.taskform.groupform{
+  min-height: 500px;
+  display: block;
+  #result{
+    width: 80%;
+    margin: 0 auto;
+
+  }
+  .added-member{
+    width: 80%;
+    margin: 0 auto;
+    p{
+      text-align: left;
+      color: $purple;
+    }
+  }
+  .user{
+    height: 50px;
+    line-height: 50px;
+    width: 70%;
+    margin: 0 auto;
+    border-bottom: 1px dashed #ccc;
+    position: relative;
+    p{
+      display: inline;
+      position: absolute;
+      left: 3%;
+      text-align: left;
+    }
+    .btns{
+      position: absolute;
+      right: 3%;
+      cursor: pointer;
+      &--add {
+        color: black;
+      }
+      &--remove {
+        color: $highlight;
+      }
+    }
+  }
+
+ }
