@@ -6,6 +6,12 @@ $(function() {
     }else{
       var status  = `<td></td>`
     }
+    if(task.priority){
+      var priority  = `<td>${task.priority}</td>`
+    }else{
+      var priority  = `<td></td>`
+    }
+
     if(task.deadline){
       var deadline  = `<td>${task.deadline}</td>`
     }else{
@@ -33,8 +39,8 @@ $(function() {
                   ${label}
                   <td>${task.taskname}</td>
                   ${status}
+                  ${priority}
                   ${deadline}
-                  <td>${formatDate(task.created_at)}</td>
                   <td>
                     <a href="/tasks/${task.id}/edit" data-method="get", class="btn">Edit</a>
                     <a href="/tasks/${task.id}" data-method="get", class="btn">Detail</a>
@@ -47,14 +53,14 @@ $(function() {
     search_list.append(html);
    
   }
-  function formatDate(dt) {
-    var dt = new Date();
-    var y = dt.getFullYear();
-    var m = ('00' + (dt.getMonth()+1)).slice(-2);
-    var d = ('00' + dt.getDate()).slice(-2);
-    dt = (y + '-' + m + '-' + d);
-    return dt;
-  }
+  // function formatDate(dt) {
+  //   var dt = new Date();
+  //   var y = dt.getFullYear();
+  //   var m = ('00' + (dt.getMonth()+1)).slice(-2);
+  //   var d = ('00' + dt.getDate()).slice(-2);
+  //   dt = (y + '-' + m + '-' + d);
+  //   return dt;
+  // }
 
 
   function appendErrMsgToHTML(msg) {

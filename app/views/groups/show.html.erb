@@ -48,8 +48,8 @@
           <th>Label</th>
           <th id="taskname"><%= sortable "taskname", "Name of Task" %></th>
           <th><%= sortable "status" %></th>
+          <th><%= sortable "priority" %></th>
           <th><%= sortable "deadline" %></th>
-          <th><%= sortable "created_at" %></th>
           <th>Manage</th>
           <th>作成者</th>
 
@@ -66,8 +66,8 @@
           </td>
           <td class="taskname"><%= task.taskname %></td>
           <td class="status"><%= task.status %></td>
+          <td class="priority"><%= task.priority %></td>
           <td class="deadline"><%= task.deadline %></td>
-          <td class="created_at"><%= task.created_at.strftime('%Y/%m/%d') %></td>
           <td class="manages">
             <%= link_to 'Edit', edit_group_task_path(@group, task), method: :get, class: "btn" %>
             <%= link_to 'Detail', group_task_path(@group, task), class: "btn" %>
