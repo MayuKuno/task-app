@@ -1,13 +1,64 @@
-<div class="form">
-  <%= form_with(model: group, local: true) do |form| %>
-      <% if group.errors.any?%>
-      <%= group.errors.full_messages.count %>件のエラーが発生しました
-      <% end %>
-      <p>Group Name</p><%= form.text_field :name %>
-      <p>Users</p><%= form.collection_check_boxes :user_ids, User.all, :id, :username %>
 
-      <div class="save">
-        <%= form.submit "Save" %>
+<%= form_for (@group), local: true do |form| %>
+<% if @group.errors.any?%>
+  <%= @group.errors.full_messages.count %>件のエラーが発生しました
+<% end %>
+
+<div class="taskform groupform">
+  <div class="form-item">
+    <p class="formLabel">Group Name</p>
+    <%= form.text_field :name, id: "name", class: "form-style" %>
+  </div>
+
+
+
+  <div class="form-item">
+     <p class="formLabel">Group Members</p>
+     <input class="form-style" id="searchinput" type="text">
+
+     <div id="result"></div>
+  </div>
+
+  <div class="form-item added-member">
+    <div>
+      <p>Group members</p>
+    </div>
+
+
+    <div class="js-add-participant">
+      <div class="user">
+        <input name="group[user_ids][]" type="hidden" value="<%= current_user.id %>">
+        <p>
+          <%= current_user.username %>
+        </p>
       </div>
+    </div>
+
+
+    <% @group.users.each do |user| %>
+      <% if current_user.username != user.username %>
+        <div class="user">
+          <input name="group[user_ids][]" type="hidden" value="<%= user.id %>">
+          <p><%= user.username  %></p>
+          <a class="user-search-remove btns btns--remove js-remove-btn">Delete</a>
+        </div>
+      <% end %>
     <% end %>
-</div>
+    <div class="form-item">
+      <%= form.submit "Save", class:"login" %>
+    </div>
+  </div>
+  </div>
+<% end %>
+
+
+
+
+
+<%#= form_with(model: group, local: true) do |form| %>
+<%#     <div class="form-item">
+          <p>Users</p>
+          <div class="checkbox">
+            <%= form.collection_check_boxes :user_ids, User.all, :id, :username %>
+<%#           </div>
+      </div>%> 

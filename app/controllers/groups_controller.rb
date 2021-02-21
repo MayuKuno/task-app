@@ -3,11 +3,14 @@ class GroupsController < ApplicationController
 
   def index
     @groups = Group.all
+
+
   end
 
   def new
     @group = Group.new
     @group.users << current_user
+
     # @group = Group.find(params[:group_id])
   end
 
@@ -68,6 +71,7 @@ class GroupsController < ApplicationController
     #For calendar
     gon.groups = Group.all
     gon.tasks = @tasks
+    
 
   end
 

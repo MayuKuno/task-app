@@ -66,6 +66,7 @@
     <% end %>
     </tbody>
     </table>
+    
 
     <div class="pagenate">
         <%= paginate(@tasks)%>
@@ -79,9 +80,9 @@
     <%= render 'layouts/graph'%>
   </div>
 
-  <div class="container__calendar common">
+
     <%= render 'layouts/calendar'%>
-  </div>
+
 
 
     <% else %>
@@ -90,7 +91,7 @@
           <div class="message">Manage your day with <br><span>Task App</span></div>
           <div class="btns">
             <%= link_to "Login", login_path, method: :get, class: :topbtn %>
-            <%= link_to "Signup", new_admin_user_path, class: :topbtn %>
+            <%= link_to "Signup", new_user_path, class: :topbtn %>
           </div>
         </section>
         <section class="middle">

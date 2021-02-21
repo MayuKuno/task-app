@@ -30,8 +30,7 @@ class TasksController < ApplicationController
 
       #For calendar
       gon.groups = Group.all
-      gon.tasks = @tasks
-      
+      gon.tasks = tasks
     else
       @tasks = Task.includes(:user).order(sort_column + " " + sort_direction).where(group_id: nil).rank(:row_order).page(params[:page]).per(5)
     end
@@ -113,10 +112,12 @@ class TasksController < ApplicationController
     render body: nil
   end
 
+
   def calendar
-    @tasks = Task.includes(:user).where(user_id: current_user.id)
+    @tasks = Task.includes(:user)
     gon.groups = Group.all
-    gon.tasks = @tasks
+    gon.tasks = Task.all
+    gon.calender = "calender"
 
   end
 
