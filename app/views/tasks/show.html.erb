@@ -1,19 +1,84 @@
 <div class="container">
-  <div class="temp">
-    <p>
-      Detail
-    </p>
-    <%= link_to 'Back to TOP', tasks_path %>
-  </div>
+  <div class="box">
+    <div class="title">
+      <% if @group %>
+      <div class="groupname">
+          <p><%= @group.name%></p>
+      </div>
+      <% end %>
+      Detail 
+    </div>
+    <div class="taskform taskshow">
+      <div class="left content">
+        <div class="form-item select">
+          <p>Task Name</p>
+          <div class="borders">
+          <%= @task.taskname%>
+          </div>
+        </div>
 
-  <div class="form">
-    <p>Task Name</p><%= @task.taskname %>
-    <p>Description</p><%= @task.description %>
-    <p>Priority</p><%= @task.priority %>
-    <p>Status</p><%= @task.status %>
-    <p>Deadline</p><%= @task.deadline %>
-    <p>File</p>  <%= image_tag @task.image if @task.image.attached? %>
-  </div>
+        <div class="form-item select">
+          <p>Description</p>
+          <div class="borders">
+            <%= @task.description %>
+          </div>
+        </div>
 
+        <div class="form-item select">
+          <p>Priority</p>
+          <div class="borders">
+            <%= @task.priority %>
+          </div>
+        </div>
+
+        <div class="form-item select">
+          <p>Status</p>
+          <div class="borders">
+            <%= @task.status %>
+          </div>
+        </div>
+      </div>
+
+      <div class="right content">
+        <div class="form-item select">
+            <p>Deadline</p>
+            <div class="borders">
+              <%= @task.deadline %>
+            </div>
+        </div>
+
+        <div class="form-item select">
+            <p>Labels</p>
+            <div class="checkbox show">
+              <% @task.labels.each do |label| %>
+                <label>
+                  <%= label.color %>
+                </label>
+              <% end %>
+             </div>
+        </div>
+
+        
+        <div class="form-item select">
+          <% if @task.image.attached? %>
+            <%= image_tag @task.image, class: 'image', id: :img_prev %>
+          <% else %>
+            <%= image_tag asset_path("notselected.png"), class: 'image', id: :img_prev %>
+          <% end %>
+        </div>
+
+          <%= link_to 'Back to TOP', tasks_path, class:"login save back" %>
+
+      </div>
+  </div>
 </div>
+
+
+
+
+
+
+
+
+
 

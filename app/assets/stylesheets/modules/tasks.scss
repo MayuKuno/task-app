@@ -452,3 +452,26 @@
   }
 
 }
+
+//task#show
+.taskform.taskshow{
+  height: 600px;
+  .borders{
+    width: 100%;
+    color: black;
+    height: 44px;
+    line-height: 44px;
+    border: 1px solid #ccc;
+    border-radius: 27px;
+    outline: none;
+    appearance: none;
+    text-align: left;
+    padding: 0px 40px;
+  
+  }
+  .show{
+    display: flex;
+    justify-content:space-evenly;
+  }
+}
+

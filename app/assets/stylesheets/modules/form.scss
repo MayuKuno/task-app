@@ -108,7 +108,7 @@ div.form-item p.formLabel {
 
 
 
-input[type="submit"].login{
+input[type="submit"].login, .back{
     width: 112px;
     height: 37px;
     border-radius: 19px;
@@ -119,8 +119,9 @@ input[type="submit"].login{
     color: $pp-background;
     font-weight: bold;
     margin-top: 20px;
+    line-height: 37px;
 }
-input[type="submit"].login:hover{
+input[type="submit"].login:hover, .back:hover{
   background-color: $pp-background; 
   border:1px solid $headline; 
   color:$headline; 
