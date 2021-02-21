@@ -1,8 +1,9 @@
 class Admin::UsersController < ApplicationController
   before_action :require_admin, except: [:new, :create]
+  helper_method :sort_column, :sort_direction
 
   def index
-    @users = User.all
+    @users = User.order(sort_column + " " + sort_direction)
   end
 
   def show
@@ -19,11 +20,16 @@ class Admin::UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      log_in(@user)
-      # メールを送りたい時だけ
-      # UserNotifierMailer.send_signup_email(@user).deliver
+      if current_user.admin?
+        redirect_to admin_users_path
+      else
+        log_in(@user)
+          # メールを送りたい時だけ
+          # UserNotifierMailer.send_signup_email(@user).deliver
+        redirect_to root_path
+      end
 
-      redirect_to root_path
+
     else
       render :new
     end
@@ -49,6 +55,7 @@ class Admin::UsersController < ApplicationController
       redirect_to admin_users_url, alert:"最後の管理者のため削除できません"
     else
       @user.destroy
+
       redirect_to admin_users_url, notice:"ユーザー「#{@user.username}」を削除しました"
     end
   end
@@ -65,4 +72,14 @@ class Admin::UsersController < ApplicationController
   def require_admin
     redirect_to root_url unless current_user.admin?
   end
+
+
+  def sort_column
+    User.column_names.include?(params[:sort]) ? params[:sort] : "username"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
 end

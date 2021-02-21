@@ -32,3 +32,74 @@
   </div>
   </div>
 </div>
+
+
+  <div class="container">
+  <%= link_to '一覧', admin_users_path %>
+  <%= link_to '編集', edit_admin_user_path(@user) %>
+  <%= link_to '削除', [:admin, @user], method: :delete, data:{ confirm: "ユーザー「#{@user.username}」を削除します。よろしいですか？"} %>
+
+  <table>
+    <tbody>
+      <tr>
+       <th><%= User.human_attribute_name(:id) %></th>
+       <td><%= @user.id %></td>
+      </tr>
+      <tr>
+       <th><%= User.human_attribute_name(:username) %></th>
+       <td><%= @user.username %></td>
+      </tr>
+      <tr>
+       <th><%= User.human_attribute_name(:email) %></th>
+       <td><%= @user.email %></td>
+      </tr>
+      <tr>
+       <th><%= User.human_attribute_name(:admin) %></th>
+       <td><%= @user.admin? ? 'あり' : 'なし' %></td>
+      </tr>
+      <tr>
+       <th><%= User.human_attribute_name(:created_at) %></th>
+       <td><%= @user.created_at %></td>
+      </tr>
+      <tr>
+       <th><%= User.human_attribute_name(:updated_at) %></th>
+       <td><%= @user.updated_at %></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+     <table class="tasks">
+      <thead>
+        <tr>
+          <th>Label</th>
+          <th>Name of Task</th>
+          <th>Status</th>
+          <th>Deadline</th>
+          <th>Created_at</th>
+          <th>Manage</th>
+        </tr>
+      </thead>
+    <% @user.tasks.each do |task| %>
+      <tbody>
+        <tr>
+          <td>
+            <% task.labels.each do |label| %>
+              <%= label.color %>
+            <% end %>
+          </td>
+          <td><%= task.taskname %></td>
+          <td><%= task.status %></td>
+          <td><%= task.deadline %></td>
+          <td><%= task.created_at %></td>
+          <td>
+            <%= link_to 'Edit', "/tasks/#{task.id}/edit", method: :get %>
+            <%= link_to 'Detail', task_path(task.id) %>
+            <%= link_to 'Delete', task_path(task.id), method: :delete, id: :delete %>
+          </td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+
+  </div>

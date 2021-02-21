@@ -1,30 +1,30 @@
-// window.addEventListener('load', function() { //①
-//   const deletebtns = document.querySelectorAll('.delete');
-  
-//   for (var i = deletebtns.length - 1; i >= 0; i--) {
-//     deletebtns[i].addEventListener("click", function(){
-//       console.log(this);
-//        var td = this.parentNode;
-//        var tr = td.parentNode;
-//        tr.style.display = 'none';
-//     });
-//   }
+document.addEventListener("DOMContentLoaded", function(){
+    let modal_open = document.getElementsByClassName("modal-open-btn");
+    elements = Array.from(modal_open);
+
+    elements.forEach(x => 
+      x.onclick = function () {
+        $('#overlay').fadeIn();
+        document.getElementById('modal-close-btn').onclick = function () {
+          $('#overlay').fadeOut();
+
+        };
+        document.getElementById("delete-comformation-btn").onclick = function () {
+          let delete_collection = document.getElementsByClassName("item-delete-btn") //.click();
+          delete_array = Array.from( delete_collection ) ;
+            delete_array.forEach( function( item ) {
+            item.click();
 
 
-  // deletebtns.forEach(function (button){ //②
-  //   button.addEventListener('click', function(){ //②
-  //     button.addEventListener('ajax.success', function(){
-  //       console.log(a);
-  //       var td = a.parentNode;
-  //       var tr = td.parentNode;
-  //       tr.style.display = 'none';
-  //     })
-  //   });
+          });
+
+        };
+      }
+      );
+
     
-  // })
-// })
-
+    
+  },
+  false
   
-
-
-
+);
