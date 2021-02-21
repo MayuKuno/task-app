@@ -69,7 +69,7 @@ gem 'jquery-ui-rails'
 gem 'ranked-model'
 gem 'chart-js-rails', '~> 0.1.4' 
 gem 'pg', group: :production
-
+gem 'aws-sdk-s3'
 
 group :test do
   gem 'capybara'
