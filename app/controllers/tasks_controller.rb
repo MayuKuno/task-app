@@ -2,6 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :show]
   before_action :set_group, only: [:new, :create, :edit, :update]
   before_action :login_required, except: [:index, :search]
+
   helper_method :sort_column, :sort_direction
 
   def index
@@ -66,10 +67,17 @@ class TasksController < ApplicationController
   end
 
   def edit
+        
+    redirect_to root_path unless @task.user == current_user || current_user.groups.include?(@group)
+
+
+
   end
 
   def update
     @task = Task.find(params[:id])
+
+
     if @task.update(task_params)
       flash[:notice] = "The task has been updated!"
       if @group
@@ -130,6 +138,7 @@ class TasksController < ApplicationController
 
   def set_task
     @task = Task.find(params[:id]) 
+
   end
 
   def set_group
@@ -141,6 +150,7 @@ class TasksController < ApplicationController
   def login_required
     redirect_to login_url unless current_user
   end
+
 
   def sort_column
     Task.column_names.include?(params[:sort]) ? params[:sort] : "taskname"
