@@ -1,13 +1,33 @@
+
 <div class="container">
-<div class="form">
+<div class="box">
+
+<div class="title">
+  Notifications
+</div>
+<div class="contents common">
   <% if @notifications.where("(action = ?) OR (action = ?)", 1, 2).exists?  %>
-    <p>期限が近づいてるタスクや期限の過ぎたタスクはあります </p>
-    <% @notifications.where("(action = ?) OR (action = ?)", 1, 2).each do |notification| %>
-      <%= notification.task.taskname %>
+    <p>期限が近づいてるタスクや期限の過ぎたタスクがあります </p>
+    <ul class="notifications">
+    <span class="warning">期限間近</span>
+    
+    <% @notifications.where(action: 1).each do |notification| %>
+      <li class="notification"><%= notification.task.taskname %></li>
     <% end %>
+    </ul>
+
+    <ul class="notifications">
+    <span class="expired">期限切れ</span>
+
+    
+    <% @notifications.where(action: 2).each do |notification| %>
+      <li class="notification"><%= notification.task.taskname %></li>
+    <% end %>
+    </ul>
   <% else %>
     <p>期限が近づいてるタスクや期限の過ぎたタスクはありません </p>
   <% end %>
+</div>
 </div>
 </div>
 

@@ -11,7 +11,9 @@ module SessionsHelper
     # 始めは当然@current_userはnilなので、セッション情報に含まれるuser_idに紐づくUserオブジェクトを抽出し、変数に代入するという処理が行われる
   end
  
-
+  def current_user?(user)
+    user == current_user
+  end
 
 
   def logged_in?

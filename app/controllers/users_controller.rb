@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
   helper_method :sort_column, :sort_direction
+  before_action :login_required, except: [:new, :create]
+  before_action :correct_user,   only: [:edit, :update, :show]
+
+
 
   def index
     return nil if params[:keyword] == ""
@@ -33,11 +37,11 @@ class UsersController < ApplicationController
 
 
   def edit
-    @user = User.find(params[:id])
+    
+
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to user_path(@user), notice:"ユーザー「#{@user.username}」を更新しました"
     else
@@ -48,7 +52,7 @@ class UsersController < ApplicationController
 
 
   def show
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
     @tasks = Task.where(group_id: nil).where(user_id: @user.id).order(sort_column + " " + sort_direction)
   end
 
@@ -57,9 +61,24 @@ class UsersController < ApplicationController
 
   private
 
+  
   def user_params
     params.require(:user).permit(:username, :email, :image, :admin, :password, :password_confirmation)
   end
+
+  def login_required
+    redirect_to login_url unless current_user
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    @group = Group.find(params[:id])
+    redirect_to(root_path) unless current_user?(@user) || current_user.admin?
+    if @group
+      redirect_to root_path unless current_user.groups.include?(@group)
+    end
+  end
+ 
 
   def sort_column
     Task.column_names.include?(params[:sort]) ? params[:sort] : "taskname"

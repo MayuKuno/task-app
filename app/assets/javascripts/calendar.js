@@ -94,11 +94,12 @@ document.addEventListener("DOMContentLoaded", function(){
    
           if(year == task.deadline.slice(0,4) && mon == task.deadline.substr(5,2) && date.date == task.deadline.slice(-2) && date.isdisabled == false){
             if (gon.calender){ //全体
-              if (task.group_id == null){
+              if (task.group_id == null && task.user_id == gon.current_user){
                 const span = document.createElement('span');
                 span.textContent = 'Mytask: ' + task.taskname;
                 td.appendChild(span);
               }else{
+
                 gon.groups.forEach(group =>{
                   if (task.group_id == group.id){
                     const span = document.createElement('span');

@@ -13,7 +13,7 @@ namespace :tasks do
       if task.notification.nil? && today + 1 == task.deadline.to_date #もし新規で期限間近があった場合
         Notification.create(task_id: task.id, user_id: user.id, action: "warning")
       elsif task.notification.present? && today + 1 == task.deadline.to_date #もし既存タスクで新たに期限間近になった場合
-        task.notification.update(action: "warning")
+        task.notification.update(action: "warning", checked: 0)
       end
 
 
@@ -21,15 +21,17 @@ namespace :tasks do
       if task.notification.nil? && today > task.deadline.to_date #もし新規で期限切れがあった場合
         Notification.create(task_id: task.id, user_id: user.id, action: "expired")
       elsif task.notification.present? && today > task.deadline.to_date #もし既存タスクで新たに期限切れになった場合
-        task.notification.update(action: "expired")
+        task.notification.update(action: "expired", checked: 0)
       end
 
-      if task.notification.present? && today < task.deadline.to_date
-        task.notification.delete
-      end
+      # if task.notification.present? && today < task.deadline.to_date
+      #   task.notification.delete
+      # end
 
       n -= 1
       puts "残り#{n}/#{tasks.count}"
     end
   end
 end
+
+

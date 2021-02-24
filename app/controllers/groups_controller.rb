@@ -1,5 +1,8 @@
 class GroupsController < ApplicationController
   helper_method :sort_column, :sort_direction
+  before_action :login_required
+  before_action :correct_group,   only: [:edit, :update, :show]
+
 
   def index
     @groups = Group.all
@@ -109,6 +112,18 @@ class GroupsController < ApplicationController
 
   
   private
+  
+  def login_required
+    redirect_to login_url unless current_user
+  end
+
+  def correct_group
+    @group = Group.find(params[:id])
+    redirect_to root_path unless current_user.groups.include?(@group)
+
+  end
+
+
   def group_params
     params.require(:group).permit(:name, user_ids: [])
   end
