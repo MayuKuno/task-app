@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   helper_method :sort_column, :sort_direction
+  before_action :login_required
 
   def index
     return nil if params[:keyword] == ""
@@ -57,8 +58,13 @@ class UsersController < ApplicationController
 
   private
 
+  
   def user_params
     params.require(:user).permit(:username, :email, :image, :admin, :password, :password_confirmation)
+  end
+
+  def login_required
+    redirect_to login_url unless current_user
   end
 
   def sort_column

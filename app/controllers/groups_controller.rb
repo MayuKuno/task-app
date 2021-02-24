@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   helper_method :sort_column, :sort_direction
+  before_action :login_required
 
   def index
     @groups = Group.all
@@ -109,6 +110,10 @@ class GroupsController < ApplicationController
 
   
   private
+  def login_required
+    redirect_to login_url unless current_user
+  end
+  
   def group_params
     params.require(:group).permit(:name, user_ids: [])
   end

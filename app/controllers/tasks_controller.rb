@@ -115,7 +115,9 @@ class TasksController < ApplicationController
 
   def calendar
     @tasks = Task.includes(:user)
-    gon.groups = Group.all
+    gon.current_user = current_user.id 
+
+    gon.groups = current_user.groups
     gon.tasks = Task.all
     gon.calender = "calender"
 

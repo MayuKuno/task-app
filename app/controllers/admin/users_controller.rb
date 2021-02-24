@@ -1,5 +1,6 @@
 class Admin::UsersController < ApplicationController
-  before_action :require_admin, except: [:new, :create]
+  before_action :login_required
+  before_action :require_admin
   helper_method :sort_column, :sort_direction
 
   def index
@@ -64,6 +65,10 @@ class Admin::UsersController < ApplicationController
   # def user_params
   #   params.require(:user).permit(:username, :email, :image, :admin, :password, :password_confirmation)
   # end
+
+  def login_required
+    redirect_to login_url unless current_user
+  end
 
   def require_admin
     redirect_to root_url unless current_user.admin?
