@@ -1,0 +1,18 @@
+.notifications{
+  list-style: none;
+  text-align: left;
+  width: 60%;
+  margin: 0 auto;
+  .warning{
+    background: linear-gradient(transparent 70%, yellow 70%);
+  }
+  .expired{
+    background: linear-gradient(transparent 70%, #ff6e6c 70%);
+  }
+  .notification{
+    height: 30px;
+    border-bottom: 1px dashed $gray;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+}

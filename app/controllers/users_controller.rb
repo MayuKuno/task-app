@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   helper_method :sort_column, :sort_direction
-  before_action :login_required
+  before_action :login_required, except: [:new, :create]
   before_action :correct_user,   only: [:edit, :update, :show]
 
 
