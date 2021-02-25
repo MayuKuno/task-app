@@ -54,7 +54,16 @@
             <% end %>
           </td>
           <td class="taskname"><%= task.taskname %></td>
-          <td class="status"><%= task.status %></td>
+
+          <td class="status">
+            <span id="task<%= task.id %>" class="complete"><%= task.status %></span>
+            <%= link_to done_path(task), method: :post, remote: true do%>
+              <i class="far fa-check-circle"></i>
+            <% end %>
+          </td>
+
+
+
           <td class="priority"><%= task.priority %></td>
           <td class="deadline"><%= task.deadline %></td>
           <td class="manages">

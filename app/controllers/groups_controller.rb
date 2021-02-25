@@ -110,6 +110,11 @@ class GroupsController < ApplicationController
     end
   end
 
+  # def done
+  #   @task = Task.find(params[:id]) 
+  #   @task.update(status: 2)
+  #   @tasks = Task.where(group_id: @group).order(sort_column + " " + sort_direction).page(params[:page]).per(10)
+  # end
   
   private
   
