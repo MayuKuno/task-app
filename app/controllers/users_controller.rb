@@ -72,9 +72,10 @@ class UsersController < ApplicationController
 
   def correct_user
     @user = User.find(params[:id])
-    @group = Group.find(params[:id])
     redirect_to(root_path) unless current_user?(@user) || current_user.admin?
     if @group
+      @group = Group.find(params[:id])
+
       redirect_to root_path unless current_user.groups.include?(@group)
     end
   end
