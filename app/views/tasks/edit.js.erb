@@ -1,0 +1,43 @@
+$('#showlabel').html("<%= escape_javascript(render 'layouts/labelmodal', {group: @group, task: @task}) %>");
+
+
+  
+
+const colors = document.querySelectorAll('.modal-body > label');
+colors.forEach(color =>{
+  const content = color.textContent;
+  if (content.includes('Blue')){
+    const div = document.createElement('div');
+    color.textContent = " ";
+    div.classList.add('bluecolor');
+    color.appendChild(div);
+
+  }else if(content.includes('Red')){
+    const div = document.createElement('div');
+    color.textContent = " ";
+    div.classList.add('redcolor');
+    color.appendChild(div);
+  }else if(content.includes('Yellow')){
+    const div = document.createElement('div');
+    color.textContent = " ";
+    div.classList.add('yellowcolor');
+    color.appendChild(div);
+  
+  }else if(content.includes('Orange')){
+    const div = document.createElement('div');
+    color.textContent = " ";
+    div.classList.add('orangecolor');
+    color.appendChild(div);
+  
+  }else if(content.includes('Green')){
+    const div = document.createElement('div');
+    color.textContent = " ";
+    div.classList.add('greencolor');
+    color.appendChild(div);
+  }
+})
+
+
+document.getElementById('close').addEventListener('click', () => {
+  $('#background').hide();
+});

@@ -1,3 +1,4 @@
+
 <div class="container top">
     <% if logged_in? %>
     <div class="container__task common">
@@ -16,9 +17,9 @@
     </div>
 
  
-        <%= link_to tasks_path(format: :csv), class:"icon export" do%>
-        <i i class="fas fa-file-download "></i>
-        <% end %>
+    <%= link_to tasks_path(format: :csv), class:"icon export" do%>
+    <i i class="fas fa-file-download "></i>
+    <% end %>
  
 
 
@@ -48,12 +49,26 @@
     <tbody>
     <% @tasks.each do |task| %>
         <%= content_tag "tr", class: "item", data: { model_name: task.class.name.underscore, update_url: task_sort_path(task)} do %>
+
+          
           <td class="labels">
-            <% task.labels.each do |label| %>
-              <span><%= label.color %></span>
-            <% end %>
+            <%= link_to edit_task_path(task), :method => :get, :remote => true do %>
+              <div class="label">
+                <% task.labels.each do |label| %>
+                  <span>
+                  <%= label.color %>
+                  </span>
+                <% end %>
+            </div>
+            <% end %>   
+            <div id="showlabel"></div>
+
           </td>
-          <td class="taskname"><%= task.taskname %></td>
+
+
+          <td class="taskname">
+          <%= task.taskname %>
+          </td>
 
           <td class="status">
             <span id="task<%= task.id %>" class="complete"><%= task.status %></span>
@@ -90,7 +105,7 @@
   </div>
 
 
-    <%= render 'layouts/calendar'%>
+  <%= render 'layouts/calendar'%>
 
 
 

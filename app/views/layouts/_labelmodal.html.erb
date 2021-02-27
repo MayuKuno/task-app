@@ -1,0 +1,20 @@
+<div id="background">
+  <div class="labelmodal">
+    <%= form_with(model: @task, remote: true) do |f| %>
+      <div class="modal-header">
+        <h4 class="modal-title">Editing Label</h4>
+      </div>
+      <div class="modal-body">
+          <%= f.collection_check_boxes :label_ids, Label.all, :id, :color %>
+      </div>
+        <div class="modal-footer">
+          <button id="close" type="button" class="cancel" data-dismiss="modal">Cancel</button>
+          <%= f.submit "Save", :class => "edit" %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>
+
+

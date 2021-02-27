@@ -14,6 +14,7 @@ $(function() {
 		$(this).parent().children('p.formLabel').removeClass('formTop');
 		}
 	});
+
 	$('p.formLabel').click(function(){
 		 $(this).parent().children('.form-style').focus();
 	});

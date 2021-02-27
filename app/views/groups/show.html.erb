@@ -60,9 +60,17 @@
     <% @tasks.each do |task| %>
         <%= content_tag "tr", class: "item", data: { model_name: task.class.name.underscore, update_url: task_sort_path(task)} do %>
           <td class="labels">
-            <% task.labels.each do |label| %>
-              <span><%= label.color %></span>
-            <% end %>
+            <%= link_to edit_group_task_path(@group, task), :method => :get, :remote => true do %>
+              <div class="label">
+                <% task.labels.each do |label| %>
+                  <span>
+                  <%= label.color %>
+                  </span>
+                <% end %>
+            </div>
+            <% end %>   
+            <div id="showlabel"></div>
+
           </td>
           <td class="taskname"><%= task.taskname %></td>
           <td class="status">

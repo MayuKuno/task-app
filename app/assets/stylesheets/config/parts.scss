@@ -35,6 +35,40 @@ a{
   text-decoration: none;
 }
 
+
+.cancel{
+  height: 40px;
+  width: 90px;
+  border: 2px solid $gray;
+  text-align: center;
+  border-radius:40px;
+  background: #fff;
+  color:$gray;
+  letter-spacing:1px;
+  text-shadow:0;
+  font-size: 15px;
+}
+.cancel:hover{
+  background-color: $gray;
+  color: #fff;
+}
+.edit{
+  height: 40px;
+  width: 90px;
+  border: 2px solid $purple;
+  text-align: center;
+  border-radius:40px;
+  background: #fff;
+  color:$purple;
+  letter-spacing:1px;
+  text-shadow:0;
+  padding: 5px 10px;
+  font-size: 15px;
+}
+.edit:hover{
+  background-color: $purple;
+  color: #fff;
+}
 //delete
 
 
@@ -47,7 +81,6 @@ a{
   background: rgba(0,0,0,0.7);
   display: none;
   z-index: 3;
-
 }
 
 
@@ -131,3 +164,64 @@ a{
 //   padding: 0;
 //   border: 0;
 // }
+
+
+
+#background {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.7);
+  // display: none;
+  z-index: 1000;
+}
+.labelmodal{
+  width: 500px;
+  height: 400px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 4px;
+  padding: 20px;
+  #close{
+    cursor: pointer;
+  }
+  form{
+    width: 100%;
+    .modal-header{
+      height: 25%;
+      font-size: 30px;
+    }
+    .modal-body{
+      margin: 0 auto;
+      height: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      input{
+        margin-left: 5%;
+        margin-right: 2%;
+      }
+      label{
+        div{
+          width: 30px;
+          height: 30px; 
+        }
+
+      }
+
+    }
+    .modal-footer{
+      height: 25%;
+
+      }
+  }
+}
+
