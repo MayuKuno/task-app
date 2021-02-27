@@ -81,7 +81,7 @@ class TasksController < ApplicationController
         if @task.group_id #groupの場合
           format.js {render ajax_redirect_to(group_path(@task.group_id)) }
           format.html {redirect_to group_path(@task.group_id), notice: "The task has been updated!"}
-        elsif @task.user_id == current_user.id #mypageの場合
+        elsif request.referer&.include?("user")  #mypageの場合
           format.js {render ajax_redirect_to(user_path(@task.user_id)) }
           format.html {redirect_to user_path(@task.user_id), notice: "The task has been updated!"}
         else#toppageの場合

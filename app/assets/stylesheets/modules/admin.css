@@ -1,0 +1,17 @@
+.admins {
+  position: relative;
+}
+
+.admins .admin {
+  font-size: 30px;
+}
+
+.admins h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.admins table {
+  margin: 0 auto;
+}
+/*# sourceMappingURL=admin.css.map */
