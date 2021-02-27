@@ -4,6 +4,7 @@ class TasksController < ApplicationController
   before_action :login_required, except: [:index, :search]
 
   helper_method :sort_column, :sort_direction
+  include AjaxHelper 
 
   def index
     if logged_in?
@@ -52,8 +53,9 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    if @task.save
 
+
+    if @task.save
       flash[:notice] = "The task has been saved!"
       if @group
         redirect_to group_path(@group)
@@ -70,26 +72,42 @@ class TasksController < ApplicationController
         
     redirect_to root_path unless @task.user == current_user || current_user.groups.include?(@group)
 
-
-
   end
 
   def update
     @task = Task.find(params[:id])
-
-
-    if @task.update(task_params)
-      flash[:notice] = "The task has been updated!"
-      if @group
-        redirect_to group_path(@group)
-      else
-        redirect_to tasks_path
+    respond_to do |format|
+      if @task.update(task_params)
+        if @task.group_id #groupの場合
+          format.js {render ajax_redirect_to(group_path(@task.group_id)) }
+          format.html {redirect_to group_path(@task.group_id), notice: "The task has been updated!"}
+        elsif @task.user_id == current_user.id #mypageの場合
+          format.js {render ajax_redirect_to(user_path(@task.user_id)) }
+          format.html {redirect_to user_path(@task.user_id), notice: "The task has been updated!"}
+        else#toppageの場合
+          format.js {render ajax_redirect_to(tasks_path) }
+          format.html {redirect_to tasks_path,  notice: "The task has been updated!"}
+        end
+      else 
+        format.js {}
+        format.html {render :edit, alert: "Please try it again"}
       end
-
-    else
-      flash[:alert] = "Please try it again"
-      render :edit
     end
+
+     
+      # if @task.update(task_params)
+      #   if @group #group taskの場合
+      #     format.js {render ajax_redirect_to(group_path(@group)) }
+      #     format.html {redirect_to group_path(@group), notice: "The task has been updated!"}
+      #   else #task indexの場合
+      #     # format.js {render ajax_redirect_to(tasks_path) }
+      #     format.html {redirect_to tasks_path,  notice: "The task has been updated!"}
+      #   end
+      # else
+      #   # format.js {}
+      #   format.html {render :edit, alert: "Please try it again" }
+      # end
+    # end
   end
 
   def destroy
@@ -131,13 +149,20 @@ class TasksController < ApplicationController
 
   end
 
+  def done
+    @task = Task.find(params[:id]) 
+    @task.update(status: 2)
+  end
+
+
   private
   def task_params
     params.require(:task).permit(:taskname, :description, :priority, :status,:image ,:deadline,:group_id, :row_order_position, label_ids: []).merge(user_id: current_user.id)
   end
 
   def set_task
-    @task = Task.find(params[:id]) 
+    # @task = Task.find(params[:id]) 
+    @task = Task.find_by(id: params[:id])
 
   end
 

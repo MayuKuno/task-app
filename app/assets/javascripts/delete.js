@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", function(){
         $('#overlay').fadeIn();
         document.getElementById('modal-close-btn').onclick = function () {
           $('#overlay').fadeOut();
-
         };
+        
         document.getElementById("delete-comformation-btn").onclick = function () {
           let delete_collection = document.getElementsByClassName("item-delete-btn") //.click();
           delete_array = Array.from( delete_collection ) ;

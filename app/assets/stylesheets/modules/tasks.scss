@@ -189,7 +189,7 @@
 
 
 .tasks{
-  width: 75%;
+  width: 80%;
   margin: 40px auto;
   padding: 0;
   border-collapse: collapse;
@@ -242,8 +242,12 @@
   }
 }
 .labels{
+  .label{
+    width: 100%;
+    height: 20px;
+  }
   span{
-    display: inline-block;
+   display: inline-block;
   }
   width: 77px;
 }
@@ -252,6 +256,10 @@
 }
 .status, .creator{
   width: 90px;
+  i{
+    font-size: 15px;
+    color: $gray;
+  }
 }
 .deadline{
   width: 92px;
