@@ -1,7 +1,5 @@
 <div class="container">
   <div class="box">
-
-
     <div class="title">
       <% if @group %>
       <div class="groupname">
@@ -10,6 +8,7 @@
       <% end %>
       Create task 
     </div>
+    
     <%= render partial: 'form', locals: { task: @task } %>
   
   </div>
