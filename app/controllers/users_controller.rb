@@ -56,7 +56,16 @@ class UsersController < ApplicationController
     @tasks = Task.where(group_id: nil).where(user_id: @user.id).order(sort_column + " " + sort_direction)
   end
 
-
+  def destroy
+    @user = User.find(params[:id])
+    @admins = User.where(admin: 1).count
+    if @user.admin? && @admins <= 1
+      redirect_to admin_users_url, alert:"最後の管理者のため削除できません"
+    else
+      @user.destroy
+      redirect_to admin_users_url, notice:"ユーザー「#{@user.username}」を削除しました"
+    end
+  end
 
 
   private

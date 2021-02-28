@@ -1,13 +1,7 @@
-<div class="box">
+
 <%= form_with model: @user, local: true do |f| %>
     <%= render 'layouts/error_messages', model: f.object%>
-   <div class="title">
-    <% if logged_in? %>
-     Edit Account
-    <% else %>
-     Sign up
-    <% end %>
-   </div>
+
   
 
   <div class="contents">
@@ -65,4 +59,3 @@
     </div>
   </div>
 <% end %>
-</div>
