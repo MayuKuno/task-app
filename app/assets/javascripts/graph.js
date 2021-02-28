@@ -88,8 +88,7 @@ if (total == 0){
 }
 
 
-
-if(gon.statu.length === 0){
+if(gon.statu.length === 0 || gon.statu[0] == null){
   var inside2 = document.getElementById("inside2");
   inside2.textContent = "No Data Found";
   inside2.style.zIndex = 1000;

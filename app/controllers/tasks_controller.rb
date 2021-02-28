@@ -94,20 +94,7 @@ class TasksController < ApplicationController
       end
     end
 
-     
-      # if @task.update(task_params)
-      #   if @group #group taskの場合
-      #     format.js {render ajax_redirect_to(group_path(@group)) }
-      #     format.html {redirect_to group_path(@group), notice: "The task has been updated!"}
-      #   else #task indexの場合
-      #     # format.js {render ajax_redirect_to(tasks_path) }
-      #     format.html {redirect_to tasks_path,  notice: "The task has been updated!"}
-      #   end
-      # else
-      #   # format.js {}
-      #   format.html {render :edit, alert: "Please try it again" }
-      # end
-    # end
+    
   end
 
   def destroy
