@@ -5,8 +5,9 @@
         <div><%= link_to '編集', edit_user_path(@user), class:'btn' %></div>
         <div>
           <a class="modal-open-btn btn accent delete">削除</a> 
-          <%= link_to '', [:admin, @user], method: :delete, class: 'item-delete-btn', id: 'delete_button' %>
+          <%= link_to '', user_path(@user), method: :delete, class: 'item-delete-btn'%>
         </div>
+
       </div>
     <div class="left">
       <div class="image">

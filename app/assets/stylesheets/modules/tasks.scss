@@ -4,6 +4,7 @@
   min-height: 100vh;
   position: relative;
   padding-top: 120px;
+  padding-bottom: 50px;
   // .form{
   //   padding: 20px;
   //   background-color: $card-background;
@@ -154,7 +155,7 @@
   }
 }
 .top{
-  padding-bottom: 50px;
+  // padding-bottom: 50px;
 
 }
 
@@ -338,6 +339,7 @@
     padding: 70px;
   }
   .top{
+
     background-color: $white-background;
     .message{
       padding: 80px 0;
@@ -398,7 +400,7 @@
       position: relative;
       .video{
         width: 550px;
-        height: 400px;
+        height: 300px;
         border: 1px solid $headline;
         outline: none;
 
@@ -440,8 +442,12 @@
       transform: none;
     }
     & > .hero__title{
+      font-weight: bold;
       opacity: 1;
       transform: translate(-50%, -50%);
+      background: linear-gradient(transparent 70%, #ff6e6c 70%);
+
+      
     }
    }
 }
