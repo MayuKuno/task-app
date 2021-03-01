@@ -1,53 +1,33 @@
 require 'rails_helper'
 
-RSpec.describe 'Task', type: :system do
-  let(:user_a){ FactoryBot.create(:user, username: 'ユーザーA', email: 'a@example.com', password: 'passworda') }
-  let(:user_b){ FactoryBot.create(:user, username: 'ユーザーB', email: 'b@example.com', password: 'passwordb') }
-  let!(:task_a){ FactoryBot.create(:task, taskname: 'rubyの勉強をする', user: user_a) }
-
-  let(:user_c){ FactoryBot.create(:user, username: 'ユーザーC', email: 'c@example.com', password: 'passwordc') }
-  let!(:task_b){ FactoryBot.create(:task, id: 1, taskname: 'a', created_at: Time.current + 1.days, user: user_c) }
-  let!(:task_c){ FactoryBot.create(:task, id: 2, taskname: 'b', created_at: Time.current + 2.days, user: user_c) }
-  let!(:task_d){ FactoryBot.create(:task, id: 3, taskname: 'c', created_at: Time.current + 3.days, user: user_c) }
-
-
-  before do
-    FactoryBot.create(:task, user: user_a)
-    visit login_path
-    fill_in 'session[email]', with: login_user.email
-    fill_in 'session[password]', with: login_user.password
-    click_button 'commit'
+RSpec.describe 'タスク管理機能', type: :system do
+  let(:user_a) { FactoryBot.create(:user, username:'ユーザーA', email: 'a@example.com') } #ユーザーAを作成
+  let(:user_b) { FactoryBot.create(:user, username:'ユーザーB', email: 'b@example.com') } #ユーザーBを作成
+  let!(:task_a){ FactoryBot.create(:task, taskname: '最初のタスク', user: user_a) }
+  
+  before do #テストデータの準備
+    visit login_path #ログイン画面にアクセスする
+    fill_in 'session[email]', with: login_user.email #メールアドレスを入力する
+    fill_in 'session[password]', with: login_user.password #パスワードを入力する
+    click_button 'commit' #「ログインする」ボタンをおす
   end
 
+
   shared_examples_for 'ユーザーAが作成したタスクが表示される' do
-    it { expect(page).to have_content 'rubyの勉強をする' }
+    it { expect(page).to have_content '最初のタスク' }
   end
 
   describe '一覧表示機能' do
-    context 'ユーザーAがログインしているとき' do
+    context 'ユーザーAがログインしている時' do
       let(:login_user) { user_a }
-
       it_behaves_like 'ユーザーAが作成したタスクが表示される'
     end
 
-    context 'ユーザーBがログインしているとき' do
+    context 'ユーザーBがログインしている時' do
       let(:login_user) { user_b }
-
-      it 'ユーザーBが作成したタスクが表示される' do
-        expect(page).to have_no_content 'rubyの勉強をする'
+      it 'ユーザーAが作成したタスクが表示されない' do
+        expect(page).to have_no_content '最初のタスク'#ユーザーAが作成したタスクの名称が画面上に表されていないことを確認
       end
-    end
-
-
-    context 'ユーザーCが時差でタスクを複数登録した時' do
-      let(:login_user) { user_c }
-
-      it "created_at降順で表示される" do
-        visit tasks_path
-        task = all('.tasks')
-        task_0 = task[0]
-        expect(task_0).to have_content "c"
-      end 
     end
 
 
@@ -63,12 +43,14 @@ RSpec.describe 'Task', type: :system do
       end
 
       it_behaves_like 'ユーザーAが作成したタスクが表示される'
+      
     end
   end
 
 
   describe '新規作成機能' do
     let(:login_user) { user_a }
+    let(:task_name) { '新規作成のテストを書く' }
 
     before do
       visit new_task_path
@@ -77,8 +59,6 @@ RSpec.describe 'Task', type: :system do
     end
 
     context '新規作成画面で名称を入力した時' do
-      let(:task_name) { '新規作成のテストを書く' }
-
       it '正常に登録される' do
         expect(page).to have_selector '.notice', text: 'The task has been saved!'
       end
@@ -88,9 +68,7 @@ RSpec.describe 'Task', type: :system do
       let(:task_name) { '' }
 
       it 'エラーとなる' do
-        within '.alert' do
-          expect(page).to have_content 'Please try it again'
-        end
+        expect(page).to have_selector '.alert', text: 'Please try it again'
       end
     end
   end
@@ -105,20 +83,17 @@ RSpec.describe 'Task', type: :system do
     end
 
     context '編集画面で名称を入力した時' do
-      let(:task_name) { '編集のテストを書く' }
-
-      it '正常に登録される' do
+      let(:task_name) { 'テストを編集する' }
+      it '正常に編集される' do
         expect(page).to have_selector '.notice', text: 'The task has been updated!'
       end
     end
 
-    context '新規作成画面で名称を入力しなかった時' do
+    context '編集画面で名称を入力しなかった時' do
       let(:task_name) { '' }
-
       it 'エラーとなる' do
-        within '.alert' do
-          expect(page).to have_content 'Please try it again'
-        end
+        expect(page).to have_selector '.alert', text: 'Please try it again'
+
       end
     end
   end
@@ -138,9 +113,6 @@ RSpec.describe 'Task', type: :system do
       end
     end
   end
-
-
-
 end
 
 
