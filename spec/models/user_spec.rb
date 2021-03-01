@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe '#create' do
+    
     it "nickname、email、passwordとpassword_confirmationが存在すれば登録できること" do
       user = build(:user)
       expect(user).to be_valid
@@ -32,10 +33,16 @@ RSpec.describe User, type: :model do
     end
 
     it "重複したemailが存在する場合登録できないこと" do
-      user = create(:user)
-      another_user = build(:user)
+      user = create(:user, email: 'testuser@example.com')
+      another_user = build(:user, email: 'testuser@example.com')
       another_user.valid?
       expect(another_user.errors[:email]).to include("はすでに存在します")
+    end
+
+
+    it "有効なemailアドレスでないと登録できないこと" do
+      user = build(:user, email: 'test')
+      expect(user).not_to be_valid
     end
 
   end
