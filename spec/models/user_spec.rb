@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe '#create' do
-    
+  describe 'Userモデルのテスト' do
     it "nickname、email、passwordとpassword_confirmationが存在すれば登録できること" do
       user = build(:user)
       expect(user).to be_valid

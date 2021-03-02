@@ -5,4 +5,9 @@ class Group < ApplicationRecord
 
   
   validates :name, presence: true, uniqueness: true
+  validates :users, 
+  length: { 
+      minimum: 2,
+      message: 'は2人以上を選択してください' 
+  }
 end
