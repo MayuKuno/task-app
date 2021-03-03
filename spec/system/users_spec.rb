@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.feature "ユーザー管理機能", type: :feature do
+RSpec.describe "ユーザー管理機能", type: :system do
   let(:user) { FactoryBot.create(:user, username:'ユーザーA', email: 'a@example.com') }
 
-  feature '新規登録機能' do
+  describe '新規登録機能' do
     before do 
       visit new_user_path
       fill_in "user[email]",	with: "test_user@example.com" 
@@ -27,7 +27,7 @@ RSpec.feature "ユーザー管理機能", type: :feature do
     end
   end
 
-  feature 'ログイン・ログアウト機能' do
+  describe 'ログイン・ログアウト機能' do
     before do 
       visit login_path
     end
@@ -52,7 +52,7 @@ RSpec.feature "ユーザー管理機能", type: :feature do
         fill_in "session[email]",	with: user.email
         fill_in "session[password]",	with: user.password
         click_button 'commit'
-
+        find(".mobile-menu__btn").click
         click_link 'ログアウト'
         expect(page).to have_current_path root_path
         expect(page).to have_selector '.notice', text: 'Logged out!'
@@ -62,7 +62,7 @@ RSpec.feature "ユーザー管理機能", type: :feature do
 
   end
 
-  feature '詳細表示機能' do
+  describe '詳細表示機能' do
     before do 
       FactoryBot.create(:user)
       visit login_path
@@ -71,7 +71,8 @@ RSpec.feature "ユーザー管理機能", type: :feature do
       fill_in "session[email]",	with: user.email
       fill_in "session[password]",	with: user.password
       click_button 'commit'
-      
+      find(".mobile-menu__btn").click
+
       click_link user.username
       
       expect(page).to have_current_path user_path(user)
