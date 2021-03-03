@@ -44,6 +44,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 4.11'
   gem 'faker'
   gem 'sqlite3'
+  gem 'rails-controller-testing'
 end
 
 group :development do

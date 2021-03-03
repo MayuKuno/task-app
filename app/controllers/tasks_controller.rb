@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :show]
   before_action :set_group, only: [:new, :create, :edit, :update]
-  before_action :login_required, except: [:index, :search]
+  # before_action :login_required, except: [:index, :search]
 
   helper_method :sort_column, :sort_direction
   include AjaxHelper 
@@ -90,7 +90,10 @@ class TasksController < ApplicationController
         end
       else 
         format.js {}
-        format.html {render :edit, alert: "Please try it again"}
+        format.html {
+          flash[:alert] = 'Please try it again'
+          render :edit
+        }
       end
     end
 

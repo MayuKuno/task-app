@@ -20,7 +20,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      redirect_to group_path(@group), notice: 'グループを作成しました'
+      redirect_to group_path(@group), notice: 'The group has been created!'
     else
       render :new
     end
@@ -35,7 +35,7 @@ class GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
     if @group.update(group_params)
-      redirect_to group_path(@group), notice: 'グループを更新しました'
+      redirect_to group_path(@group), notice: 'The group has been updated!'
     else
       render :edit
     end
@@ -81,7 +81,7 @@ class GroupsController < ApplicationController
   def destroy
     group = Group.find(params[:id])
     group.destroy
-    redirect_to groups_path, notice: 'グループを削除しました'
+    redirect_to groups_path, notice: 'The group has been deleted!'
   end
 
   def import

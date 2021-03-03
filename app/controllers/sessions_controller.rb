@@ -7,16 +7,16 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: session_params[:email])
     if @user&.authenticate(session_params[:password])
       log_in(@user)
-      redirect_to root_url, notice:'ログインしました。'
+      redirect_to root_url, notice:'Logged in!'
     else
-      flash[:alert] = 'メールアドレスまたはパスワードが正しくありません'
+      flash[:alert] = 'Wrong password or username'
       render :new
     end
   end
 
   def destroy
     reset_session
-    redirect_to root_url, notice:'ログアウトしました。'
+    redirect_to root_url, notice:'Logged out!'
   end
 
   private
