@@ -17,16 +17,15 @@
         margin-top: 50px;
         bottom: 0;
         font-size: 20px;
+        text-align: center;
       }
     }
   }
-
   .list{
     position:absolute;
     right: 5%; 
     top:20%;
     ul{
-      // display: flex;
       a{
         text-decoration: none;
         color:$white-background;
@@ -39,5 +38,4 @@
       }
     }
   }
-
 }

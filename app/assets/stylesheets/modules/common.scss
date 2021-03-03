@@ -88,7 +88,7 @@ body{
     img{
       display: inline;
       width: 60px;
-      height: 60px;
+      // height: 60px;
       object-fit: cover;
       border-radius: 50%;
     }
@@ -97,6 +97,7 @@ body{
     }
     .right{
       margin-left: 5px;
+      width: 80%;
     }
 
 

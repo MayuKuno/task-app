@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :show]
   before_action :set_group, only: [:new, :create, :edit, :update]
-  # before_action :login_required, except: [:index, :search]
+  before_action :login_required, except: [:index, :search]
 
   helper_method :sort_column, :sort_direction
   include AjaxHelper 
@@ -114,7 +114,9 @@ class TasksController < ApplicationController
 
   def import
     current_user.tasks.import(params[:file])
-    if params[:file].present?
+    if params[:file].present? && params[:file].content_type != "text/csv"
+      redirect_to tasks_path, alert:"csvファイルを選択してください"
+    elsif params[:file].present?
       redirect_to tasks_path, notice:"タスクをインポートしました"
     else
       redirect_to tasks_path, alert:"ファイルが選択されていません"
