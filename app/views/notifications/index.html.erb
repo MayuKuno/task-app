@@ -1,33 +1,25 @@
-
 <div class="container">
-<div class="box">
+  <div class="box">
+    <div class="title">
+      Notifications
+    </div>
+    <div class="contents common">
+        <ul class="notifications">
+          <span class="warning">Expiring soon</span>
+            <% if @warnings.empty? %><li class="notification">No Expiring task</li><% end %>
+            <% @warnings.each do |warning| %>
+               <li class="notification"><%= warning.taskname%></li>
+            <% end %>
+        </ul>
 
-<div class="title">
-  Notifications
-</div>
-<div class="contents common">
-  <% if @notifications.where("(action = ?) OR (action = ?)", 1, 2).exists?  %>
-    <p>期限が近づいてるタスクや期限の過ぎたタスクがあります </p>
-    <ul class="notifications">
-    <span class="warning">期限間近</span>
-    
-    <% @notifications.where(action: 1).each do |notification| %>
-      <li class="notification"><%= notification.task.taskname %></li>
-    <% end %>
-    </ul>
-
-    <ul class="notifications">
-    <span class="expired">期限切れ</span>
-
-    
-    <% @notifications.where(action: 2).each do |notification| %>
-      <li class="notification"><%= notification.task.taskname %></li>
-    <% end %>
-    </ul>
-  <% else %>
-    <p>期限が近づいてるタスクや期限の過ぎたタスクはありません </p>
-  <% end %>
-</div>
-</div>
+        <ul class="notifications">
+          <span class="expired">Expired</span> 
+              <% if @expireds.empty? %><li class="notification">No Expired task</li><% end %>
+              <% @expireds.each do |expired| %>
+                <li class="notification"> <%= expired.taskname%></li>
+              <% end %>
+        </ul>
+    </div>
+  </div>
 </div>
 

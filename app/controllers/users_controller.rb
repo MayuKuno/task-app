@@ -52,7 +52,6 @@ class UsersController < ApplicationController
 
 
   def show
-    # @user = User.find(params[:id])
     @tasks = Task.where(group_id: nil).where(user_id: @user.id).order(sort_column + " " + sort_direction)
   end
 
@@ -80,7 +79,9 @@ class UsersController < ApplicationController
   end
 
   def correct_user
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    @user = User.find_by(username: params[:username])
+
     redirect_to(root_path) unless current_user?(@user) || current_user.admin?
     if @group
       @group = Group.find(params[:id])

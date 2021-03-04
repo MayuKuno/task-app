@@ -1,5 +1,7 @@
 class Task < ApplicationRecord
   include RankedModel
+  include IdGenerator
+
   ranks :row_order
 
   validates :taskname,:user_id, presence: true
@@ -51,9 +53,11 @@ class Task < ApplicationRecord
 
   private
   def avatar_type
-    if !image.blob.content_type.in?(%('image/jpeg image/png'))
-      image.purge
-      errors.add(:image, 'はjpegまたはpng形式でアップロードしてください')
+    if image.attached?
+      if !image.blob.content_type.in?(%('image/jpeg image/png'))
+        image.purge
+        errors.add(:image, 'はjpegまたはpng形式でアップロードしてください')
+      end
     end
   end
 
