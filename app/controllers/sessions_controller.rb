@@ -14,6 +14,14 @@ class SessionsController < ApplicationController
     end
   end
 
+  def new_guest
+    user = User.guest
+    log_in(user)
+    redirect_to root_path, notice: 'Logged in as guest'
+  end
+
+
+
   def destroy
     reset_session
     redirect_to root_url, notice:'Logged out!'

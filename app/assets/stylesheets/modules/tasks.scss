@@ -336,8 +336,20 @@
       }
      .topbtn:first-child{
        margin-right: 60px;
-     }
+     }     
     }
+    
+    .guest{
+      color: white;
+      background-color: $highlight;
+      padding: 7px 13px;
+      border-radius: 3px;
+      font-size: 15px;
+    }
+    .guest:hover {
+      opacity: .8;
+    }
+      
   }
   .middle{
     background-color: $pp-background;
