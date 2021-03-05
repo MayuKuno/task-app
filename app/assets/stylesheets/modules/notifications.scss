@@ -5,14 +5,21 @@
   margin: 0 auto;
   .warning{
     background: linear-gradient(transparent 70%, yellow 70%);
+    font-weight: bold;
   }
   .expired{
     background: linear-gradient(transparent 70%, #ff6e6c 70%);
+    font-weight: bold;
+
   }
   .notification{
-    height: 30px;
+    height: 50px;
+    line-height: 50px;
     border-bottom: 1px dashed $gray;
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
     text-align: center;
+  }
+  .latest{
+    background-color:$card-background ;
   }
 }

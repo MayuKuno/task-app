@@ -7,9 +7,9 @@ class Admin::UsersController < ApplicationController
     @users = User.order(sort_column + " " + sort_direction)
   end
 
-  def show
-    @user = User.find(params[:id])
-  end
+  # def show
+  #   @user = User.find(params[:id])
+  # end
 
 
   # def new

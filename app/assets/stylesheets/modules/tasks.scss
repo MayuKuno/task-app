@@ -4,6 +4,7 @@
   min-height: 100vh;
   position: relative;
   padding-top: 120px;
+  padding-bottom: 50px;
 
   .common{
     width: 80%;
@@ -116,10 +117,7 @@
 
   }
 }
-.top{
-  // padding-bottom: 50px;
 
-}
 
 
 
@@ -156,8 +154,8 @@
   margin: 40px auto;
   padding: 0;
   border-collapse: collapse;
+
   th,td{
-    // padding: 10px;
     border-bottom: solid 1px $gray;
     height: 50px;
     text-align: center;
@@ -296,6 +294,8 @@
 //以下ログイン前トップ画面
 .before{
   text-align: center;
+  padding-top: 120px;
+
   section{
     height: 700px;
     padding: 70px;
@@ -319,7 +319,7 @@
       display: flex;
       justify-content: center;
       .topbtn{
-        color:$card-background;
+        color:$white-background;
         line-height: 60px;
         text-decoration: none;
         font-size: 20px;
@@ -336,8 +336,20 @@
       }
      .topbtn:first-child{
        margin-right: 60px;
-     }
+     }     
     }
+    
+    .guest{
+      color: white;
+      background-color: $highlight;
+      padding: 7px 13px;
+      border-radius: 3px;
+      font-size: 15px;
+    }
+    .guest:hover {
+      opacity: .8;
+    }
+      
   }
   .middle{
     background-color: $pp-background;

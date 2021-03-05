@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   helper_method :sort_column, :sort_direction
   before_action :login_required, except: [:new, :create]
   before_action :correct_user,   only: [:edit, :update, :show]
+  before_action :check_guest, only: [:update, :destroy]
 
 
 
@@ -52,18 +53,24 @@ class UsersController < ApplicationController
 
 
   def show
-    # @user = User.find(params[:id])
     @tasks = Task.where(group_id: nil).where(user_id: @user.id).order(sort_column + " " + sort_direction)
   end
 
   def destroy
-    @user = User.find(params[:id])
+    @user = User.find_by(username: params[:username])
     @admins = User.where(admin: 1).count
     if @user.admin? && @admins <= 1
       redirect_to admin_users_url, alert:"最後の管理者のため削除できません"
     else
       @user.destroy
       redirect_to admin_users_url, notice:"ユーザー「#{@user.username}」を削除しました"
+    end
+  end
+
+  def check_guest
+    @user = User.find_by(username: params[:username])
+    if @user.email == 'guest@example.com'
+      redirect_to root_path, alert: 'Guest cannot be deleted/updated'
     end
   end
 
@@ -80,7 +87,9 @@ class UsersController < ApplicationController
   end
 
   def correct_user
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    @user = User.find_by(username: params[:username])
+
     redirect_to(root_path) unless current_user?(@user) || current_user.admin?
     if @group
       @group = Group.find(params[:id])

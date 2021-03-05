@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get '/login', to:'sessions#new'
   post '/login', to:'sessions#create'
   delete '/logout', to:'sessions#destroy'
+  post '/guest_sign_in', to: 'sessions#new_guest'
+
   root "tasks#index"
   post '/tasks/:id/done' => 'tasks#done',   as: 'done'
 
@@ -11,7 +13,7 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  resources :users
+  resources :users, param: :username
 
 
   namespace :tasks do

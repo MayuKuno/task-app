@@ -49,8 +49,8 @@
       <div class="form-item select">
           <p>File</p>
           <label>
-            <div class="border">Select File</div>
-            <%= form.file_field :image, class: "file"%>
+            <div class="border">Attach Image</div>
+            <%= form.file_field :image, class: "file",accept: 'image/jpeg, image/png'%>
           </label>
       </div>
       
