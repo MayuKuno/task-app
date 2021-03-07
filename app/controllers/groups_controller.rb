@@ -84,16 +84,16 @@ class GroupsController < ApplicationController
     redirect_to groups_path, notice: 'The group has been deleted!'
   end
 
-  def import
-    if params[:file].present?
-      current_user.tasks.import(params[:file])
-      flash[:notice] = 'タスクをインポートしました'
-      redirect_back(fallback_location: groups_path)
-    else
-      flash[:alert] = 'ファイルが選択されていません'
-      redirect_back(fallback_location: groups_path)
-    end
-  end
+  # def import
+  #   if params[:file].present?
+  #     current_user.tasks.import(params[:file])
+  #     flash[:notice] = 'タスクをインポートしました'
+  #     redirect_back(fallback_location: groups_path)
+  #   else
+  #     flash[:alert] = 'ファイルが選択されていません'
+  #     redirect_back(fallback_location: groups_path)
+  #   end
+  # end
 
   def sort
     task = Task.find(params[:task_id])

@@ -16,9 +16,8 @@
               <tr>
                 <th>Participants</th>
                   <td class="user">
-                    <% group.users.each do |user| %>
-                      <%= user.username %>
-                    <% end %>
+                    <%= group.users.count %>
+
                   </td>
                
               </tr>
@@ -29,7 +28,9 @@
               <%= link_to 'Edit', edit_group_path(group), class:"btn managebtn" %>
             </div>
             <div>
-              <%= link_to 'Delete', group_path(group), method: :delete, class:"btn accent managebtn"%>
+
+              <a class="modal-open-btn btn accent managebtn delete">Delete Group</a> 
+              <%= link_to '', group_path(group), method: :delete, class: 'item-delete-btn'%>
             </div>
           </div>
         </div>

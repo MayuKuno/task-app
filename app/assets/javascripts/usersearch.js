@@ -50,8 +50,11 @@ $(function(){
         if (users.length !== 0) {
           users.forEach(function(user) {
             let idNum = document.getElementById(user.id);
+            console.log(idNum)
             if (user.id && !idNum) {
               addParticipants(user);
+            }else{
+              addNoparticipants();
             }
           });
         }else if(input.length == 0){

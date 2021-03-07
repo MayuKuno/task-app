@@ -33,6 +33,12 @@ $(function() {
                     </td>
                     `
     }
+    // if(group.users.include?(task.user)){
+    //   var creator  = `<td>${task.user.username}</td>`
+    // }else{
+    //   var creator  = `<td></td>`
+    // }
+
     var html = `
                 <tr class="item" data-model_name="task.class.name.underscore"  data-update_url="task_sort_path(task)"} >
                   ${label}
@@ -45,6 +51,7 @@ $(function() {
                     <a href="/tasks/${task.id}" data-method="get", class="btn">Detail</a>
                     <a href="/tasks/${task.id}" data-method="delete", class="btn accent">Delete</a>
                   </td>
+                  <td>${task.username}</td>
               </tr>
 
                 `
@@ -52,19 +59,11 @@ $(function() {
     search_list.append(html);
    
   }
-  // function formatDate(dt) {
-  //   var dt = new Date();
-  //   var y = dt.getFullYear();
-  //   var m = ('00' + (dt.getMonth()+1)).slice(-2);
-  //   var d = ('00' + dt.getDate()).slice(-2);
-  //   dt = (y + '-' + m + '-' + d);
-  //   return dt;
-  // }
-
+ 
 
   function appendErrMsgToHTML(msg) {
     var html = `<tr>
-                  <td class="noresult" colspan="6">
+                  <td class="noresult" colspan="7">
                     ${ msg }
                   </td>
                 </tr>`
