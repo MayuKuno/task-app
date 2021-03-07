@@ -13,7 +13,8 @@
           <%= link_to 'Edit Group', edit_group_path(@group), class:"btn" %>
         </li>
         <li>
-          <%= link_to 'Delete Group', group_path(@group), method: :delete, class:"btn accent"%>
+          <a class="modal-open-btn btn accent delete">Delete Group</a> 
+          <%= link_to '', group_path(@group), method: :delete, class: 'item-delete-btn'%>
         </li>
       </ul>
 
