@@ -32,18 +32,18 @@
           <%= current_user.username %>
         </p>
       </div>
+      <% @group.users.each do |user| %>
+        <% if current_user.username != user.username %>
+          <div class="user" id="<%= user.id %>">
+            <input name="group[user_ids][]" type="hidden" value="<%= user.id %>">
+            <p><%= user.username  %></p>
+            <a class="user-search-remove btns btns--remove js-remove-btn">Delete</a>
+          </div>
+        <% end %>
+      <% end %>
     </div>
 
 
-    <% @group.users.each do |user| %>
-      <% if current_user.username != user.username %>
-        <div class="user">
-          <input name="group[user_ids][]" type="hidden" value="<%= user.id %>">
-          <p><%= user.username  %></p>
-          <a class="user-search-remove btns btns--remove js-remove-btn">Delete</a>
-        </div>
-      <% end %>
-    <% end %>
     <div class="form-item">
       <%= form.submit "Save", class:"login" %>
     </div>

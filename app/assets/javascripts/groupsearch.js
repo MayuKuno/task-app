@@ -59,15 +59,7 @@ $(function() {
     search_list.append(html);
    
   }
-  // function formatDate(dt) {
-  //   var dt = new Date();
-  //   var y = dt.getFullYear();
-  //   var m = ('00' + (dt.getMonth()+1)).slice(-2);
-  //   var d = ('00' + dt.getDate()).slice(-2);
-  //   dt = (y + '-' + m + '-' + d);
-  //   return dt;
-  // }
-
+ 
 
   function appendErrMsgToHTML(msg) {
     var html = `<tr>
