@@ -33,6 +33,12 @@ $(function() {
                     </td>
                     `
     }
+    // if(group.users.include?(task.user)){
+    //   var creator  = `<td>${task.user.username}</td>`
+    // }else{
+    //   var creator  = `<td></td>`
+    // }
+
     var html = `
                 <tr class="item" data-model_name="task.class.name.underscore"  data-update_url="task_sort_path(task)"} >
                   ${label}
@@ -45,6 +51,7 @@ $(function() {
                     <a href="/tasks/${task.id}" data-method="get", class="btn">Detail</a>
                     <a href="/tasks/${task.id}" data-method="delete", class="btn accent">Delete</a>
                   </td>
+                  <td>${task.username}</td>
               </tr>
 
                 `
@@ -64,7 +71,7 @@ $(function() {
 
   function appendErrMsgToHTML(msg) {
     var html = `<tr>
-                  <td class="noresult" colspan="6">
+                  <td class="noresult" colspan="7">
                     ${ msg }
                   </td>
                 </tr>`

@@ -74,10 +74,19 @@
   .name{
     font-weight: bold;
     font-size: 32px;
+    .participants{
+      font-size: 20px;
+      font-weight:normal;
+
+    }
   }
+
   ul{
     position: absolute;
     right: 5%;
     list-style: none;
+    li{
+      text-align: right;
+    }
   }
 }
