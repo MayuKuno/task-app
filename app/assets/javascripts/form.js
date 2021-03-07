@@ -1,12 +1,10 @@
 $(function() {
 	var formInputs = $('input, textarea');
 
-	// if ($('.form-style').val()){
-	// 	$('.form-style').parent().children('p.formLabel').addClass('formTop');
-	// }
-	if ($('.form-style').val() != ""){
+	if ($('.form-style').val()){
 		$('.form-style').parent().children('p.formLabel').addClass('formTop');
 	}
+
 
 
 	formInputs.focus(function() {
