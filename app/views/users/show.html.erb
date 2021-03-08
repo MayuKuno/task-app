@@ -2,9 +2,9 @@
   <div class="usershow">
   <div class="container__top common">
       <div class="manage">
-        <div><%= link_to '編集', edit_user_path(@user), class:'btn' %></div>
+        <div><%= link_to 'Edit', edit_user_path(@user), class:'btn' %></div>
         <div>
-          <a class="modal-open-btn btn accent delete">削除</a> 
+          <a class="modal-open-btn btn accent delete">Delete</a> 
           <%= link_to '', user_path(@user), method: :delete, class: 'item-delete-btn'%>
         </div>
 
@@ -34,12 +34,12 @@
           <td><%= @user.created_at.strftime('%Y/%m/%d') %></td>
           </tr>
           <tr>
-          <th>管理者</th>
+          <th>Admin Permission</th>
           <td>
             <% if @user.admin? %>
-              <%= link_to "管理画面", admin_users_path, class: "admin" %>
+              <%= link_to "Admin Page", admin_users_path, class: "admin" %>
             <% else %>
-              管理者ではありません
+              Not an Admin
             <% end %>
           </td>
           </tr>
@@ -93,7 +93,7 @@
             <%= link_to 'Detail', task_path(task.id), class: "btn" %>
             <%= link_to 'Delete', task_path(task.id), method: :delete, id: :delete, class: "btn accent delete" %>
             <% else %>
-             権限がありません
+             No authority
             <% end %>
           </td>
     <% end %>

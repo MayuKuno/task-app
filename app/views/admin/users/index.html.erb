@@ -15,8 +15,8 @@
       <table class="tasks">
         <thead>
           <tr>
-            <th>タスク数</th>
-            <th>グループ数</th>
+            <th>Tasks</th>
+            <th>Groups</th>
             <th><%= sortable "username" %></th>
             <th><%= sortable "email" %></th>
             <th><%= sortable "admin" %></th>
@@ -44,11 +44,11 @@
             </td>
             <td><%= user.created_at.strftime('%Y/%m/%d') %></td>
             <td>
-              <%= link_to '編集', edit_user_path(user), class: "btn" %>
-              <%= link_to '詳細', user_path(user), class: "btn" %>
+              <%= link_to 'Edit', edit_user_path(user), class: "btn" %>
+              <%= link_to 'Detail', user_path(user), class: "btn" %>
               <%#= link_to '削除', user_path(user), method: :delete, class: "btn" %>
 
-              <a class="modal-open-btn btn accent delete"> 削除</a> 
+              <a class="modal-open-btn btn accent delete"> Delete</a> 
               <%= link_to '', user_path(user), method: :delete, class: 'item-delete-btn' %>
             </td>
           </tr>
