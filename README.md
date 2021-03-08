@@ -2,12 +2,26 @@
 Task-app
 
 ## Project Overview
+タスクアプリ
+ユーザーは、以下の機能を使うことができます。
+・タスクの登録、一覧、編集、削除
+・グラフを使ったタスクの可視化
+・カレンダーを使ったタスク期日の可視化
+・タスクの検索
+・CSVファイルによるタスクのインポート、エクスポート
+・グループ作成
+・作成したグループ内でタスクの管理
+・期日の近いタスクがある場合、メール通知
+※管理者の場合
+・登録ユーザーの管理
 
 
-## Production environment
+## Production environment 本番環境
+[サイトへ](https://ninefs-task-app.herokuapp.com/)
 
 
 ## Motivation
+アプリ開発としての基本のアプリケーションと言えるtodo管理アプリを作成を作成し、railsだけではなく、JS、JQueryの知識を着実に身に付けました。
 
 ## Paper Prototyping and ER Diagram
 
@@ -68,12 +82,23 @@ Task-app
 - belongs_to :labels
 
 
+## Tech/framework used
+ - Ruby
+ - Rails
+ - Javascript
+ - jQuery
+ - HTML・CSS
+ - Heroku
+ - MySQL
+ - Mac Catalina(10.15.5)
+ - VSCode
  
-
 ## Authors
 **Mayu Kuno** 
 　- [Github](https://github.com/MayuKuno)
 　- [Portfolio](https://ninefsblog.herokuapp.com/)
 
 
-## Function/features to improve
+## Function/Features to improve
+- グループ作成時の招待メールの送付機能
+
