@@ -106,6 +106,8 @@ class TasksController < ApplicationController
       flash[:notice] = "The task has been deleted!"
       if task.group_id
         redirect_to group_path(task.group_id)
+      elsif request.referer&.include?("users")
+        redirect_to user_path(current_user)
       else
         redirect_to tasks_path
       end

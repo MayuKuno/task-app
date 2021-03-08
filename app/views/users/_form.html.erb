@@ -22,8 +22,9 @@
   <%# end %>
 
     <div class="form-item">
-      <p class="formLabel">User Name</p>
-      <%= f.text_field :username, id: "username", class: "form-style", autocomplete:"new-password"%> 
+      <p class="formLabel">User Name *less than 10words</p>
+      <%= f.text_field :username, id: "username", class: "form-style", autocomplete:"off"%> 
+
     </div>
 
 
@@ -49,12 +50,12 @@
 
     <div class="form-item">
     <% if current_user && current_user.admin?%>
-      <div class="field">
-        <%= f.label :admin, "admin"  %> <br />
+      <div class="field admin">
+        <p>Do you want to grant this person to be an admin?</p>
         <%= f.check_box :admin %>
       </div>
     <% else %>
-      <p><label for='checkoff'>権限付与を希望する場合は、管理者にお問い合わせください</label>
+      <p><label for='checkoff'>If you would like to request to be an admin, please contact the administrator</label>
     <% end %>
     </div>
   </div>

@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="box">
+    <div class="title">
+     Forgot Password
+   </div>
+    <div class="contents">
+      <%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
+        <%= render 'layouts/error_messages', model: f.object%>
+        <%= hidden_field_tag :email, @user.email %>
+
+        <div class="form-item">
+          <p class="formLabel">Password</p>
+          <%= f.password_field :password, id: "password", class: "form-style", autocomplete:"off"%>
+        </div>
+
+        <div class="form-item">
+          <p class="formLabel">Password Confirmation</p>
+          <%= f.password_field :password_confirmation, id: "password_confirmation", class: "form-style", autocomplete:"off"%>
+        </div>  
+
+          <div class="form-item">
+            <%= f.submit "Update", class:"login pull-right" %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

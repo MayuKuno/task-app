@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="box">
+    <div class="title">
+     Forgot Password
+   </div>
+    <div class="contents">
+      <%= form_for(:password_reset, url: password_resets_path) do |f| %>
+        <div class="form-item">
+          <p class="formLabel">Email</p>
+          <%= f.email_field :email, id: "email", class: "form-style", autocomplete:"off"%> 
+        </div>
+        <div class="form-item">
+          <%= f.submit "Reset Passord", class:"login pull-right" %>
+        </div>
+      <% end %>
+    </div>
+   </div>
+</div>

@@ -89,7 +89,8 @@ Rails.application.configure do
 
 
   #sendgrid
-  config.action_mailer.default_url_options = { host: 'Herokuアプリのドメイン' }
+  host = 'ninefs-task-app.herokuapp.com'
+  config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
   user_name: ENV['SENDGRID_USERNAME'],
