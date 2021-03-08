@@ -28,7 +28,7 @@ class UsersController < ApplicationController
       else
         log_in(@user)
           # メールを送りたい時だけ
-          # UserNotifierMailer.send_signup_email(@user).deliver
+          UserNotifierMailer.send_signup_email(@user).deliver
         redirect_to root_path, notice:"The user has been registerd!"
       end
     else

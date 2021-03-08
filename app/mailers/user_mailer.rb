@@ -7,4 +7,12 @@ class UserMailer < ApplicationMailer
           :subject => '期日が近いタスクがあります。'  # 送信メールの件名
         )
   end
+
+  def password_reset(user)
+    @user = user
+    mail( :to => @user.email, # 送信先アドレスの指定
+    :subject => 'Password reset'  # 送信メールの件名
+  )
+  end
+
 end

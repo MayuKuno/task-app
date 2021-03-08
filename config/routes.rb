@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+  get 'password_resets/edit'
   get 'tasks/calendar'
   get 'notifications/index'
   get '/login', to:'sessions#new'
@@ -37,5 +39,6 @@ Rails.application.routes.draw do
 
   resources :notifications,only: [:index]
 
+  resources :password_resets,     only: [:new, :create, :edit, :update]
 
 end
