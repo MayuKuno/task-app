@@ -20,6 +20,12 @@ module TaskApp
     #field_with_errors」によるレイアウト崩れを防ぐ
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
 
-
+    config.generators do |g|
+    g.test_framework :rspec,
+      fixtures: false,
+      view_specs: false,
+      helper_specs: false,
+      routing_specs: false
+    end
   end
 end
