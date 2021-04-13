@@ -50,7 +50,9 @@ class Task < ApplicationRecord
       end
     end
   end
-
+  def late?
+    deadline.in_time_zone < Date.current.in_time_zone
+  end
   private
   def avatar_type
     if image.attached?
