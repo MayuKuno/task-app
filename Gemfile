@@ -78,5 +78,5 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webdrivers'
-
+  gem 'launchy', '~> 2.4.3'
 end

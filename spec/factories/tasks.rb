@@ -9,15 +9,15 @@ FactoryBot.define do
     association :user
 
     trait :due_yesterday do
-      deadline 1.day.ago
+      deadline { 1.day.ago }
     end
 
     trait :due_today do
-      deadline Date.current.in_time_zone
+      deadline { Date.current.in_time_zone }
     end
 
     trait :due_tomorrow do
-      deadline 1.day.from_now
+      deadline { 1.day.from_now }
     end
 
   end
