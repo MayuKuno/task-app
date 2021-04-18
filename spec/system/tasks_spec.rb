@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'タスク管理機能', type: :system do
+RSpec.describe 'Tasks', type: :system do
   let(:user_a) { FactoryBot.create(:user, username:'UserA', email: 'a@example.com') } #ユーザーAを作成
   let(:user_b) { FactoryBot.create(:user, username:'UserB', email: 'b@example.com') } #ユーザーBを作成
   let!(:task_a){ FactoryBot.create(:task, taskname: '最初のタスク', user: user_a) }
