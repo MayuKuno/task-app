@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'タスク管理機能', type: :system do
-  let(:user_a) { FactoryBot.create(:user, username:'ユーザーA', email: 'a@example.com') } #ユーザーAを作成
-  let(:user_b) { FactoryBot.create(:user, username:'ユーザーB', email: 'b@example.com') } #ユーザーBを作成
+  let(:user_a) { FactoryBot.create(:user, username:'UserA', email: 'a@example.com') } #ユーザーAを作成
+  let(:user_b) { FactoryBot.create(:user, username:'UserB', email: 'b@example.com') } #ユーザーBを作成
   let!(:task_a){ FactoryBot.create(:task, taskname: '最初のタスク', user: user_a) }
   
   before do #テストデータの準備
@@ -113,6 +113,26 @@ RSpec.describe 'タスク管理機能', type: :system do
       end
     end
   end
+
+
+  # describe "完了ボタン機能", focus: true do
+  #   # プロジェクトを持ったユーザーを準備する
+  #   let(:login_user) { user_a }
+
+  #   before do
+  #     visit tasks_path
+  #     first("#delete").click
+  #   end
+  #   # ユーザーがプロジェクト画面を開き、"complete"ボタンをクリックすると、
+  #   visit project_path(project)
+  #   click_button "Complete"
+
+  #   # プロジェクトは完了済みとしてマークされる 
+  #   expect(project.reload.completed?).to be true
+  #   expect(page).to have_content "Congratulations, this project is complete!"
+  #   expect(page).to have_content "Completed"
+  #   expect(page).to_not have_button "Complete"
+  # end
 end
 
 

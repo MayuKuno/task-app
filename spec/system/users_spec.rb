@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "ユーザー管理機能", type: :system do
-  let(:user) { FactoryBot.create(:user, username:'ユーザーA', email: 'a@example.com') }
+  let(:user) { FactoryBot.create(:user, username:'UserA', email: 'a@example.com') }
 
   describe '新規登録機能' do
     before do 
@@ -12,7 +12,7 @@ RSpec.describe "ユーザー管理機能", type: :system do
     end
 
     it "新規登録画面で名前を入力した時、正常に登録される" do
-      fill_in "user[username]",	with: "test_user" 
+      fill_in "user[username]",	with: "testuser" 
       click_button 'commit'
       expect(page).to have_selector ".notice", text: "The user has been registerd!"
 
