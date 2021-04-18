@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'グループ管理機能', type: :system do
+RSpec.describe 'Groups', type: :system do
   let(:user_a) { FactoryBot.create(:user, username:'userA', email: 'a@example.com') } #userAを作成
   let(:user_b) { FactoryBot.create(:user, username:'userB', email: 'b@example.com') } #userBを作成
   let(:user_c) { FactoryBot.create(:user, username:'userC', email: 'c@example.com') } #userCを作成
@@ -49,7 +49,7 @@ RSpec.describe 'グループ管理機能', type: :system do
 
     context 'userAがログインしているとき' do
       it 'グループの名前が表示される'do
-        expect(page).to have_content 'グループAのページ'
+        expect(page).to have_content 'グループA'
       end
     end
   end
@@ -119,9 +119,9 @@ RSpec.describe 'グループ管理機能', type: :system do
 
     before do
       visit groups_path
+      first(".delete").click
       click_on 'Delete'
 
-      # first("#delete").click
     end
 
     context 'deleteボタンをクリックした時' do

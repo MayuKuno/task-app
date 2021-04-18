@@ -1,11 +1,11 @@
 class User < ApplicationRecord
   has_secure_password
   attr_accessor :remember_token, :activation_token, :reset_token
+  before_save { email.downcase! }
 
   VALID_USERNAME_REGEX = /\A[a-z0-9]+\z/i
   validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i}
-  validates :username, uniqueness: true
-  validates :username, presence: true, length: {maximum: 10}, format: { with: VALID_USERNAME_REGEX }
+  validates :username, uniqueness: { case_sensitive: false } ,presence: true, length: {maximum: 10}, format: { with: VALID_USERNAME_REGEX }
 
 
   mount_uploader :image, ImageUploader
